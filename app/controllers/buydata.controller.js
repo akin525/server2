@@ -1,6 +1,7 @@
 const db = require("../models");
 const User = db.user;
 const bill= db.bill;
+const profit=db.profit;
 const deposit=db.deposit;
 const data=db.data;
 var request = require('request');
@@ -59,6 +60,7 @@ console.log(product.tamount);
             });
         }
         var tamount=user.wallet - amount;
+        var profits=amount-product.amount;
 
         const user1 = await User.update(
             { wallet: tamount },
@@ -80,6 +82,12 @@ console.log(product.tamount);
         phone:req.body.number,
         refid:req.body.refid,
 
+        });
+
+        const pro= await  profit.create({
+            username:user.username,
+            amount:profits,
+            plan:product.plan,
         });
 
         var options = {

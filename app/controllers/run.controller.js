@@ -60,7 +60,6 @@ exports.run =  async (req, res) => {
             amount:amount,
             iwallet:user.wallet,
             fwallet:parseInt(user.wallet)+amount,
-            date:"12/2022",
         })
 
 
@@ -90,6 +89,7 @@ exports.run =  async (req, res) => {
         });
 
         var mailOptions = {
+
             from: 'admin@primedata.com.ng',
             to: user.email,
             subject: user.username+' Account Funded',
