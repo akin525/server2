@@ -15,6 +15,7 @@ const alllock = require("../controllers/lock.controller");
 const alldeposit = require("../controllers/deposit.controller");
 const purchase = require("../controllers/purchase.controller");
 const run = require("../controllers/run.controller");
+const run1 = require("../controllers/run1.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -50,6 +51,7 @@ module.exports = function(app) {
   app.post("/api/auth/buyelect", buyelect.buyelect);
   app.post("/api/auth/profile", profile.profile);
   app.post("/api/auth/run", run.run);
+  app.post("/api/auth/run1", run1.run1);
 
       app.post("/api/auth/data", data.data);
       app.post("/api/auth/createlock", createlock.safelock);
