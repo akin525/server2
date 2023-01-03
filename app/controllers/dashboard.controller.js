@@ -5,6 +5,7 @@ const bill= db.bill;
 const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
+
 exports.dashboard =  async (req, res) => {
     const userid = req.userId;
     try {
