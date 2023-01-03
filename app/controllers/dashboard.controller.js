@@ -63,7 +63,7 @@ exports.dashboard =  async (req, res) => {
             totaldeposit:totaldeposit??0,
             allock:allock??0,
             bills:allbill,
-            referbonus:referbonus,
+            referbonus:referbonus??0,
             roles: authorities
         });
     } catch (error) {
