@@ -4,8 +4,13 @@ const bill= db.bill;
 const deposit=db.deposit;
 const settings=db.settings;
 const charges=db.charges;
+const webbok =db.web;
 exports.run1 =  async (req, res) => {
     var data=req.body;
+
+    const ino= await webbok.create({
+        webbook:data,
+    });
 
     const account = data.account_number;
     const refid = data.ref;
