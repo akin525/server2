@@ -98,7 +98,7 @@ exports.signup = async (req, res) => {
         'address': req.body.address,
         'gender': req.body.gender,
         'phone': req.body.phone,
-        'webhook_url': 'https://app.savebills.com.ng/api/auth/run1'
+        'webhook_url': 'https://server.savebills.com.ng/api/auth/run1'
       }
     };
     request(option, function (error, response) {
