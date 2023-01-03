@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const refer = sequelize.define("deposits",{
+    const refer = sequelize.define("refers",{
 
         username: {
             type:Sequelize
