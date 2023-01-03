@@ -1,6 +1,8 @@
 const db = require("../models");
+const {use} = require("express/lib/router");
 const User = db.user;
 const bill= db.bill;
+const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
 exports.dashboard =  async (req, res) => {
@@ -38,6 +40,14 @@ exports.dashboard =  async (req, res) => {
                 username:user.username,
             },
         });
+
+        const referbonus= await refer.sum('amount', {
+            where:{
+                username:user.username,
+                status:"1",
+            },
+        });
+
         return res.status(200).send({
             id: user.id,
             name: user.name,
@@ -53,6 +63,7 @@ exports.dashboard =  async (req, res) => {
             totaldeposit:totaldeposit??0,
             allock:allock??0,
             bills:allbill,
+            referbonus:referbonus,
             roles: authorities
         });
     } catch (error) {
