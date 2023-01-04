@@ -12,6 +12,9 @@ module.exports = (sequelize, Sequelize) => {
         amount: {
             type: Sequelize
         },
+        narration:{
+            type: sequelize
+        },
         iwallet: {
             type: Sequelize
         },
