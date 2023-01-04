@@ -8,6 +8,10 @@ const webbok =db.web;
 exports.run1 =  async (req, res) => {
     var data=req.body;
 
+    const ino= await webbok.create({
+        webbook:data,
+    });
+
     const account = data.account_number;
     const refid = data.ref;
     const amount = data.amount;
@@ -19,7 +23,6 @@ exports.run1 =  async (req, res) => {
             // req.session = null;
             return res.status(200).send({status: "0", message: "Kindly login your account."});
         }
-
         const deposite =await deposit.findOne({
             where:{
                 payment_ref	:refid,
