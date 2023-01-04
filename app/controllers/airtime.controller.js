@@ -59,7 +59,7 @@ exports.airtime =  async (req, res) => {
 
     const bil= await bill.create({
             username:user.username,
-            plan:"Airtime"+req.body.network,
+            plan:"Airtime--"+req.body.network,
             amount:req.body.amount,
             server_res:"airtime",
         result:"0",

@@ -12,7 +12,7 @@ exports.run1 =  async (req, res) => {
     const account = data.account_number;
     const refid = data.ref;
     const amount = data.amount;
-    const nar=data.narration;
+    const nar= data.narration;
     try {
         const user = await User.findOne({ where: { account_number1: account } });
 
@@ -61,7 +61,7 @@ exports.run1 =  async (req, res) => {
             amount:amount,
             narration:nar,
             iwallet:user.wallet,
-            fwallet:parseInt(user.wallet)+amount,
+            fwallet:parseInt(user.wallet)+parseInt(amount),
         })
 
 
