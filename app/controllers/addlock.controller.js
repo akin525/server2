@@ -32,6 +32,15 @@ exports.add =  async (req, res) => {
         message:"insufficient balance"
       });
     }
+    const rebalance=parseInt(user.wallet)-parseInt(req.body.amount);
+
+    const user1 = await User.update(
+        { wallet: rebalance },
+        {
+          where: {
+            id: userid,
+          },
+        });
 
     const add =await safe.findOne({
       where:{
