@@ -31,10 +31,10 @@ exports.add =  async (req, res) => {
       },
     });
 
-    const main=parseInt(add.amount) + parseInt(req.body.amount);
+    const main=parseInt(add.balance) + parseInt(req.body.amount);
 
     const objectToUpdate = {
-     amount:main,
+     balance:main,
     }
     safe.findAll({ where: { id: add.id}}).then((result) => {
       if(result){
