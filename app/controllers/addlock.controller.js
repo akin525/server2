@@ -36,7 +36,7 @@ exports.add =  async (req, res) => {
     const objectToUpdate = {
      amount:main,
     }
-    User.findAll({ where: { id: add.id}}).then((result) => {
+    safe.findAll({ where: { id: add.id}}).then((result) => {
       if(result){
         result[0].set(objectToUpdate);
         result[0].save();
