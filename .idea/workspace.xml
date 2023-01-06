@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/interest.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/addlock.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/addlock.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,15 +48,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2021.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\HP\PhpstormProjects\server\app\models" />
       <recent name="C:\Users\HP\PhpstormProjects\server\app\controllers" />
+      <recent name="C:\Users\HP\PhpstormProjects\server\app\models" />
       <recent name="C:\Users\HP\PhpstormProjects\mynode\app\controllers" />
       <recent name="C:\Users\HP\PhpstormProjects\mynode\app\models" />
     </key>
@@ -105,7 +106,7 @@
       <workItem from="1671885046909" duration="23200000" />
       <workItem from="1672225517242" duration="9906000" />
       <workItem from="1672474180258" duration="7131000" />
-      <workItem from="1672747925665" duration="37298000" />
+      <workItem from="1672747925665" duration="43470000" />
     </task>
     <task id="LOCAL-00001" summary="server">
       <created>1671627654863</created>
@@ -310,7 +311,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673003803262</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="look">
+      <created>1673016933758</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1673016933758</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
