@@ -6,7 +6,7 @@ var request = require('request');
 const {response} = require("express");
 const {where} = require("sequelize");
 
-exports.profile =  async (req, res) => {
+exports.add =  async (req, res) => {
   const userid = req.body.userId;
 
   var boy;
@@ -31,7 +31,7 @@ exports.profile =  async (req, res) => {
       },
     });
 
-    var main=add.amount +req.body.amount;
+    var main=parseInt(add.amount) + parseInt(req.body.amount);
 
     const objectToUpdate = {
      amount:main,
