@@ -37,9 +37,9 @@ exports.add =  async (req, res) => {
       element.set(objectToUpdate);
       element.save();
 
-      // res.status(200).send({
-      //   sp:element.username,
-      // });
+      res.status(200).send({
+        sp:element,
+      });
 
     });
 
