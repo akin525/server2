@@ -31,7 +31,7 @@ exports.add =  async (req, res) => {
       },
     });
 
-    const main=add.balance + req.body.amount;
+    const main=parseInt(add.balance) + req.body.amount;
 
     const objectToUpdate = {
      balance:main,
