@@ -25,6 +25,14 @@ exports.add =  async (req, res) => {
       return res.status(200).send({status: "0", message: "Kindly login your account."});
     }
 
+    if (parseInt(user.wallet) < parseInt(req.body.amount)) {
+      return  res.status(200).send({
+        status:"0",
+        balance:user.wallet,
+        message:"insufficient balance"
+      });
+    }
+
     const add =await safe.findOne({
       where:{
         id:req.body.id,
