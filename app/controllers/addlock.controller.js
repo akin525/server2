@@ -31,7 +31,7 @@ exports.add =  async (req, res) => {
       },
     });
 
-    var main=parseInt(add.amount) + parseInt(req.body.amount);
+    const main=parseInt(add.amount) + parseInt(req.body.amount);
 
     const objectToUpdate = {
      amount:main,
@@ -47,6 +47,7 @@ exports.add =  async (req, res) => {
       status:"1",
       message:"Amount added successfully",
       amount:main,
+      add:add,
     });
 
   } catch (error) {

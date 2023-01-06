@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/addlock.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/addlock.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +105,7 @@
       <workItem from="1671885046909" duration="23200000" />
       <workItem from="1672225517242" duration="9906000" />
       <workItem from="1672474180258" duration="7131000" />
-      <workItem from="1672747925665" duration="33086000" />
+      <workItem from="1672747925665" duration="33721000" />
     </task>
     <task id="LOCAL-00001" summary="server">
       <created>1671627654863</created>
@@ -253,7 +254,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672997472736</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="look">
+      <created>1672999955391</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1672999955391</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
