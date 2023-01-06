@@ -28,7 +28,7 @@ exports.add =  async (req, res) => {
         username:username,
         profit:calapday,
       });
-      const allsave=element.balance+calapday;
+      const allsave=parseInt(element.balance)+parseInt(calapday);
       const objectToUpdate = {
         balance:allsave,
       };
