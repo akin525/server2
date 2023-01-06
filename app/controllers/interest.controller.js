@@ -37,12 +37,12 @@ exports.add =  async (req, res) => {
       element.set(objectToUpdate);
       element.save();
 
-      res.status(200).send({
-        sp:element,
-      });
+
 
     });
-
+    res.status(200).send({
+      sp:user,
+    });
   } catch (error) {
     return res.status(201).send({
       message: error.message});
