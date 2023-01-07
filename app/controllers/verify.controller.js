@@ -17,8 +17,8 @@ exports.bank =  async (req, res) => {
                 'Cache-Control': 'no-cache'
             },
             qs: {
-                accountNumber: request.number,
-                bankCode: request.bank
+                accountNumber: req.body.number,
+                bankCode: req.body.bank
             }
         };
         request(options, function (error, response) {
