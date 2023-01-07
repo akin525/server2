@@ -59,7 +59,7 @@ module.exports = function(app) {
   app.post("/api/auth/addlock", addlock.add);
   app.get("/api/auth/in", interest.add);
   app.get("/api/auth/bank", bank.bank);
-  app.get("/api/auth/verify", verify.bank);
+  app.post("/api/auth/verify", verify.bank);
 
       app.post("/api/auth/data", data.data);
       app.post("/api/auth/createlock", createlock.safelock);
