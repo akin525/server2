@@ -99,7 +99,8 @@ console.log(product.tamount);
             formData: {
                 'service': 'data',
                 'coded': product.plan_id,
-                'phone': req.body.number
+                'phone': req.body.number,
+                'reseller_price':product.tamount
             }
         };
 
