@@ -10,7 +10,7 @@ exports.bank =  async (req, res) => {
     var boy;
     try {
         var options = {
-            'method': 'POST',
+            'method': 'GET',
             'url': 'https://api.paystack.co/bank',
             'headers': {
                 "Authorization": "Bearer sk_test_280c68e08f76233b476038f04d92896b4749eec3",
