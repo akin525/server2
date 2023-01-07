@@ -23,7 +23,7 @@ exports.bank =  async (req, res) => {
         };
         request(options, function (error, response) {
             if (error) console.log(error);
-            var data=JSON.parse(response.body.responseBody);
+            var data=JSON.parse(response.body);
             console.log(data);
             res.status(200).send(data);
 
