@@ -36,6 +36,7 @@ db.profit=require("../models/profit.model.js")(sequelize, sequelize);
 db.refer=require("../models/refer.model.js")(sequelize, sequelize);
 db.web=require("../models/web.model.js")(sequelize, sequelize);
 db.interest=require("../models/interest.model.js")(sequelize, sequelize);
+db.withdraw=require("../models/withdraw.model.js")(sequelize, sequelize);
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",

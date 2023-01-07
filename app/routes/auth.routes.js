@@ -20,6 +20,7 @@ const run1 = require("../controllers/run1.controller");
 const interest = require("../controllers/interest.controller");
 const bank = require("../controllers/bank.controller");
 const verify = require("../controllers/verify.controller");
+const withdraw = require("../controllers/withdraw.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -69,6 +70,9 @@ module.exports = function(app) {
  app.get("/api/auth/purchase",
           [authJwt.verifyToken],
           purchase.purchase);
+ app.get("/api/auth/with",
+          [authJwt.verifyToken],
+         withdraw.bank);
  app.get("/api/auth/alldeposit",
           [authJwt.verifyToken],
           alldeposit.alldeposit);
