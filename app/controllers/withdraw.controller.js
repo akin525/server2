@@ -44,7 +44,7 @@ exports.bank =  async (req, res) => {
             }
         });
 
-        const insert = await safelock.create({
+        const insert = await withdraw.create({
             username:user.username,
             amount:req.body.amount,
             bank:req.body.bank,
