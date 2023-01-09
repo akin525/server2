@@ -71,7 +71,7 @@ module.exports = function(app) {
       app.get("/api/auth/allock",
           [authJwt.verifyToken],
           alllock.allock);
- app.get("/api/auth/purchase",
+ app.post("/api/auth/purchase",
           [authJwt.verifyToken],
           purchase.purchase);
  app.get("/api/auth/with",

@@ -50,7 +50,7 @@ exports.bank =  async (req, res) => {
             bank:req.body.bank,
             account_no:req.body.number,
             name:req.body.name,
-            plan:req.body.code,
+            plan:req.body.bank,
         });
 
         return res.status(200).send({
