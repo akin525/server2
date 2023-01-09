@@ -71,10 +71,10 @@ module.exports = function(app) {
       app.get("/api/auth/allock",
           [authJwt.verifyToken],
           alllock.allock);
- app.post("/api/auth/purchase",
+ app.get("/api/auth/purchase",
           [authJwt.verifyToken],
           purchase.purchase);
- app.get("/api/auth/with",
+ app.post("/api/auth/with",
           [authJwt.verifyToken],
          withdraw.bank);
  app.get("/api/auth/alldeposit",
