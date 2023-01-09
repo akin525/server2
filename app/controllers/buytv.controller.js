@@ -103,7 +103,9 @@ exports.buytv =  async (req, res) => {
                 console.log(data);
 
                 const objectToUpdate = {
-                    result:"1"
+                    result:"1",
+                    server_res:response.body
+
                 }
                 bill.findAll({ where: { id: bil.id}}).then((result) => {
                     if(result){

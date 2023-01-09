@@ -102,7 +102,9 @@ exports.buyelect =  async (req, res) => {
                 console.log(data);
                 const objectToUpdate = {
                     result:"1",
-                    token: data.token
+                    token: data.token,
+                    server_res:response.body
+
                 }
                 bill.findAll({ where: { id: bil.id}}).then((result) => {
                     if(result){
