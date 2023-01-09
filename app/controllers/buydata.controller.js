@@ -131,7 +131,7 @@ console.log(product.tamount);
                 });
             } else if (data.success===0) {
                 const back =parseInt(user.wallet) + parseInt(amount);
-                const user1 =  User.update(
+                const user14 =  User.update(
                     { wallet: back },
                     {
                         where: {

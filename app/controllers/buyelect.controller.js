@@ -122,7 +122,7 @@ exports.buyelect =  async (req, res) => {
             } else if (data.success===0) {
                 const back =parseInt(user.wallet) + parseInt(req.body.amount);
 
-                const user1 =  User.update(
+                const user14 =  User.update(
                     { wallet: back },
                     {
                         where: {
