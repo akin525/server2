@@ -62,7 +62,7 @@ module.exports = function(app) {
   app.post("/api/auth/addlock", addlock.add);
   app.get("/api/auth/in", interest.add);
   app.get("/api/auth/update", update.add);
-  app.get("/api/auth/bank",   [authJwt.verifyToken], bank.bank);
+  app.get("/api/auth/bank", bank.bank);
   app.post("/api/auth/verify", verify.bank);
   app.post("/api/auth/pass", pass.password);
 
