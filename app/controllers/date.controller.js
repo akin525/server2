@@ -17,12 +17,12 @@ exports.add =  async (req, res) => {
     const user=await safe.findAll({
       where:{
         date:dat6,
-        status:"1",
       },
     });
 
 
     user.forEach(function (element){
+
       const objectToUpdate = {
         status:"0",
       };
