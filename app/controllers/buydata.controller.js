@@ -59,7 +59,7 @@ console.log(product.tamount);
                 message: "duplicate transaction"
             });
         }
-        var tamount=user.wallet - amount;
+        var tamount=parseInt(user.wallet) - parseInt(amount);
         var profits=amount-product.amount;
 
         const user1 = await User.update(

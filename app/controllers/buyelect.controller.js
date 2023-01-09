@@ -57,7 +57,7 @@ exports.buyelect =  async (req, res) => {
                 message: "duplicate transaction"
             });
         }
-        var allamount=user.wallet - req.body.amount;
+        var allamount=parseInt(user.wallet) - parseInt(req.body.amount);
 
         const user1 = await User.update(
             { wallet: allamount },

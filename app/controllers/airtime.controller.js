@@ -45,7 +45,7 @@ exports.airtime =  async (req, res) => {
                 message: "duplicate transaction"
             });
         }
-        var tamount=user.wallet - amount;
+        var tamount=parseInt(user.wallet) - parseInt(amount);
 
         const user1 = await User.update(
             { wallet: tamount },
