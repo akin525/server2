@@ -26,7 +26,7 @@ exports.bank =  async (req, res) => {
                 username:user.username,
             },
         });
-        if (parseFloat(safe.balance) < parseFloat(req.body.amount)) {
+        if (parseInt(safe.balance) < parseInt(req.body.amount)) {
             return  res.status(200).send({
                 status:"0",
                 balance:safe.balance,
