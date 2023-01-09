@@ -118,9 +118,18 @@ exports.buyelect =  async (req, res) => {
                     server_res:response.body
                 });
             } else if (data.success===0) {
+                const back =user.wallet + amount;
+                const user1 =  User.update(
+                    { wallet: back },
+                    {
+                        where: {
+                            id: userid,
+                        },
+                    });
                 return   res.status(200).send({
                     status: "0",
-                    message: data.message
+                    message: data.message,
+                    up:user1
                 });
             }
             res.status(200).send(response.body);
