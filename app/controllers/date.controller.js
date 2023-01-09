@@ -24,7 +24,7 @@ exports.add =  async (req, res) => {
     user.forEach(function (element){
 
       const objectToUpdate = {
-        status:"0",
+        status:0,
       };
 
 
