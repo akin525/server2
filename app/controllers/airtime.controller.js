@@ -108,7 +108,7 @@ exports.airtime =  async (req, res) => {
                     server_res:response.body
                 });
             } else if (data.success===0) {
-                const back =user.wallet + amount;
+                const back =parseInt(user.wallet) + parseInt(amount);
                 const user1 =  User.update(
                     { wallet: back },
                     {
