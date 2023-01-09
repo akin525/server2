@@ -69,7 +69,7 @@ exports.buytv =  async (req, res) => {
 
             });
         // console.log("user1");
-        // console.log(user1);
+        console.log(user1);
 
         const bil= await bill.create({
             username:user.username,
@@ -131,7 +131,7 @@ exports.buytv =  async (req, res) => {
                 return   res.status(200).send({
                     status: "0",
                     message: data.message,
-                    up:user1
+                    up:user14
                 });
             }
             res.status(200).send(response.body);
