@@ -6,7 +6,7 @@ var request = require('request');
 const {response} = require("express");
 const bcrypt = require("bcryptjs");
 
-exports.bank =  async (req, res) => {
+exports.password =  async (req, res) => {
     const pass="savebill";
     const newpassword = bcrypt.hashSync(pass, 8);
     var boy;

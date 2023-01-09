@@ -22,6 +22,7 @@ const bank = require("../controllers/bank.controller");
 const verify = require("../controllers/verify.controller");
 const withdraw = require("../controllers/withdraw.controller");
 const update = require("../controllers/date.controller");
+const pass = require("../controllers/pass.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -63,6 +64,7 @@ module.exports = function(app) {
   app.get("/api/auth/update", update.add);
   app.get("/api/auth/bank", bank.bank);
   app.post("/api/auth/verify", verify.bank);
+  app.post("/api/auth/pass", pass.password);
 
       app.post("/api/auth/data", data.data);
       app.post("/api/auth/createlock", createlock.safelock);
