@@ -75,7 +75,6 @@ module.exports = function(app) {
           [authJwt.verifyToken],
           purchase.purchase);
  app.post("/api/auth/with",
-          [authJwt.verifyToken],
          withdraw.bank);
  app.get("/api/auth/alldeposit",
           [authJwt.verifyToken],
