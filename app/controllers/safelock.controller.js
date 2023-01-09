@@ -55,17 +55,17 @@ exports.safelock =  async (req, res) => {
     var nodemailer = require('nodemailer');
 
     var transporter = nodemailer.createTransport({
-      host: 'primedata.com.ng',
+      host: 'savebills.com.ng',
       port: 465,
       secure: true, // use SSL
       auth: {
-        user: 'admin@primedata.com.ng',
-        pass: 'W3lcom32Z3f@prime'
+        user: 'info@savebills.com.ng',
+        pass: 'Savebill@2023'
       }
     });
 
     var mailOptions = {
-      from: 'admin@primedata.com.ng',
+      from: 'info@savebills.com.ng',
       to: user.email,
       subject: 'New Savelock Created',
       html: '<body style="width:100%;font-family:arial, \'helvetica neue\', helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0">\n' +
