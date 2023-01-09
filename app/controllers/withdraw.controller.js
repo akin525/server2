@@ -55,7 +55,8 @@ exports.bank =  async (req, res) => {
 
         return res.status(200).send({
             status:"1",
-            message:"Withdraw Successful"
+            message:"Withdraw Successful",
+            insert:insert
         });
 
     } catch (error) {
