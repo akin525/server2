@@ -59,6 +59,13 @@ console.log(product.tamount);
                 message: "duplicate transaction"
             });
         }
+        if (req.body.amount < 0)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "invalid transaction"
+            });
+        }
         var tamount=parseInt(user.wallet) - parseInt(amount);
         var profits=amount-product.amount;
 

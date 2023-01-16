@@ -31,6 +31,13 @@ exports.safelock =  async (req, res) => {
         message:"insufficient balance"
       });
     }
+    if (req.body.amount < 0)
+    {
+      return res.status(200).send({
+        status: "0",
+        message: "invalid transaction"
+      });
+    }
     var tamount=user.wallet - amount;
 
     const user1 = await User.update(

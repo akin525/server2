@@ -57,6 +57,13 @@ exports.buyelect =  async (req, res) => {
                 message: "duplicate transaction"
             });
         }
+        if (req.body.amount < 0)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "invalid transaction"
+            });
+        }
         var allamount=parseInt(user.wallet) - parseInt(req.body.amount);
 
         const user1 = await User.update(

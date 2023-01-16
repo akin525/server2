@@ -58,6 +58,13 @@ exports.buytv =  async (req, res) => {
                 message: "duplicate transaction"
             });
         }
+        if (req.body.amount < 0)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "invalid transaction"
+            });
+        }
         var tamount=parseInt(user.wallet) - parseInt(amount);
 
         const user1 = await User.update(
