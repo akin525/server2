@@ -52,6 +52,13 @@ exports.airtime =  async (req, res) => {
                 message: "invalid transaction"
             });
         }
+        if (req.body.amount >3000)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "Amount must be lass than 3000",
+            });
+        }
         var tamount=parseInt(user.wallet) - parseInt(amount);
 
         const user1 = await User.update(
