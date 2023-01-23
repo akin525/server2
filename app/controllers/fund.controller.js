@@ -18,7 +18,7 @@ exports.fund =  async (req, res) => {
 
         const user = await User.findOne({
             where: {
-                id: userid,
+                id: req.body.userId,
             },
         });
 
@@ -60,7 +60,7 @@ exports.fund =  async (req, res) => {
                 return   res.status(200).send({
                     status: "1",
                     data:data.data,
-                    url:data.data.authorization_url,
+                    url:data.data.authoriza+tion_url,
                 });
             }
             // res.status(200).send(response.body);
