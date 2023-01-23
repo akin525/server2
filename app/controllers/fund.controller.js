@@ -53,7 +53,7 @@ exports.fund =  async (req, res) => {
         request(options, function (error, response) {
             if (error) throw new Error(error);
             var data=JSON.parse(response.body);
-            console.log(data.success);
+            // console.log(data.success);
             if (data.status=="true"){
                 console.log(data);
 
