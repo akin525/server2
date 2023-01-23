@@ -9,7 +9,7 @@ const { body, validationResult } = require('express-validator');
 const nodemailer = require("nodemailer");
 
 exports.fund =  async (req, res) => {
-    const userid = req.body.userId;
+    // const userid = req.body.userId;
     var boy;
     try {
 
