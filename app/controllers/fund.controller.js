@@ -18,7 +18,7 @@ exports.fund =  async (req, res) => {
 
         const user = await User.findOne({
             where: {
-                id: req.body.userId,
+                id: "1",
             },
         });
 
