@@ -38,18 +38,16 @@ exports.fund =  async (req, res) => {
 
 
 
-        var options =
-            {
+        var options = {
             'method': 'POST',
-
-
-            'url': ' https://api.budpay.com/api/v2/transaction/initialize',
+            'url': 'https://api.budpay.com/api/v2/transaction/initialize',
             'headers': {
-                "Authorization": "Bearer sk_test_f5n6aovwjbqjo6ipwffwjjhg0btgwqge43fg8vm",
-                "Content-Type": "application/json"
+                'Authorization': 'Bearer sk_test_f5n6aovwjbqjo6ipwffwjjhg0btgwqge43fg8vm'
             },
             formData: {
-                "email": req.body.email, "amount": req.body.amount,"callback":"youcallbackurl"
+                'email': user.email,
+                'amount': req.body.amount,
+                'callback': 'youcallbackurl'
             }
         };
         request(options, function (error, response) {
