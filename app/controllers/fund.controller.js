@@ -45,15 +45,15 @@ exports.fund =  async (req, res) => {
             if (error) throw new Error(error);
             var data=JSON.parse(response.body);
             // console.log(data.success);
-            if (data.status=="true"){
-                console.log(data);
+            // if (data.status=="true"){
+                // console.log(data);
 
                 return   res.status(200).send({
                     status: "1",
                     data:data.data,
-                    url:data.data.authoriza+tion_url,
+                    url:data.data.authorization_url,
                 });
-            }
+            // }
             // res.status(200).send(response.body);
 
         });
