@@ -26,6 +26,13 @@ exports.bank =  async (req, res) => {
                 username:user.username,
             },
         });
+        if (req.body.amount < 0)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "invalid transaction"
+            });
+        }
         if (parseInt(safe.balance) < parseInt(req.body.amount)) {
             return  res.status(200).send({
                 status:"0",

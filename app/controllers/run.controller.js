@@ -1,4 +1,5 @@
     const db = require("../models");
+    const nodemailer = require("nodemailer");
     const User = db.user;
     const bill= db.bill;
     const deposit=db.deposit;
@@ -82,19 +83,19 @@
             var nodemailer = require('nodemailer');
 
             var transporter = nodemailer.createTransport({
-                host: 'primedata.com.ng',
+                host: 'savebills.com.ng',
                 port: 465,
                 secure: true, // use SSL
                 auth: {
-                    user: 'admin@primedata.com.ng',
-                    pass: 'W3lcom32Z3f@prime'
+                    user: 'info@savebills.com.ng',
+                    pass: 'Savebill@2023'
                 }
             });
 
             var mailOptions = {
 
-                from: 'admin@primedata.com.ng',
-                to: user.email,
+                from: 'info@savebills.com.ng',
+                to:'info@savebills.com.ng,'+ user.email,
                 subject: user.username+' Account Funded',
                 html: '<body style=\'width:100%;font-family:arial, helvetica neue, helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\'>\n' +
                     '<div class=\'es-wrapper-color\' style=\'background-color:#FAFAFA\'>\n' +
