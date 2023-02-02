@@ -246,19 +246,27 @@ exports.signin = async (req, res) => {
         })
 
       });
+      return res.status(200).send({
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        roles: authorities,
+        token: token,
+      });
 
+    }else {
+      // req.session.token = token;
 
+      return res.status(200).send({
+        id: user.id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        roles: authorities,
+        token: token,
+      });
     }
-    // req.session.token = token;
-
-    return res.status(200).send({
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      roles: authorities,
-      token: token,
-    });
   } catch (error) {
     return res.status(200).send({ message: error.message });
   }
