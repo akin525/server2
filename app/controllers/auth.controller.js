@@ -197,66 +197,7 @@ exports.signin = async (req, res) => {
 
 
 
-    if (user.account_number1=="1"){
 
-      var option = {
-        'method': 'POST',
-        'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/virtual-account3',
-        'headers': {
-          'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
-        },
-        formData: {
-          'account_name': req.body.name,
-          'business_short_name': 'SAVEBILLS',
-          'uniqueid': user.username+Math.floor((Math.random() * 10000) + 1),
-          'email': user.email,
-          'dob': user.dob,
-          'address': user.address,
-          'gender': user.gender,
-          'phone': user.phone,
-          'webhook_url': 'https://server.savebills.com.ng/api/auth/run1'
-        }
-      };
-      request(option, function (error, response) {
-        if (error) throw new Error(error);
-        console.log(response.body);
-
-
-        var data=JSON.parse(response.body);
-        console.log(response.body);
-        console.log(data);
-        const objectToUpdate = {
-          account_number1: data.data.account_number,
-          account_name1: data.data.customer_name,
-        };
-
-        User.findAll({ where: { username: user.username}}).then((result) => {
-          if(result){
-            result[0].set(objectToUpdate);
-            result[0].save();
-          }
-        })
-
-      });
-      const token = jwt.sign({ id: user.id }, config.secret, {
-        expiresIn: 86400, // 24 hours
-      });
-
-      let authorities = [];
-      const roles = await user.getRoles();
-      for (let i = 0; i < roles.length; i++) {
-        authorities.push("ROLE_" + roles[i].name.toUpperCase());
-      }
-      return res.status(200).send({
-        id: user.id,
-        name: user.name,
-        username: user.username,
-        email: user.email,
-        roles: authorities,
-        token: token,
-      });
-
-    }else {
       // req.session.token = token;
       const token = jwt.sign({ id: user.id }, config.secret, {
         expiresIn: 86400, // 24 hours
@@ -275,7 +216,7 @@ exports.signin = async (req, res) => {
         roles: authorities,
         token: token,
       });
-    }
+
   } catch (error) {
     return res.status(200).send({ message: error.message });
   }
