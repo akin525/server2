@@ -70,7 +70,7 @@ exports.dashboard =  async (req, res) => {
             account_number1: user.account_number1,
             account_name: user.account_name,
             account_name1: user.account_name1,
-            noti:notification,
+            noti:notification.message,
             totalbill:totalbill??0,
             totaldeposit:totaldeposit??0,
             allock:allock??0,
