@@ -5,6 +5,7 @@ const bill= db.bill;
 const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
+const noti =db.message;
 
 exports.dashboard =  async (req, res) => {
     const userid = req.userId;
@@ -49,6 +50,15 @@ exports.dashboard =  async (req, res) => {
             },
         });
 
+        const notification= await noti.findOne({
+            where:{
+                status:"1",
+            },
+        });
+
+
+
+
         return res.status(200).send({
             id: user.id,
             name: user.name,
@@ -60,6 +70,7 @@ exports.dashboard =  async (req, res) => {
             account_number1: user.account_number1,
             account_name: user.account_name,
             account_name1: user.account_name1,
+            noti:notification,
             totalbill:totalbill??0,
             totaldeposit:totaldeposit??0,
             allock:allock??0,
