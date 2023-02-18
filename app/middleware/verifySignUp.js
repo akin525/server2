@@ -29,6 +29,12 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Enter your email address"
       });
     }
+    if (!isValidEmail(req.body.email)) {
+      return res.status(200).send({
+        status: "0",
+        message: "Invalid email address"
+      });
+    }
     if (req.body.dob===""){
       return res.status(200).send({
         status: "0",
@@ -59,12 +65,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Username must be more than 6 value!"
       });
     }
-    if (!isValidEmail(req.body.email)) {
-      return res.status(200).send({
-        status: "0",
-        message: "Invalid email address"
-      });
-    }
+
     if (req.body.phone.toString().length < 11){
       return res.status(200).send({
         status: "0",
