@@ -173,6 +173,18 @@ exports.signup = async (req, res) => {
 
 exports.signin = async (req, res) => {
   try {
+    if (req.body.username===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your username!"
+      });
+    }
+    if (req.body.password===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your password!"
+      });
+    }
     const user = await User.findOne({
       where: {
         username: req.body.username,
