@@ -17,7 +17,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Enter your full-name!"
       });
     }
-    if (req.body.number===""){
+    if (req.body.phone===""){
       return res.status(200).send({
         status: "0",
         message: "Enter your phone number"
@@ -65,7 +65,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Invalid email address"
       });
     }
-    if (req.body.number.toString().length < 11){
+    if (req.body.phone.toString().length < 11){
       return res.status(200).send({
         status: "0",
         message: "phone number must be up to 11 digit!"
