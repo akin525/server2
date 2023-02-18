@@ -12,6 +12,18 @@ exports.airtime =  async (req, res) => {
     const userid = req.body.userId;
     var boy;
     try {
+        if(req.body.amount==null){
+            return res.status(200).send({status: "0", message: "Kindly enter your amount."});
+
+        }
+        if(req.body.number==null){
+            return res.status(200).send({status: "0", message: "Kindly enter your phone number."});
+
+        }
+        if(req.body.network==null){
+            return res.status(200).send({status: "0", message: "Kindly select your network."});
+
+        }
 
         let authorities = [];
         var amount=req.body.amount;

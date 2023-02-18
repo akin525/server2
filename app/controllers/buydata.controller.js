@@ -14,6 +14,15 @@ exports.buydata =  async (req, res) => {
 
     var boy;
     try {
+
+        if(req.body.number==null){
+            return res.status(200).send({status: "0", message: "Kindly enter your phone number."});
+
+        }
+        if(req.body.id==null){
+            return res.status(200).send({status: "0", message: "Kindly select your network."});
+
+        }
         let authorities = [];
 
         const user = await User.findOne({
