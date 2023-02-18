@@ -11,6 +11,42 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Enter your username!"
       });
     }
+    if (req.body.name===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your full-name!"
+      });
+    }
+    if (req.body.number===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your phone number"
+      });
+    }
+    if (req.body.email===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your email address"
+      });
+    }
+    if (req.body.dob===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your date of birth"
+      });
+    }
+    if (req.body.address===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your address"
+      });
+    }
+    if (req.body.gender===""){
+      return res.status(200).send({
+        status: "0",
+        message: "select your gender"
+      });
+    }
     if (req.body.username.toString().length < 5){
       return res.status(200).send({
         status: "0",
