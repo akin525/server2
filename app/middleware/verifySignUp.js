@@ -4,6 +4,37 @@ const User = db.user;
 
 checkDuplicateUsernameOrEmail = async (req, res, next) => {
   try {
+
+    if (req.body.username===""){
+      return res.status(200).send({
+        status: "0",
+        message: "Enter your username!"
+      });
+    }
+    if (req.body.username.toString().length < 5){
+      return res.status(200).send({
+        status: "0",
+        message: "Username must be more than 6 value!"
+      });
+    }
+    if (req.body.username.toString().length < 5){
+      return res.status(200).send({
+        status: "0",
+        message: "Username must be more than 6 value!"
+      });
+    }
+    if (!isValidEmail(req.body.email)) {
+      return res.status(200).send({
+        status: "0",
+        message: "Invalid email address"
+      });
+    }
+    if (req.body.number.toString().length < 11){
+      return res.status(200).send({
+        status: "0",
+        message: "phone number must be up to 11 digit!"
+      });
+    }
     // Username
     let user = await User.findOne({
       where: {
@@ -56,6 +87,11 @@ checkRolesExisted = (req, res, next) => {
   
   next();
 };
+
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}
 
 const verifySignUp = {
   checkDuplicateUsernameOrEmail,
