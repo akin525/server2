@@ -30,6 +30,7 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
       });
     }
     if (!isValidEmail(req.body.email)) {
+      console
       return res.status(200).send({
         status: "0",
         message: "Invalid email address"
@@ -126,6 +127,7 @@ checkRolesExisted = (req, res, next) => {
 };
 
 function isValidEmail(email) {
+console.log("hello am hear");
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
