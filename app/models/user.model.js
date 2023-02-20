@@ -34,6 +34,9 @@ module.exports = (sequelize, Sequelize) => {
     dob: {
       type: Sequelize.STRING
     },
+    apikey:{
+      type: Sequelize.STRING
+    },
     address: {
       type: Sequelize.STRING
     },

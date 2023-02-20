@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/upgrade.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middleware/verifySignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/verifySignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,13 +48,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/controllers" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2021.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\server\app\controllers" />
       <recent name="C:\Users\HP\PhpstormProjects\server\app\models" />
       <recent name="C:\Users\HP\PhpstormProjects\server\app\controllers" />
       <recent name="C:\Users\HP\PhpstormProjects\mynode\app\controllers" />
@@ -118,21 +119,7 @@
       <workItem from="1675326903564" duration="3141000" />
       <workItem from="1675848047541" duration="1421000" />
       <workItem from="1676712864190" duration="4823000" />
-      <workItem from="1676727516789" duration="704000" />
-    </task>
-    <task id="LOCAL-00053" summary="look">
-      <created>1673267335867</created>
-      <option name="number" value="00053" />
-      <option name="presentableId" value="LOCAL-00053" />
-      <option name="project" value="LOCAL" />
-      <updated>1673267335867</updated>
-    </task>
-    <task id="LOCAL-00054" summary="look">
-      <created>1673267491840</created>
-      <option name="number" value="00054" />
-      <option name="presentableId" value="LOCAL-00054" />
-      <option name="project" value="LOCAL" />
-      <updated>1673267491840</updated>
+      <workItem from="1676727516789" duration="3637000" />
     </task>
     <task id="LOCAL-00055" summary="look">
       <created>1673267668747</created>
@@ -463,7 +450,21 @@
       <option name="project" value="LOCAL" />
       <updated>1676717187224</updated>
     </task>
-    <option name="localTasksCounter" value="102" />
+    <task id="LOCAL-00102" summary="validate">
+      <created>1676728265092</created>
+      <option name="number" value="00102" />
+      <option name="presentableId" value="LOCAL-00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1676728265093</updated>
+    </task>
+    <task id="LOCAL-00103" summary="validate">
+      <created>1676728565864</created>
+      <option name="number" value="00103" />
+      <option name="presentableId" value="LOCAL-00103" />
+      <option name="project" value="LOCAL" />
+      <updated>1676728565865</updated>
+    </task>
+    <option name="localTasksCounter" value="104" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,6 +477,7 @@
     <MESSAGE value="refer" />
     <MESSAGE value="look" />
     <MESSAGE value="notification" />
-    <option name="LAST_COMMIT_MESSAGE" value="notification" />
+    <MESSAGE value="validate" />
+    <option name="LAST_COMMIT_MESSAGE" value="validate" />
   </component>
 </project>
