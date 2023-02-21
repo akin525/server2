@@ -65,6 +65,7 @@ exports.dashboard =  async (req, res) => {
             username: user.username,
             email: user.email,
             phone: user.phone,
+            apikey:user.apikey,
             wallet: parseInt(user.wallet),
             account_number: user.account_number,
             account_number1: user.account_number1,
