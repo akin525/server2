@@ -22,6 +22,12 @@ exports.upgrade =  async (req, res) => {
             // req.session = null;
             return res.status(200).send({status: "0", message: "Kindly login your account."});
         }
+        if (user.apikey!=null){
+            return res.status(200).send({
+                status:"0",
+                message:"Account already upgraded",
+            });
+        }
         if (parseInt(user.wallet) < amount) {
             return  res.status(200).send({
                 status:"0",
