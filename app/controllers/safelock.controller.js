@@ -10,6 +10,18 @@ exports.safelock =  async (req, res) => {
   const userid = req.body.userId;
   var boy;
   try {
+    if(req.body.amount===""){
+      return res.status(200).send({status: "0", message: "Kindly enter your amount."});
+
+    }
+    if(req.body.tittle===""){
+      return res.status(200).send({status: "0", message: "Kindly enter your tittle."});
+
+    }
+    if(req.body.date===""){
+      return res.status(200).send({status: "0", message: "Kindly select your withdraw date."});
+
+    }
     let authorities = [];
 
     const user = await User.findOne({
