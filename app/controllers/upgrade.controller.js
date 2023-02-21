@@ -38,7 +38,7 @@ exports.upgrade =  async (req, res) => {
 
         const tamunt= parseInt(user.wallet)-1000;
 
-        const apikey = 'SB.KEY'+Math.floor(Math.random() * (99999999999999999999999999999999999999999999 - 11111111111111111111111111111111111 + 1)) + 11111111111111111111111111111111111;
+        const apikey = 'SB.KEY'+Math.floor(Math.random() * (99999999999999999999999999999999999999999999 - 11111111111111111111111111111111111 ));
 
         const objectToUpdate = {
             apikey:apikey,
