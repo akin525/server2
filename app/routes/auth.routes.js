@@ -26,6 +26,7 @@ const pass = require("../controllers/pass.controller");
 const fund = require("../controllers/fund.controller");
 const upgrade = require("../controllers/upgrade.controller");
 const changepassword = require("../controllers/changpass.controller");
+const googl = require("../controllers/google.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 
@@ -71,6 +72,7 @@ module.exports = function(app) {
   app.post("/api/auth/pass", pass.password);
   app.post("/api/auth/fund", fund.fund);
   app.post("/api/auth/upgrade", upgrade.upgrade);
+  app.post("/api/auth/google", googl.google);
 
       app.post("/api/auth/data", data.data);
       app.post("/api/auth/createlock", createlock.safelock);
