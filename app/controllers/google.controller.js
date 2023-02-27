@@ -49,7 +49,7 @@ exports.google = async (req, res) => {
                     'dob': req.body.dob,
                     'address': "lagos nigeria",
                     'gender': "male",
-                    'phone': "08146"+Math.floor(Math.random() * (99999 - 11111 )),
+                    'phone': "08146328645",
                     'webhook_url': 'https://server.savebills.com.ng/api/auth/run1'
                 }
             };
