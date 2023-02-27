@@ -48,7 +48,7 @@ exports.google = async (req, res) => {
                     'email': req.body.email,
                     'dob': req.body.dob,
                     'address': "lagos nigeria",
-                    'gender': "male",
+                    'gender': "Male",
                     'phone': "08034309276",
                     'webhook_url': 'https://server.savebills.com.ng/api/auth/run1'
                 }
