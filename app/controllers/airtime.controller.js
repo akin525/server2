@@ -94,6 +94,28 @@ exports.airtime =  async (req, res) => {
         refid:req.body.refid,
 
         });
+        const bo="Airtime Successfully Delivered To "+req.body.number;
+
+        var push={
+
+            'method': 'POST',
+
+
+            'url': 'https://fcm.googleapis.com/fcm/send',
+            'headers': {
+                'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
+                'Content-Type': 'application/json'
+            },
+            formData: {
+                "to": "/topics/"+user.username,
+                "notification": {
+                    "body": bo,
+                    "title": "Airtime Purchase"
+
+                }
+            }
+        }
+
         var options =
             {
             'method': 'POST',
@@ -127,6 +149,7 @@ exports.airtime =  async (req, res) => {
                         result[0].save();
                     }
                 })
+                push;
 
                 var nodemailer = require('nodemailer');
 
@@ -169,7 +192,6 @@ exports.airtime =  async (req, res) => {
                         console.log('Email sent: ' + info.response);
                     }
                 });
-
 
 
                 return   res.status(200).send({
