@@ -16,6 +16,9 @@ module.exports = (sequelize, Sequelize) => {
     wallet: {
       type: Sequelize.STRING
     },
+    bank: {
+      type: Sequelize.STRING
+    },
     account_number: {
       type: Sequelize.STRING
     },
