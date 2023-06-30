@@ -64,6 +64,14 @@ exports.buyelect =  async (req, res) => {
                 message: "invalid transaction"
             });
         }
+
+        if (req.body.amount <500)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "Amount must not be lass than 500",
+            });
+        }
         var allamount=parseInt(user.wallet) - parseInt(req.body.amount);
 
         const user1 = await User.update(

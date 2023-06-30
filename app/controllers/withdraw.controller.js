@@ -33,6 +33,13 @@ exports.bank =  async (req, res) => {
                 message: "invalid transaction"
             });
         }
+        if (req.body.amount <500)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "Amount must not be lass than 500",
+            });
+        }
         if (parseInt(safe.balance) < parseInt(req.body.amount)) {
             return  res.status(200).send({
                 status:"0",

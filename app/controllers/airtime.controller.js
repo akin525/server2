@@ -16,6 +16,13 @@ exports.airtime =  async (req, res) => {
             return res.status(200).send({status: "0", message: "Kindly enter your amount."});
 
         }
+        if (req.body.amount <100)
+        {
+            return res.status(200).send({
+                status: "0",
+                message: "Amount must not be lass than 100",
+            });
+        }
         if(req.body.number===""){
             return res.status(200).send({status: "0", message: "Kindly enter your phone number."});
 
@@ -81,8 +88,6 @@ exports.airtime =  async (req, res) => {
                     id: userid,
                 },
             });
-        console.log("user1");
-        console.log(user1);
 
     const bil= await bill.create({
             username:user.username,
@@ -96,25 +101,25 @@ exports.airtime =  async (req, res) => {
         });
         const bo="Airtime Successfully Delivered To "+req.body.number;
 
-        var push={
-
-            'method': 'POST',
-
-
-            'url': 'https://fcm.googleapis.com/fcm/send',
-            'headers': {
-                'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
-                'Content-Type': 'application/json'
-            },
-            formData: {
-                "to": "/topics/"+user.username,
-                "notification": {
-                    "body": bo,
-                    "title": "Airtime Purchase"
-
-                }
-            }
-        }
+        // var push={
+        //
+        //     'method': 'POST',
+        //
+        //
+        //     'url': 'https://fcm.googleapis.com/fcm/send',
+        //     'headers': {
+        //         'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     formData: {
+        //         "to": "/topics/"+user.username,
+        //         "notification": {
+        //             "body": bo,
+        //             "title": "Airtime Purchase"
+        //
+        //         }
+        //     }
+        // }
 
         var options =
             {

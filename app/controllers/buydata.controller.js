@@ -43,9 +43,6 @@ exports.buydata =  async (req, res) => {
         });
         const amount=product.tamount;
 const o=User.wallet < product.tamount;
-console.log("user.wallet");
-console.log(user.wallet);
-console.log(product.tamount);
         if (parseInt(user.wallet) < parseInt(product.tamount))
         {
            return  res.status(200).send({

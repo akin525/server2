@@ -54,6 +54,7 @@ exports.buytv =  async (req, res) => {
             });
         }
 
+
         const totalbill= await bill.findOne({
             where:{
                 refid:req.body.refid,

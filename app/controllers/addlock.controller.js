@@ -47,7 +47,21 @@ exports.add =  async (req, res) => {
         id:req.body.id,
       },
     });
+    if (req.body.amount < 0)
+    {
+      return res.status(200).send({
+        status: "0",
+        message: "invalid transaction"
+      });
+    }
 
+    if (req.body.amount <500)
+    {
+      return res.status(200).send({
+        status: "0",
+        message: "Amount must not be lass than 500",
+      });
+    }
     const main=parseInt(add.balance) + parseInt(req.body.amount);
 
     const objectToUpdate = {
