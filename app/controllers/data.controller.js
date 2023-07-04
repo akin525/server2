@@ -15,6 +15,7 @@ exports.data =  async (req, res) => {
         const allplan= await data.findAll({
             where:{
                 network:req.body.network,
+                status:'1',
             },
         });
 
