@@ -126,57 +126,61 @@ exports.fundverify =  async (req, res) => {
             // if (data.status=="true"){
                 // console.log(data);
 
-            if (data.status ==200){
-                const amount = data.data.transaction_amount/100;
-
-                const totalamount=amount-charge.charges;
-
-                const allamount=parseInt(user.wallet)+totalamount;
-
-                if (data.data.transaction_status == "success"){
-
-
-                    const insertcharges =charges.create({
-                        username:user.username,
-                        payment_ref:req.body.refid,
-                        amount:charge.charges,
-                        iwallet:user.wallet,
-                        fwallet:parseInt(user.wallet)+amount,
-                        status:"1",
-                    });
-                    const insertdeposit=deposit.create({
-                        status:"1",
-                        username:user.username,
-                        payment_ref:refid,
-                        amount:amount,
-                        narration:"Amount be fund by Squad",
-                        iwallet:user.wallet,
-                        fwallet:parseInt(user.wallet)+parseInt(amount),
-                    })
-                    const objectToUpdate = {
-                        wallet:allamount,
-                    }
-
-                    User.findAll({ where: { id: user.id}}).then((result) => {
-                        if(result){
-                            result[0].set(objectToUpdate);
-                            result[0].save();
-                        }
-                    })
-
-
-                }else if(data.data.transaction_status == "failed"){
-
-                    return   res.status(200).send({
-                        status: "0",
-                        message:data.data,
-                    });
-                }
-
-            }
+            // if (data.status ==200){
+            //     const amount = data.data.transaction_amount/100;
+            //
+            //     const totalamount=amount-charge.charges;
+            //
+            //     const allamount=parseInt(user.wallet)+totalamount;
+            //
+            //     if (data.data.transaction_status == "success"){
+            //
+            //
+            //         const insertcharges =charges.create({
+            //             username:user.username,
+            //             payment_ref:req.body.refid,
+            //             amount:charge.charges,
+            //             iwallet:user.wallet,
+            //             fwallet:parseInt(user.wallet)+amount,
+            //             status:"1",
+            //         });
+            //         const insertdeposit=deposit.create({
+            //             status:"1",
+            //             username:user.username,
+            //             payment_ref:refid,
+            //             amount:amount,
+            //             narration:"Amount be fund by Squad",
+            //             iwallet:user.wallet,
+            //             fwallet:parseInt(user.wallet)+parseInt(amount),
+            //         })
+            //         const objectToUpdate = {
+            //             wallet:allamount,
+            //         }
+            //
+            //         User.findAll({ where: { id: user.id}}).then((result) => {
+            //             if(result){
+            //                 result[0].set(objectToUpdate);
+            //                 result[0].save();
+            //             }
+            //         })
+            //
+            //
+            //     }else if(data.data.transaction_status == "failed"){
+            //
+            //         return   res.status(200).send({
+            //             status: "0",
+            //             message:data.data,
+            //         });
+            //     }
+            //
+            // }
 
             // }
-            // res.status(200).send(response.body);
+            return res.status(200).send({
+                status: "1",
+                message: response.body,
+                body:fundrefid
+            });
 
 
         });
