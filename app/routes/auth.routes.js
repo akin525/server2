@@ -71,6 +71,7 @@ module.exports = function(app) {
   app.post("/api/auth/cpass", changepassword.cpass);
   app.post("/api/auth/pass", pass.password);
   app.post("/api/auth/fund", fund.fund);
+  app.post("/api/auth/verifyfund", fund.fundverify);
   app.post("/api/auth/upgrade", upgrade.upgrade);
   app.post("/api/auth/google", googl.google);
 
