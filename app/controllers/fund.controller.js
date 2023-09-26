@@ -174,11 +174,7 @@ exports.fundverify =  async (req, res) => {
                 }
 
             }
-                return   res.status(200).send({
-                    status: "1",
-                    data:data.data,
-                    url:data.data.authorization_url,
-                });
+
             // }
             // res.status(200).send(response.body);
 
