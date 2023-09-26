@@ -158,6 +158,10 @@ exports.fundverify =  async (req, res) => {
                             { where: { id: user.id } }
                         ).then(() => {
                             // Handle the success of the database update if needed
+                            return res.status(200).send({
+                                status: '1',
+                                message: 'Account was successfully fund with NGN'+amount
+                            });
                         });
                     } else if (data.data.transaction_status === 'failed') {
                         return res.status(200).send({
