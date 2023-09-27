@@ -175,7 +175,7 @@ exports.fundverify =  async (req, res) => {
                 }else {
                     return res.status(200).send({
                         status: '0',
-                        message: data
+                        message: "Invalid transaction reference"
                     });
                 }
             } catch (e) {
