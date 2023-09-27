@@ -75,7 +75,10 @@ exports.fundverify =  async (req, res) => {
     const userid = req.body.userId;
 
     try {
+        if(req.body.refid===""){
+            return res.status(200).send({status: "0", message: "Kindly enter your payment refid."});
 
+        }
         const user = await User.findOne({
             where: {
                 id: userid,
