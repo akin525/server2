@@ -172,6 +172,11 @@ exports.fundverify =  async (req, res) => {
                             message: data.data
                         });
                     }
+                }else {
+                    return res.status(200).send({
+                        status: '0',
+                        message: data.data
+                    });
                 }
             } catch (e) {
                 console.error('Error parsing response:', e);
