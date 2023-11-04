@@ -30,6 +30,7 @@ module.exports = (sequelize, Sequelize) => {
         },
 
     });
+    // bill.hasMany(sequelize.models.deposits, { foreignKey: 'username', as: 'deposits' });
 
     return bill;
 };

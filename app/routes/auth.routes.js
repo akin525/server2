@@ -26,6 +26,7 @@ const pass = require("../controllers/pass.controller");
 const fund = require("../controllers/fund.controller");
 const upgrade = require("../controllers/upgrade.controller");
 const changepassword = require("../controllers/changpass.controller");
+const listdata= require("../controllers/listdata.controller");
 const googl = require("../controllers/google.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
@@ -53,6 +54,7 @@ module.exports = function(app) {
       [authJwt.verifyToken],
 
       dashboard.dashboard);
+  app.get("/listdata", listdata.listdata);
   app.post("/api/auth/airtime", airtime.airtime);
   app.post("/api/auth/buydata", buydata.buydata);
   app.post("/api/auth/tv", tv.tv);
