@@ -30,6 +30,7 @@ const listdata= require("../controllers/listdata.controller");
 const googl = require("../controllers/google.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
+const paylony=require("../controllers/paylony.controller");
 
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -65,6 +66,7 @@ module.exports = function(app) {
   app.post("/api/auth/profile", profile.profile);
   app.post("/api/auth/run", run.run);
   app.post("/api/auth/run1", run1.run1);
+  app.post("/api/auth/paylony", paylony.paylony);
   app.post("/api/auth/addlock", addlock.add);
   app.get("/api/auth/in", interest.add);
   app.get("/api/auth/update", update.add);
