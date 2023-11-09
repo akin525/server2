@@ -19,6 +19,9 @@ module.exports = (sequelize, Sequelize) => {
     bank: {
       type: Sequelize.STRING
     },
+    bank1: {
+      type: Sequelize.STRING
+    },
     account_number: {
       type: Sequelize.STRING
     },
