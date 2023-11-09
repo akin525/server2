@@ -72,6 +72,7 @@ exports.dashboard =  async (req, res) => {
             account_name: user.account_name,
             account_name1: user.account_name1,
             bank:user.bank,
+            bank1:user.bank1,
             noti:notification.message,
             totalbill:totalbill??0,
             totaldeposit:totaldeposit??0,
