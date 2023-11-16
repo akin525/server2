@@ -154,7 +154,7 @@ exports.airtime =  async (req, res) => {
                         result[0].save();
                     }
                 })
-                push;
+
 
                 var nodemailer = require('nodemailer');
 
