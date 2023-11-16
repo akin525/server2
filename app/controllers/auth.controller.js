@@ -86,20 +86,20 @@ exports.signup = async (req, res) => {
 
     var option = {
       'method': 'POST',
-      'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/virtual-account3',
+      'url': 'https://api.paylony.com/api/v1/create_account',
       'headers': {
-        'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
+        'Authorization': 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz',
       },
       formData: {
-        'account_name': req.body.name,
+        'firstname':req.body.username,
+        'lastname': req.body.name,
         'business_short_name': 'SAVEBILLS',
-        'uniqueid': req.body.username+Math.floor((Math.random() * 10000) + 1),
         'email': req.body.email,
         'dob': req.body.dob,
         'address': req.body.address,
         'gender': req.body.gender,
         'phone': req.body.phone,
-        'webhook_url': 'https://server.savebills.com.ng/api/auth/run1'
+        'provider': 'safehaven',
       }
     };
     request(option, function (error, response) {
@@ -112,8 +112,8 @@ exports.signup = async (req, res) => {
       console.log(data);
       const objectToUpdate = {
         account_number1: data.data.account_number,
-        account_name1: data.data.customer_name,
-        bank: data.data.bank_name,
+        account_name1: data.data.account_name,
+        bank: data.data.provider,
       };
 
       User.findAll({ where: { username: req.body.username}}).then((result) => {
