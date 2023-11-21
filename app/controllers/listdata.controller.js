@@ -16,7 +16,7 @@ exports.listdata = async (req, res) => {
             },
             data: {
                 service: 'data',
-                coded:"a"
+                coded:"9"
             }
         };
 
