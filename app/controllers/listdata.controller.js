@@ -15,7 +15,7 @@ exports.listdata = async (req, res) => {
                 'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
             },
             data: {
-                service: 'tv'
+                service: 'elect'
             }
         };
 
