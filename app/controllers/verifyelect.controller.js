@@ -15,7 +15,7 @@ exports.verifyelect =  async (req, res) => {
 
         var options = {
             'method': 'POST',
-            'url': 'https://test.mcd.5starcompany.com.ng/api/reseller/validate',
+            'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/validate',
             'headers': {
                 'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
             },
