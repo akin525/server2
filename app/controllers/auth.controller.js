@@ -111,9 +111,9 @@ exports.signup = async (req, res) => {
       console.log(response.body);
       console.log(data);
       const objectToUpdate = {
-        account_number1: data.data.account_number,
-        account_name1: data.data.account_name,
-        bank: data.data.provider,
+        account_number: data.data.account_number,
+        account_name: data.data.account_name,
+        bank1: data.data.provider,
       };
 
       User.findAll({ where: { username: req.body.username}}).then((result) => {
