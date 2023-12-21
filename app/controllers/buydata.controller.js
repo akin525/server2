@@ -184,9 +184,12 @@ const o=User.wallet < product.tamount;
 
                 return   res.status(200).send({
                     status: "1",
-                    user:user.username,
-                    message:product.plan+" Was Successfully Delivered To "+req.body.number,
-                    server_res:response.body
+                    data:{
+                        user:user.username,
+                        message:product.plan+" Was Successfully Delivered To "+req.body.number,
+                        server_res:response.body
+                    }
+
                 });
             } else if (data.success===0) {
 

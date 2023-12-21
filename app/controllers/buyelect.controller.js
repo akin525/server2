@@ -129,10 +129,13 @@ exports.buyelect =  async (req, res) => {
                 })
                 return   res.status(200).send({
                     status: "1",
-                    id:bil.id,
-                    user:user.username,
-                    message:req.body.id+" Token was Successfully generated: "+data.token,
-                    server_res:response.body
+                    data:{
+                        id:bil.id,
+                        user:user.username,
+                        message:req.body.id+" Token was Successfully generated: "+data.token,
+                        server_res:response.body
+                    }
+
                 });
             } else if (data.success===0) {
                 const back =parseInt(user.wallet) + parseInt(req.body.amount);

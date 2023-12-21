@@ -175,9 +175,12 @@ exports.buytv =  async (req, res) => {
 
                 return   res.status(200).send({
                     status: "1",
-                    user:user.username,
-                    message:product.plan+" Was Successfully Delivered To "+req.body.number,
-                    server_res:response.body
+                    data:{
+                        user:user.username,
+                        message:product.plan+" Was Successfully Delivered To "+req.body.number,
+                        server_res:response.body
+                    }
+
                 });
             } else if (data.success===0) {
                 const back =parseInt(user.wallet) + parseInt(amount);
