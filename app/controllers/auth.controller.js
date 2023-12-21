@@ -221,12 +221,15 @@ exports.signin = async (req, res) => {
     // req.session.token = token;
 
     return res.status(200).send({
-      id: user.id,
-      name: user.name,
-      username: user.username,
-      email: user.email,
-      roles: authorities,
-      token: token,
+      status:1,
+      message:"login successful",
+      data:{id: user.id,
+        name: user.name,
+        username: user.username,
+        email: user.email,
+        roles: authorities,
+        token: token}
+
     });
   } catch (error) {
     return res.status(200).send({ message: error.message });
