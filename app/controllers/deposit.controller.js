@@ -21,7 +21,12 @@ exports.alldeposit =  async (req, res) => {
                 username:user.username,
             },
         });
-        return res.status(200).send({deposit:alldepo});
+        return res.status(200).send({
+            status:1,
+            data:{
+                deposit:alldepo
+            }
+        });
     } catch (error) {
         return res.status(500).send({message: error.message});
     }

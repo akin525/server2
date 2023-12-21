@@ -19,7 +19,14 @@ exports.tv =  async (req, res) => {
         });
 
         // console.log(allplan);
-        return res.status(200).send(allplan);
+        return res.status(200).send(
+            {
+                status:1,
+                data:{
+                   plan: allplan
+                }
+            }
+    );
 
     } catch (error) {
         return res.status(201).send({
