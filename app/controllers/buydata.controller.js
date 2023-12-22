@@ -41,6 +41,12 @@ exports.buydata =  async (req, res) => {
                 id:req.body.id,
             },
         });
+        if(!product){
+            return res.status(200).send({
+                status:0,
+                message:"product not Found"
+            });
+        }
         const amount=product.tamount;
 const o=User.wallet < product.tamount;
         if (parseInt(user.wallet) < parseInt(product.tamount))
