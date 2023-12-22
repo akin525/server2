@@ -9,7 +9,7 @@ verifyToken = (req, res, next) => {
     let token = token1.split(" ")[1];
     if (!token) {
       return res.status(201).send({
-        status:'0',
+        status:0,
         message: "No token provided!",
       });
 
@@ -18,7 +18,7 @@ verifyToken = (req, res, next) => {
     jwt.verify(token, config.secret, (err, decoded) => {
       if (err) {
         return res.status(201).send({
-          status:'0',
+          status:0,
           message: "Unauthorized!",
         });
       }
@@ -30,7 +30,7 @@ verifyToken = (req, res, next) => {
     });
   } catch (e) {
     return res.status(201).send({
-      status:"0",
+      status:0,
       message: "Kindly provide valid token",
     });
   }
