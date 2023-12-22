@@ -87,15 +87,15 @@
                 port: 465,
                 secure: true, // use SSL
                 auth: {
-                    user: 'info@savebills.com.ng',
-                    pass: 'Savebill@2023'
+                    user: 'info@sammighty.com.ng',
+                    pass: 'W3lc0m32Z3f@'
                 }
             });
 
             var mailOptions = {
 
-                from: 'info@savebills.com.ng',
-                to:'info@savebills.com.ng,'+ user.email,
+                from: 'info@sammighty.com.ng',
+                to:'info@sammighty.com.ng,'+ user.email,
                 subject: user.username+' Account Funded',
                 html: '<body style=\'width:100%;font-family:arial, helvetica neue, helvetica, sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;padding:0;Margin:0\'>\n' +
                     '<div class=\'es-wrapper-color\' style=\'background-color:#FAFAFA\'>\n' +

@@ -88,7 +88,7 @@ exports.paylony =  async (req, res) => {
             secure: true, // use SSL
             auth: {
                 user: 'info@savebills.com.ng',
-                pass: 'Savebill@2023'
+                pass: 'W3lc0m32Z3f@'
             }
         });
 
