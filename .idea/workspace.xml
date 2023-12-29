@@ -3,11 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/airtime.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/airtime.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/auth.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buydata.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydata.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/buytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buytv.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/run.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/run.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,11 +36,24 @@
       <option name="presentableId" value="Default" />
       <updated>1703662610492</updated>
       <workItem from="1703662620075" duration="1088000" />
-      <workItem from="1703775626319" duration="319000" />
+      <workItem from="1703775626319" duration="831000" />
+      <workItem from="1703797536613" duration="1310000" />
     </task>
+    <task id="LOCAL-00001" summary="new domain">
+      <created>1703776090305</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703776090305</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new domain" />
+    <option name="LAST_COMMIT_MESSAGE" value="new domain" />
   </component>
 </project>

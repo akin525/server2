@@ -189,7 +189,7 @@ const o=User.wallet < product.tamount;
 
 
                 return   res.status(200).send({
-                    status: "1",
+                    status: 1,
                     data:{
                         user:user.username,
                         message:product.plan+" Was Successfully Delivered To "+req.body.number,
@@ -200,7 +200,7 @@ const o=User.wallet < product.tamount;
             } else if (data.success===0) {
 
               return   res.status(200).send({
-                    status: "0",
+                    status: 0,
                     message: data.message
                 });
             }
