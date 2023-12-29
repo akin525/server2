@@ -39,7 +39,7 @@ exports.verifytv =  async (req, res) => {
                 });
             } else if (data.success===0) {
               return   res.status(200).send({
-                    status: "0",
+                    status: 0,
                     message: data
                 });
             }

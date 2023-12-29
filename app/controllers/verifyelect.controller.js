@@ -34,11 +34,12 @@ exports.verifyelect =  async (req, res) => {
                 console.log(data);
 
                 return   res.status(200).send({
+                    status: 1,
                     message:data.data,
                 });
             } else if (data.success===0) {
               return   res.status(200).send({
-                    status: "0",
+                    status: 0,
                     message: data.data
                 });
             }
