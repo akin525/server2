@@ -19,13 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/controllers/pin.controller.js" afterDir="false" />
+    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/auth.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/buydata.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydata.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +62,7 @@
       <workItem from="1703662620075" duration="1088000" />
       <workItem from="1703775626319" duration="831000" />
       <workItem from="1703797536613" duration="2135000" />
-      <workItem from="1703925073021" duration="6350000" />
+      <workItem from="1703925073021" duration="7487000" />
     </task>
     <task id="LOCAL-00001" summary="new domain">
       <created>1703776090305</created>
@@ -83,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703836781789</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Changes">
+      <created>1703941550140</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703941550140</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,7 +104,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new domain" />
-    <option name="LAST_COMMIT_MESSAGE" value="new domain" />
+    <MESSAGE value="Changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changes" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1323" height="182" key="GridCell.Tab.0.bottom" timestamp="1703925474213">
@@ -121,5 +124,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1703925474212" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1703941567252">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1703941567252" />
   </component>
 </project>

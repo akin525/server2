@@ -56,6 +56,7 @@ module.exports = function(app) {
 
       dashboard.dashboard);
   app.post("/api/auth/createpin", Pin.createpin);
+  app.post("/api/auth/changepin", Pin.changepin);
   app.get("/listdata", listdata.listdata);
   app.post("/api/auth/airtime", airtime.airtime);
   app.post("/api/auth/buydata", buydata.buydata);
