@@ -31,7 +31,7 @@ const googl = require("../controllers/google.controller");
 const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 const paylony=require("../controllers/paylony.controller");
-
+const Pin=require("../controllers/pin.controller");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -55,6 +55,7 @@ module.exports = function(app) {
       [authJwt.verifyToken],
 
       dashboard.dashboard);
+  app.post("/api/auth/createpin", Pin.createpin);
   app.get("/listdata", listdata.listdata);
   app.post("/api/auth/airtime", airtime.airtime);
   app.post("/api/auth/buydata", buydata.buydata);

@@ -16,11 +16,11 @@ exports.buydata =  async (req, res) => {
     try {
 
         if(req.body.number===""){
-            return res.status(200).send({status: "0", message: "Kindly enter your phone number."});
+            return res.status(200).send({status: 0, message: "Kindly enter your phone number."});
 
         }
         if(req.body.id===""){
-            return res.status(200).send({status: "0", message: "Kindly select your network."});
+            return res.status(200).send({status: 0, message: "Kindly select your network."});
 
         }
         let authorities = [];
@@ -33,7 +33,7 @@ exports.buydata =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({status: 0, message: "Kindly login your account."});
         }
 
         const product= await data.findOne({
