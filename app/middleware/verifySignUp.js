@@ -54,12 +54,12 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
     //     message: "select your gender"
     //   });
     // }
-    if (req.body.username.toString().length < 5){
-      return res.status(200).send({
-        status: 0,
-        message: "Username must be more than 6 value!"
-      });
-    }
+    // if (req.body.username.toString().length < 5){
+    //   return res.status(200).send({
+    //     status: 0,
+    //     message: "Username must be more than 6 value!"
+    //   });
+    // }
     // if (req.body.username.toString().length < 5){
     //   return res.status(200).send({
     //     status: 0,
