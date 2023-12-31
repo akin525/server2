@@ -17,12 +17,12 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Enter your full-name!"
       });
     }
-    if (req.body.phone===""){
-      return res.status(200).send({
-        status: "0",
-        message: "Enter your phone number"
-      });
-    }
+    // if (req.body.phone===""){
+    //   return res.status(200).send({
+    //     status: "0",
+    //     message: "Enter your phone number"
+    //   });
+    // }
     if (req.body.email===""){
       return res.status(200).send({
         status: "0",
@@ -36,43 +36,43 @@ checkDuplicateUsernameOrEmail = async (req, res, next) => {
         message: "Invalid email address"
       });
     }
-    if (req.body.dob===""){
-      return res.status(200).send({
-        status: "0",
-        message: "Enter your date of birth"
-      });
-    }
-    if (req.body.address===""){
-      return res.status(200).send({
-        status: "0",
-        message: "Enter your address"
-      });
-    }
-    if (req.body.gender===""){
-      return res.status(200).send({
-        status: "0",
-        message: "select your gender"
-      });
-    }
+    // if (req.body.dob===""){
+    //   return res.status(200).send({
+    //     status: "0",
+    //     message: "Enter your date of birth"
+    //   });
+    // }
+    // if (req.body.address===""){
+    //   return res.status(200).send({
+    //     status: "0",
+    //     message: "Enter your address"
+    //   });
+    // }
+    // if (req.body.gender===""){
+    //   return res.status(200).send({
+    //     status: "0",
+    //     message: "select your gender"
+    //   });
+    // }
     if (req.body.username.toString().length < 5){
       return res.status(200).send({
-        status: "0",
+        status: 0,
         message: "Username must be more than 6 value!"
       });
     }
-    if (req.body.username.toString().length < 5){
-      return res.status(200).send({
-        status: "0",
-        message: "Username must be more than 6 value!"
-      });
-    }
+    // if (req.body.username.toString().length < 5){
+    //   return res.status(200).send({
+    //     status: 0,
+    //     message: "Username must be more than 6 value!"
+    //   });
+    // }
 
-    if (req.body.phone.toString().length < 11){
-      return res.status(200).send({
-        status: "0",
-        message: "phone number must be up to 11 digit!"
-      });
-    }
+    // if (req.body.phone.toString().length < 11){
+    //   return res.status(200).send({
+    //     status: "0",
+    //     message: "phone number must be up to 11 digit!"
+    //   });
+    // }
     // Username
     let user = await User.findOne({
       where: {
