@@ -16,12 +16,8 @@ exports.signup = async (req, res) => {
 
     const user = await User.create({
       name:req.body.name,
-      phone:req.body.phone,
       username: req.body.username,
       email: req.body.email,
-      address: req.body.address,
-      dob: req.body.dob,
-      gender: req.body.gender,
       password: bcrypt.hashSync(req.body.password, 8),
     });
     if (req.body.refer !==null) {
@@ -91,15 +87,14 @@ exports.signup = async (req, res) => {
         'Authorization': 'Bearer sk_live_av30amcd3piinbfm48j0v8iv8sd5hm81rhqikjz',
       },
       formData: {
-        'firstname':req.body.username,
-        'lastname': req.body.name,
-        'business_short_name': 'SAVEBILLS',
-        'email': req.body.email,
-        'dob': req.body.dob,
-        'address': req.body.address,
-        'gender': req.body.gender,
-        'phone': req.body.phone,
-        'provider': 'safehaven',
+        "firstname":req.body.username,
+        "lastname":req.body.name,
+        "address":"onibudo akute ogun state",
+        "gender":"Male",
+        "email":req.body.email,
+        "phone":"07036219209",
+        "dob":"1989-12-11",
+        "provider":"safehaven"
       }
     };
     request(option, function (error, response) {
@@ -163,7 +158,7 @@ exports.signup = async (req, res) => {
 
 
 
-      return  res.send({ status: "1", message: "User registered successfully!" });
+      return  res.send({ status: 1, message: "User registered successfully!" });
 
     });
 
@@ -228,7 +223,9 @@ exports.signin = async (req, res) => {
         username: user.username,
         email: user.email,
         roles: authorities,
-        token: token}
+        token: token,
+        pin:user.pin
+      }
 
     });
   } catch (error) {
