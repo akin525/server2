@@ -32,6 +32,7 @@ const jwt = require("jsonwebtoken");
 const config = require("../config/auth.config.js");
 const paylony=require("../controllers/paylony.controller");
 const Pin=require("../controllers/pin.controller");
+const verifyemail=require("../controllers/verifyemail.controller");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -51,6 +52,7 @@ module.exports = function(app) {
   );
 
   app.post("/api/auth/signin", controller.signin);
+  app.post("/api/auth/verifyemail", verifyemail.verifyemail);
   app.get("/api/auth/dashboard",
       [authJwt.verifyToken],
 
