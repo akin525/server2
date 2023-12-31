@@ -38,6 +38,7 @@ db.web=require("../models/web.model.js")(sequelize, sequelize);
 db.message=require("../models/message.model.js")(sequelize, sequelize);
 db.interest=require("../models/interest.model.js")(sequelize, sequelize);
 db.withdraw=require("../models/withdraw.model.js")(sequelize, sequelize);
+db.otp=require("../models/otp.model")(sequelize, sequelize);
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",

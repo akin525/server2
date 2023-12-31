@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1777823-99f9-4406-bb35-43aff61f53cc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/app/controllers/otp.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/otp.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/middleware/verifySignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/middleware/verifySignUp.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/auth.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/auth.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.model.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,18 +51,18 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/models" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2021.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\server\app\models" />
       <recent name="C:\xampp\htdocs\server\app\controllers" />
       <recent name="C:\Users\HP\PhpstormProjects\server\app\models" />
       <recent name="C:\Users\HP\PhpstormProjects\server\app\controllers" />
       <recent name="C:\Users\HP\PhpstormProjects\mynode\app\controllers" />
-      <recent name="C:\Users\HP\PhpstormProjects\mynode\app\models" />
     </key>
   </component>
   <component name="RunManager">
@@ -121,21 +125,7 @@
       <workItem from="1676727516789" duration="3637000" />
       <workItem from="1676916933791" duration="318000" />
       <workItem from="1704021780617" duration="75000" />
-      <workItem from="1704021928938" duration="2640000" />
-    </task>
-    <task id="LOCAL-00058" summary="look">
-      <created>1673274339547</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1673274339547</updated>
-    </task>
-    <task id="LOCAL-00059" summary="look">
-      <created>1673274686764</created>
-      <option name="number" value="00059" />
-      <option name="presentableId" value="LOCAL-00059" />
-      <option name="project" value="LOCAL" />
-      <updated>1673274686764</updated>
+      <workItem from="1704021928938" duration="5214000" />
     </task>
     <task id="LOCAL-00060" summary="look">
       <created>1673276442331</created>
@@ -466,7 +456,21 @@
       <option name="project" value="LOCAL" />
       <updated>1704024211561</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="validate">
+      <created>1704024814036</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1704024814037</updated>
+    </task>
+    <task id="LOCAL-00108" summary="validate">
+      <created>1704024938633</created>
+      <option name="number" value="00108" />
+      <option name="presentableId" value="LOCAL-00108" />
+      <option name="project" value="LOCAL" />
+      <updated>1704024938633</updated>
+    </task>
+    <option name="localTasksCounter" value="109" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -5,7 +5,8 @@ const refer = db.refer;
 const Role = db.role;
 var request = require('request');
 const Op = db.Sequelize.Op;
-
+const pin=require("../controllers/otp.controller");
+const otp=db.otp;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
@@ -20,6 +21,7 @@ exports.signup = async (req, res) => {
       email: req.body.email,
       password: bcrypt.hashSync(req.body.password, 8),
     });
+
     if (req.body.refer !==null) {
       const reffer = await refer.create({
         username:req.body.username,
@@ -33,6 +35,13 @@ exports.signup = async (req, res) => {
             [Op.or]: req.body.roles,
           },
         },
+      });
+
+
+
+      const insertotp= await otp.create({
+        username:req.body.username,
+        pin:pin,
       });
 
       const result = user.setRoles(roles);
@@ -143,6 +152,7 @@ exports.signup = async (req, res) => {
             '</li><li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;Margin-bottom:15px;margin-left:0;color:#2D3142;font-size:18px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px">Username: ' + req.body.username+'</p></li><li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;Margin-bottom:15px;margin-left:0;color:#2D3142;font-size:18px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px">Number: ' + req.body.phone+'</p></li>\n' +
             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;Margin-bottom:15px;margin-left:0;color:#2D3142;font-size:18px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px">Password: ' + req.body.password+'</p></li><li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;Margin-bottom:15px;margin-left:0;color:#2D3142;font-size:18px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px">Wallet: ₦0</p></li>\n' +
             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;Margin-bottom:15px;margin-left:0;color:#2D3142;font-size:18px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px">Email:' + req.body.email+'</p></li></ul></td></tr></table></td></tr></table></td></tr></table></td>\n' +
+            '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;Margin-bottom:15px;margin-left:0;color:#2D3142;font-size:18px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:27px;color:#2D3142;font-size:18px">otp:' + pin+'</p></li></ul></td></tr></table></td></tr></table></td></tr></table></td>\n' +
             '</tr></table><table cellpadding="0" cellspacing="0" class="es-content" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;table-layout:fixed !important;width:100%"><tr><td align="center" style="padding:0;Margin:0"><table bgcolor="#efefef" class="es-content-body" align="center" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-color:#EFEFEF;border-radius:0 0 20px 20px;width:600px"><tr><td align="left" style="padding:0;Margin:0;padding-top:20px;padding-left:40px;padding-right:40px"><!--[if mso]><table style="width:520px" cellpadding="0" cellspacing="0"><tr><td style="width:70px" valign="top"><![endif]--><table cellpadding="0" cellspacing="0" align="left" class="es-left" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:left"><tr><td class="es-m-p20b" align="center" valign="top" style="padding:0;Margin:0;width:70px"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="center" class="es-m-txt-l" style="padding:0;Margin:0;font-size:0px"><a target="_blank" href="https://viewstripo.email" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#2D3142;font-size:18px"><img src="https://zdhohi.stripocdn.email/content/guids/CABINET_055ba03e85e991c70304fecd78a2dceaf6b3f0bc1b0eb49336463d3599679494/images/group.png" alt="Demo" style="display:block;border:0;outline:none;text-decoration:none;-ms-interpolation-mode:bicubic" width="70" title="Demo" height="70"></a></td>\n' +
             '</tr></table></td></tr></table><!--[if mso]></td><td style="width:20px"></td><td style="width:430px" valign="top"><![endif]--><table cellpadding="0" cellspacing="0" class="es-right" align="right" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;float:right"><tr><td align="center" valign="top" style="padding:0;Margin:0;width:430px"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:Imprima, Arial, sans-serif;line-height:24px;color:#2D3142;font-size:16px">You can contact our support using mail: info@savebills.com.ng</p></td></tr></table></td></tr></table><!--[if mso]></td></tr></table><![endif]--></td></tr></table></td>\n' +
             '</tr></table></td></tr></table></div></body></html>\n'
@@ -158,7 +168,7 @@ exports.signup = async (req, res) => {
 
 
 
-      return  res.send({ status: 1, message: "User registered successfully!" });
+      return  res.send({ status: 1, message: "User registered successfully!", otp:pin });
 
     });
 
