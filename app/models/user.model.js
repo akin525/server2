@@ -52,9 +52,9 @@ module.exports = (sequelize, Sequelize) => {
     pin:{
       type: Sequelize.STRING
     },
-    // is_verify:{
-    //   type:Sequelize
-    // }
+    is_verify:{
+      type:Sequelize.STRING
+    },
   });
 
   return User;
