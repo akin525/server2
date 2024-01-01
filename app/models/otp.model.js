@@ -1,10 +1,10 @@
 module.exports = (sequelize, Sequelize) => {
     const otp = sequelize.define("otp",{
         pin: {
-            type: Sequelize.STRING
+            type:Sequelize
         },
         username: {
-            type: Sequelize.STRING
+            type:Sequelize
         },
     });
     return otp;

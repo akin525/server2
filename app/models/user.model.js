@@ -53,7 +53,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     // is_verify:{
-    //   type:sequelize.STRING
+    //   type:Sequelize
     // }
   });
 
