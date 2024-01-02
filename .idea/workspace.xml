@@ -21,7 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="Changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/purchase.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/purchase.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704191879593</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Changes">
+      <created>1704193493828</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1704193493828</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,10 +156,10 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state width="1323" height="182" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1703925474212" />
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1704191890826">
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1704193497191">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1704191890826" />
+    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1704193497191" />
     <state x="390" y="73" width="585" height="592" key="find.popup" timestamp="1704189790504">
       <screen x="0" y="0" width="1366" height="738" />
     </state>

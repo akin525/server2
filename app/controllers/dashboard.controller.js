@@ -62,6 +62,7 @@ exports.dashboard =  async (req, res) => {
         return res.status(200).send({
             status:1,
             data:{id: user.id,
+                is_verify:user.is_verify,
                 pin:user.pin,
                 name: user.name,
                 username: user.username,
@@ -79,7 +80,7 @@ exports.dashboard =  async (req, res) => {
                 totalbill:totalbill??0,
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
-                bills:allbill,
+                // bills:allbill,
                 referbonus:referbonus??0,
                 roles: authorities}
 
