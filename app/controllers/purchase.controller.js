@@ -22,7 +22,7 @@ exports.purchase =  async (req, res) => {
                 username:user.username,
             },
         });
-        return res.status(200).send({bill:allbill});
+        return res.status(200).send({status:1,data:{ bill:allbill}});
     } catch (error) {
         return res.status(500).send({message: error.message});
     }
