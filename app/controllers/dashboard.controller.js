@@ -62,6 +62,7 @@ exports.dashboard =  async (req, res) => {
         return res.status(200).send({
             status:1,
             data:{id: user.id,
+                pin:user.pin,
                 name: user.name,
                 username: user.username,
                 email: user.email,
