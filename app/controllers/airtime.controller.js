@@ -200,7 +200,7 @@ exports.airtime =  async (req, res) => {
 
 
                 return   res.status(200).send({
-                    status: "1",
+                    status: 1,
                     data:{
                         user:user.username,
                         message:"Airtime Successfully Delivered To "+req.body.number,
