@@ -51,7 +51,7 @@ exports.cpass=  async (req, res) => {
 
 
     res.status(200).send({
-      status: "1",
+      status: 1,
       message: "Password change successful",
     });
   } catch (error) {

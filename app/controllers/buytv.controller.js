@@ -119,7 +119,7 @@ exports.buytv =  async (req, res) => {
                 console.log(data);
 
                 const objectToUpdate = {
-                    result:"1",
+                    result:1,
                     server_res:response.body
 
                 }
@@ -174,7 +174,7 @@ exports.buytv =  async (req, res) => {
 
 
                 return   res.status(200).send({
-                    status: "1",
+                    status: 1,
                     data:{
                         user:user.username,
                         message:product.plan+" Was Successfully Delivered To "+req.body.number,

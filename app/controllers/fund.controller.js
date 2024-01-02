@@ -52,7 +52,7 @@ exports.fund =  async (req, res) => {
                 // console.log(data);
 
                 return   res.status(200).send({
-                    status: "1",
+                    status: 1,
                     data:data.data,
                     url:data.data.authorization_url,
                 });
@@ -106,7 +106,7 @@ exports.fundverify =  async (req, res) => {
         }
         const charge =await settings.findOne({
             where:{
-                id:"1",
+                id:1,
             },
         });
 

@@ -38,7 +38,7 @@ exports.paylony =  async (req, res) => {
         }
         const charge =await settings.findOne({
             where:{
-                id:"1",
+                id:1,
             },
         });
 
@@ -53,11 +53,11 @@ exports.paylony =  async (req, res) => {
             amount:charge.charges,
             iwallet:user.wallet,
             fwallet:parseInt(user.wallet)+amount,
-            status:"1",
+            status:1,
         });
 
         const insertdeposit=await deposit.create({
-            status:"1",
+            status:1,
             username:user.username,
             payment_ref:refid,
             amount:amount,

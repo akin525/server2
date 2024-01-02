@@ -116,7 +116,7 @@ exports.buyelect =  async (req, res) => {
             if (data.success===1){
                 console.log(data);
                 const objectToUpdate = {
-                    result:"1",
+                    result:1,
                     token: data.token,
                     server_res:response.body
 
@@ -128,7 +128,7 @@ exports.buyelect =  async (req, res) => {
                     }
                 })
                 return   res.status(200).send({
-                    status: "1",
+                    status: 1,
                     data:{
                         id:bil.id,
                         user:user.username,

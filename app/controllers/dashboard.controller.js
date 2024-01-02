@@ -46,13 +46,13 @@ exports.dashboard =  async (req, res) => {
         const referbonus= await refer.sum('amount', {
             where:{
                 username:user.username,
-                status:"1",
+                status:1,
             },
         });
 
         const notification= await noti.findOne({
             where:{
-                status:"1",
+                status:1,
             },
         });
 

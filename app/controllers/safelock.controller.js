@@ -68,7 +68,7 @@ exports.safelock =  async (req, res) => {
       transactionid:req.body.refid,
       paymentmethod:"wallet",
       date:req.body.date,
-      status:"1",
+      status:1,
     })
 
     var nodemailer = require('nodemailer');
@@ -163,7 +163,7 @@ exports.safelock =  async (req, res) => {
     });
 
     return res.status(200).send({
-      status:"1",
+      status:1,
       message:"Safe lock creat successfully",
     });
 

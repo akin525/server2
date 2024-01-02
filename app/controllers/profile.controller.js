@@ -38,7 +38,7 @@ exports.profile =  async (req, res) => {
     })
 
     return res.status(200).send({
-      status:"1",
+      status:1,
       message:"Profile Update Successfully",
     });
 

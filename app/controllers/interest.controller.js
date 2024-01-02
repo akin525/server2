@@ -16,7 +16,7 @@ exports.add =  async (req, res) => {
     const interest=10;
     const user=await safe.findAll({
       where:{
-        status:"1",
+        status:1,
       },
     });
 

@@ -45,11 +45,11 @@ exports.signup = async (req, res) => {
       });
 
       const result = user.setRoles(roles);
-      // if (result) res.send({ status: "1", message: "User registered successfully!" });
+      // if (result) res.send({ status: 1, message: "User registered successfully!" });
     } else {
       // user has role = 1
       const result = user.setRoles([1]);
-      // if (result) res.send({ status: "1", message: "User registered successfully!" });
+      // if (result) res.send({ status: 1, message: "User registered successfully!" });
     }
     // var options = {
     //   'method': 'POST',
@@ -173,7 +173,7 @@ exports.signup = async (req, res) => {
     });
 
   } catch (error) {
-    res.status(500).send({status: "1", message: error.message });
+    res.status(500).send({status: 1, message: error.message });
   }
 };
 

@@ -38,7 +38,7 @@ exports.allock =  async (req, res) => {
     console.log(lock);
 
     return res.status(200).send({
-      status:"1",
+      status:1,
       message:"result fetch successfully",
       lock:lock,
       interest:int,

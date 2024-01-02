@@ -132,7 +132,7 @@ const o=User.wallet < product.tamount;
                 console.log(data);
 
                 const objectToUpdate = {
-                    result:"1",
+                    result:1,
                     server_res:response.body
 
                 }

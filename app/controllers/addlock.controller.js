@@ -86,7 +86,7 @@ exports.add =  async (req, res) => {
     })
 
     return res.status(200).send({
-      status:"1",
+      status:1,
       data:{
         message:"Amount added successfully",
         amount:main,

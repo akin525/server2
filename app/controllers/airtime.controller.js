@@ -144,7 +144,7 @@ exports.airtime =  async (req, res) => {
             if (data.success===1){
                 console.log(data);
                 const objectToUpdate = {
-                    result:"1",
+                    result:1,
                     server_res:response.body
                 }
 
