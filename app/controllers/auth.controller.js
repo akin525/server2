@@ -178,6 +178,10 @@ exports.signup = async (req, res) => {
 };
 
 exports.signin = async (req, res) => {
+  const { username, password } = req.query;
+  if (!username || !password) {
+    return res.status(400).json({ status:0, error: 'Both username and password are required' });
+  }
   try {
     if (req.body.username===""){
       return res.status(200).send({
