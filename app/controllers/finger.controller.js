@@ -6,6 +6,7 @@ const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
 const noti =db.message;
+const gmarket=db.gmarket;
 
 exports.finger =  async (req, res) => {
     const userid = req.userId;
@@ -56,7 +57,11 @@ exports.finger =  async (req, res) => {
             },
         });
 
-
+        const gm= await gmarket.findOne({
+            where:{
+                id:1,
+            },
+        });
 
 
         return res.status(200).send({
@@ -80,6 +85,7 @@ exports.finger =  async (req, res) => {
                 totalbill:totalbill??0,
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
+                general_market:gm.tamount,
                 // bills:allbill,
                 referbonus:referbonus??0,
                 roles: authorities}

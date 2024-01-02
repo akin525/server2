@@ -8,7 +8,8 @@ var request = require('request');
 const {response} = require("express");
 const {where} = require("sequelize");
 const nodemailer = require("nodemailer");
-
+const gmarket=db.gmarket;
+const gateway=db.gateway;
 exports.buydata =  async (req, res) => {
     const userid = req.body.userId;
 
@@ -79,6 +80,14 @@ const o=User.wallet < product.tamount;
                 message: "invalid transaction"
             });
         }
+
+        const gm= await gmarket.findOne({
+            where:{
+                id:1,
+            },
+        });
+
+        const gbonus= gm.amount + gm.tamount;
         var tamount=parseInt(user.wallet) - parseInt(amount);
         var profits=amount-product.amount;
 
@@ -145,6 +154,20 @@ const o=User.wallet < product.tamount;
                 })
 
 
+
+                const ob={
+                    tamount:gbonus,
+                }
+                gm.findAll({
+                    where:{
+                        id:1,
+                    }
+                }).then((result1)=>{
+                    if (result1){
+                        result1[0].set(ob);
+                        result1[0].save();
+                    }
+                })
                 var nodemailer = require('nodemailer');
 
                 var transporter = nodemailer.createTransport({

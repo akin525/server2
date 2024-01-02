@@ -11,5 +11,8 @@ module.exports = (sequelize, Sequelize) => {
         amount: {
             type: Sequelize
         },
+        tamount: {
+            type: Sequelize
+        },
     });
 };
