@@ -7,6 +7,7 @@ const deposit=db.deposit;
 const lock =db.safelock;
 const noti =db.message;
 const gmarket=db.gmarket;
+const gateway=db.gateway;
 
 exports.finger =  async (req, res) => {
     const userid = req.userId;
@@ -57,7 +58,7 @@ exports.finger =  async (req, res) => {
             },
         });
 
-        const gm= await gmarket.findOne({
+        const gm= await gateway.findOne({
             where:{
                 id:1,
             },

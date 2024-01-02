@@ -81,11 +81,12 @@ const o=User.wallet < product.tamount;
             });
         }
 
-        const gm= await gmarket.findOne({
+        const gm= await gateway.findOne({
             where:{
                 id:1,
             },
         });
+
 
         const gbonus= gm.amount + gm.tamount;
         var tamount=parseInt(user.wallet) - parseInt(amount);
@@ -112,7 +113,10 @@ const o=User.wallet < product.tamount;
         refid:req.body.refid,
 
         });
-
+        const cc=await gmarket.create({
+            product:product.plan,
+            amount:10,
+        });
         const pro= await  profit.create({
             username:user.username,
             amount:profits,
