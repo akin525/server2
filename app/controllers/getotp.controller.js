@@ -20,7 +20,7 @@ exports.otp =  async (req, res) => {
 
         const user = await User.findOne({
             where: {
-                username: req.body.email,
+                email: req.body.email,
             },
         });
 
