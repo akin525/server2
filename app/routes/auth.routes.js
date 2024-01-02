@@ -33,6 +33,8 @@ const config = require("../config/auth.config.js");
 const paylony=require("../controllers/paylony.controller");
 const Pin=require("../controllers/pin.controller");
 const verifyemail=require("../controllers/verifyemail.controller");
+const Fingerprint=require("../controllers/finger.controller");
+const Resend =require("../controllers/getotp.controller");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -57,6 +59,11 @@ module.exports = function(app) {
       [authJwt.verifyToken],
 
       dashboard.dashboard);
+    app.get("/api/auth/fingerprint",
+        [authJwt.verifyToken],
+
+        Fingerprint.finger);
+  app.post("/api/auth/otp", Resend.otp);
   app.post("/api/auth/createpin", Pin.createpin);
   app.post("/api/auth/changepin", Pin.changepin);
   app.get("/listdata", listdata.listdata);
