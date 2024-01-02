@@ -11,11 +11,11 @@ const {where} = require("sequelize");
 const nodemailer = require("nodemailer");
 
 exports.otp =  async (req, res) => {
-    const { email} = req.query;
-    if (!email) {
-        return res.status(400).json({ status:0, error: 'email required' });
-    }
-    var boy;
+    // const { email} = req.query;
+    // if (!email) {
+    //     return res.status(400).json({ status:0, error: 'email required' });
+    // }
+    // var boy;
     try {
 
         const user = await User.findOne({

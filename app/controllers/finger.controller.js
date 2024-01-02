@@ -8,7 +8,6 @@ const lock =db.safelock;
 const noti =db.message;
 
 exports.finger =  async (req, res) => {
-    const userid = req.userId;
     try {
         let authorities = [];
 
