@@ -35,6 +35,8 @@ const Pin=require("../controllers/pin.controller");
 const verifyemail=require("../controllers/verifyemail.controller");
 const Fingerprint=require("../controllers/finger.controller");
 const Resend =require("../controllers/getotp.controller");
+const verifybe=require("../controllers/verifybetting.controller");
+const buybet=require("../controllers/buybetting.controller");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -53,6 +55,8 @@ module.exports = function(app) {
     controller.signup
   );
 
+  app.post("/api/auth/verifybetting", verifybe.verifybetting);
+  app.post("/api/auth/buybet", buybet.bet);
   app.post("/api/auth/signin", controller.signin);
   app.post("/api/auth/verifyemail", verifyemail.verifyemail);
   app.get("/api/auth/dashboard",
