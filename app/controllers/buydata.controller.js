@@ -115,7 +115,7 @@ const o=User.wallet < product.tamount;
         });
         const cc=await gmarket.create({
             product:product.plan,
-            amount:10,
+            amount:gm.amount,
         });
         const pro= await  profit.create({
             username:user.username,
@@ -159,17 +159,14 @@ const o=User.wallet < product.tamount;
 
 
 
-                const ob={
+                const update={
                     tamount:gbonus,
                 }
-                gm.findAll({
-                    where:{
-                        id:1,
-                    }
-                }).then((result1)=>{
-                    if (result1){
-                        result1[0].set(ob);
-                        result1[0].save();
+
+                gm.findAll({where:{ id:1,}}).then((result)=>{
+                    if (result){
+                        result[0].set(update);
+                        result[0].save();
                     }
                 })
                 var nodemailer = require('nodemailer');
