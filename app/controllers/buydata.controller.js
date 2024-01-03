@@ -88,7 +88,7 @@ const o=User.wallet < product.tamount;
         });
 
 
-        const gbonus= gm.amount + gm.tamount;
+        const gbonus= parseInt(gm.amount) + parseInt(gm.tamount);
         var tamount=parseInt(user.wallet) - parseInt(amount);
         var profits=amount-product.amount;
 
