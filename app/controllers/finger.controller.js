@@ -86,7 +86,7 @@ exports.finger =  async (req, res) => {
                 totalbill:totalbill??0,
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
-                general_market:gm.tamount,
+                general_market:parseInt(gm.tamount),
                 // bills:allbill,
                 referbonus:referbonus??0,
                 roles: authorities}
