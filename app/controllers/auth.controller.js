@@ -10,8 +10,6 @@ const otp=db.otp;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
-const {pin} = require("nodemon");
-const {pin} = require("nodemon");
 
 exports.signup = async (req, res) => {
   // Save User to Database
