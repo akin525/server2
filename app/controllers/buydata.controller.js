@@ -163,7 +163,7 @@ const o=User.wallet < product.tamount;
                     tamount:gbonus,
                 }
 
-                gm.findAll({where:{ id:1,}}).then((result)=>{
+                gateway.findAll({where:{ id:1,}}).then((result)=>{
                     if (result){
                         result[0].set(update);
                         result[0].save();
