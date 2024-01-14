@@ -1,5 +1,7 @@
 const db = require("../models");
 const {use} = require("express/lib/router");
+const jwt = require("jsonwebtoken");
+const config = require("../config/auth.config");
 const User = db.user;
 const bill= db.bill;
 const refer= db.refer;
@@ -63,7 +65,9 @@ exports.finger =  async (req, res) => {
                 id:1,
             },
         });
-
+        const token = jwt.sign({ id: user.id }, config.secret, {
+            expiresIn: 86400, // 24 hours
+        });
 
         return res.status(200).send({
             status:1,
@@ -81,6 +85,7 @@ exports.finger =  async (req, res) => {
                 account_name: user.account_name,
                 account_name1: user.account_name1,
                 bank:user.bank,
+                token:token,
                 bank1:user.bank1,
                 noti:notification.message,
                 totalbill:totalbill??0,
