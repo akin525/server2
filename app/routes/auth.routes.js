@@ -109,4 +109,5 @@ module.exports = function(app) {
           alldeposit.alldeposit);
 
   app.post("/api/auth/signout", controller.signout);
+  app.post("/api/auth/delete", controller.delete);
 };

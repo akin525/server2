@@ -285,6 +285,38 @@ exports.signin = async (req, res) => {
     return res.status(200).send({ message: error.message });
   }
 };
+exports.delete = async (req, res) => {
+  // const { username, password } = req.query;
+  // if (!username || !password) {
+  //   return res.status(400).json({ status:0, error: 'Both username and password are required' });
+  // }
+  const userId = req.body.userId;
+
+  try {
+    if (req.body.userId===""){
+      return res.status(200).send({
+        status: "0",
+        message: "userId required"
+      });
+    }
+
+    const existingUser = await User.findByPk(userId);
+    if (!existingUser) {
+      return res.status(404).json({status:0, message: 'User not found' });
+    }
+
+    // Delete the user
+    await User.destroy({
+      where: {
+        id: userId,
+      },
+    });
+
+    res.json({status:1, message: 'User deleted successfully' });
+  } catch (error) {
+    return res.status(200).send({ message: error.message });
+  }
+};
 
 exports.signout = async (req, res) => {
   try {
