@@ -20,17 +20,17 @@ exports.upgrade =  async (req, res) => {
 
         if (!user) {
             // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({status: 0, message: "Kindly login your account."});
         }
         if (user.apikey!=null){
             return res.status(200).send({
-                status:"0",
+                status:0,
                 message:"Account already upgraded",
             });
         }
         if (parseInt(user.wallet) < amount) {
             return  res.status(200).send({
-                status:"0",
+                status:0,
                 balance:user.wallet,
                 message:"insufficient balance"
             });
@@ -53,7 +53,7 @@ exports.upgrade =  async (req, res) => {
         })
         return res.status(200).send(
             {
-                status:0,
+                status:1,
                 message:"Account Upgraded Successfully",
             }
         );

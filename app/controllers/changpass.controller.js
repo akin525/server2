@@ -32,10 +32,9 @@ exports.cpass=  async (req, res) => {
 
     if (!user) {
       // req.session = null;
-      return res.status(200).send({status: "0", message: "Kindly login your account."});
+      return res.status(200).send({status: 0, message: "Kindly login your account."});
     }
     const dat6 =new Date().toISOString().split('T')[0];
-
 
 
 
@@ -46,7 +45,7 @@ exports.cpass=  async (req, res) => {
 
 
       user.set(objectToUpdate);
-      user.save();
+      await user.save();
 
 
 
