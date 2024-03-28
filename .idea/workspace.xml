@@ -19,7 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="Changes" />
+    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="new sign up">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,10 +62,10 @@
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/app/models" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2021.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -136,14 +138,9 @@
       <workItem from="1676916933791" duration="318000" />
       <workItem from="1704021780617" duration="75000" />
       <workItem from="1704021928938" duration="5214000" />
-      <workItem from="1710964164312" duration="9000" />
-    </task>
-    <task id="LOCAL-00062" summary="look">
-      <created>1673281603873</created>
-      <option name="number" value="00062" />
-      <option name="presentableId" value="LOCAL-00062" />
-      <option name="project" value="LOCAL" />
-      <updated>1673281603873</updated>
+      <workItem from="1710964164312" duration="3536000" />
+      <workItem from="1711002212931" duration="186000" />
+      <workItem from="1711002432538" duration="643000" />
     </task>
     <task id="LOCAL-00063" summary="look">
       <created>1673282664144</created>
@@ -481,7 +478,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704137154033</updated>
     </task>
-    <option name="localTasksCounter" value="111" />
+    <task id="LOCAL-00111" summary="new sign up">
+      <created>1710964984405</created>
+      <option name="number" value="00111" />
+      <option name="presentableId" value="LOCAL-00111" />
+      <option name="project" value="LOCAL" />
+      <updated>1710964984405</updated>
+    </task>
+    <option name="localTasksCounter" value="112" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -507,16 +511,7 @@
     <MESSAGE value="look" />
     <MESSAGE value="notification" />
     <MESSAGE value="validate" />
-    <option name="LAST_COMMIT_MESSAGE" value="validate" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2" timestamp="1705226877435">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="275" y="102" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1705226877435" />
-    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1705226809435">
-      <screen x="0" y="0" width="1366" height="738" />
-    </state>
-    <state x="500" y="283" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.738@0.0.1366.738" timestamp="1705226809435" />
+    <MESSAGE value="new sign up" />
+    <option name="LAST_COMMIT_MESSAGE" value="new sign up" />
   </component>
 </project>

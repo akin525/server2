@@ -290,25 +290,25 @@ exports.delete = async (req, res) => {
   // if (!username || !password) {
   //   return res.status(400).json({ status:0, error: 'Both username and password are required' });
   // }
-  const userId = req.body.userId;
+  const userId = req.body.email;
 
   try {
-    if (req.body.userId===""){
+    if (req.body.email===""){
       return res.status(200).send({
         status: "0",
-        message: "userId required"
+        message: "email required"
       });
     }
 
-    const existingUser = await User.findByPk(userId);
-    if (!existingUser) {
-      return res.status(404).json({status:0, message: 'User not found' });
-    }
+    // const existingUser = await User.findByPk(userId);
+    // if (!existingUser) {
+    //   return res.status(404).json({status:0, message: 'User not found' });
+    // }
 
     // Delete the user
     await User.destroy({
       where: {
-        id: userId,
+        email: userId,
       },
     });
 
