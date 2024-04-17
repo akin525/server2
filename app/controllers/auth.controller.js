@@ -209,7 +209,7 @@ exports.signup = async (req, res) => {
     //
     //
     // });
-    return  res.send({ status: 1, message: "User registered successfully!", otp:pin });
+    return  res.send({ status: 1, message: "User registered successfully!" });
 
   } catch (error) {
     res.status(500).send({status: 1, message: error.message });
