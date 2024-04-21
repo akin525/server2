@@ -37,6 +37,9 @@ const Fingerprint=require("../controllers/finger.controller");
 const Resend =require("../controllers/getotp.controller");
 const verifybe=require("../controllers/verifybetting.controller");
 const buybet=require("../controllers/buybetting.controller");
+const account2=require("../controllers/generateaccountall.controller");
+const account3=require("../controllers/generateaccountall1.controller");
+
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -54,7 +57,10 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-
+    app.get("/api/auth/newaccount", account2.generateAccountall);
+    app.get("/api/auth/newacc", account3.generateAccountall);
+    app.post("/api/auth/newacc1", account3.generateaccountone);
+    app.post("/api/auth/newaccount1", account2.generateaccountone);
   app.post("/api/auth/verifybetting", verifybe.verifybetting);
   app.post("/api/auth/buybet", buybet.bet);
   app.post("/api/auth/signin", controller.signin);
