@@ -107,10 +107,10 @@ function createApiOptions(user) {
 }
 
 exports.generateaccountone = async (req, res) => {
-  return res.status(200).send({
-    status: '1',
-    message: req.body.userId,
-  });
+  // return res.status(200).send({
+  //   status: '1',
+  //   message: req.body.userId,
+  // });
 
   try {
 
