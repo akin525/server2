@@ -23,7 +23,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/generateaccountall.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/generateaccountall.controller.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,13 +156,7 @@
       <workItem from="1713699682948" duration="1392000" />
       <workItem from="1713791100837" duration="228000" />
       <workItem from="1713791572188" duration="1718000" />
-    </task>
-    <task id="LOCAL-00065" summary="look">
-      <created>1673283531366</created>
-      <option name="number" value="00065" />
-      <option name="presentableId" value="LOCAL-00065" />
-      <option name="project" value="LOCAL" />
-      <updated>1673283531366</updated>
+      <workItem from="1713998392658" duration="402000" />
     </task>
     <task id="LOCAL-00066" summary="look">
       <created>1673295106210</created>
@@ -500,7 +494,14 @@
       <option name="project" value="LOCAL" />
       <updated>1713699876756</updated>
     </task>
-    <option name="localTasksCounter" value="114" />
+    <task id="LOCAL-00114" summary="new sign up">
+      <created>1713998683812</created>
+      <option name="number" value="00114" />
+      <option name="presentableId" value="LOCAL-00114" />
+      <option name="project" value="LOCAL" />
+      <updated>1713998683812</updated>
+    </task>
+    <option name="localTasksCounter" value="115" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
