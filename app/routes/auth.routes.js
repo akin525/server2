@@ -102,6 +102,7 @@ module.exports = function(app) {
   app.post("/api/auth/google", googl.google);
 
       app.post("/api/auth/data", data.data);
+      app.post("/api/auth/datanew", data.datanew);
       app.post("/api/auth/createlock", createlock.safelock);
       app.get("/api/auth/allock",
           [authJwt.verifyToken],

@@ -23,7 +23,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/app/controllers/generateaccountall.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/generateaccountall.controller.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/mcd.model.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/models/mcdserver.model.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/data.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/data.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,27 +70,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/PhpstormProjects/server2/app/controllers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/DELL/PhpstormProjects/server2/app/models",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\PhpstormProjects\server2\app\models" />
       <recent name="C:\Users\DELL\PhpstormProjects\server2\app\controllers" />
       <recent name="C:\xampp\htdocs\server\app\models" />
       <recent name="C:\xampp\htdocs\server\app\controllers" />
       <recent name="C:\Users\HP\PhpstormProjects\server\app\models" />
-      <recent name="C:\Users\HP\PhpstormProjects\server\app\controllers" />
     </key>
   </component>
   <component name="RunManager">
@@ -156,35 +163,8 @@
       <workItem from="1713699682948" duration="1392000" />
       <workItem from="1713791100837" duration="228000" />
       <workItem from="1713791572188" duration="1718000" />
-      <workItem from="1713998392658" duration="402000" />
-    </task>
-    <task id="LOCAL-00066" summary="look">
-      <created>1673295106210</created>
-      <option name="number" value="00066" />
-      <option name="presentableId" value="LOCAL-00066" />
-      <option name="project" value="LOCAL" />
-      <updated>1673295106210</updated>
-    </task>
-    <task id="LOCAL-00067" summary="look">
-      <created>1673295176209</created>
-      <option name="number" value="00067" />
-      <option name="presentableId" value="LOCAL-00067" />
-      <option name="project" value="LOCAL" />
-      <updated>1673295176209</updated>
-    </task>
-    <task id="LOCAL-00068" summary="look">
-      <created>1673306357819</created>
-      <option name="number" value="00068" />
-      <option name="presentableId" value="LOCAL-00068" />
-      <option name="project" value="LOCAL" />
-      <updated>1673306357819</updated>
-    </task>
-    <task id="LOCAL-00069" summary="look">
-      <created>1673306634454</created>
-      <option name="number" value="00069" />
-      <option name="presentableId" value="LOCAL-00069" />
-      <option name="project" value="LOCAL" />
-      <updated>1673306634454</updated>
+      <workItem from="1713998392658" duration="2726000" />
+      <workItem from="1714070435410" duration="2506000" />
     </task>
     <task id="LOCAL-00070" summary="look">
       <created>1673307265188</created>
@@ -501,7 +481,35 @@
       <option name="project" value="LOCAL" />
       <updated>1713998683812</updated>
     </task>
-    <option name="localTasksCounter" value="115" />
+    <task id="LOCAL-00115" summary="new sign up">
+      <created>1713998822894</created>
+      <option name="number" value="00115" />
+      <option name="presentableId" value="LOCAL-00115" />
+      <option name="project" value="LOCAL" />
+      <updated>1713998822894</updated>
+    </task>
+    <task id="LOCAL-00116" summary="new sign up">
+      <created>1713998994646</created>
+      <option name="number" value="00116" />
+      <option name="presentableId" value="LOCAL-00116" />
+      <option name="project" value="LOCAL" />
+      <updated>1713998994646</updated>
+    </task>
+    <task id="LOCAL-00117" summary="new sign up">
+      <created>1713999082511</created>
+      <option name="number" value="00117" />
+      <option name="presentableId" value="LOCAL-00117" />
+      <option name="project" value="LOCAL" />
+      <updated>1713999082511</updated>
+    </task>
+    <task id="LOCAL-00118" summary="new sign up">
+      <created>1713999846352</created>
+      <option name="number" value="00118" />
+      <option name="presentableId" value="LOCAL-00118" />
+      <option name="project" value="LOCAL" />
+      <updated>1713999846352</updated>
+    </task>
+    <option name="localTasksCounter" value="119" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
