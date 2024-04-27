@@ -359,7 +359,7 @@ const o=User.wallet < product.tamount;
             'method': 'POST',
             'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/data',
             'headers': {
-                'Authorization': 'Bearer 3487478|q97bI5snXlMdntfYnx2tu2kX1L3gzzYlousk7s14',
+                'Authorization': 'Bearer UjO2YIGCV8gk8JUPiiweXF68L9OzTwnY4z6ELvU0oldRE0YI8qXfCvDqEqYNZ297zIf0rrFrgMBhNIbWvMTjsrsxQd3Hpc52TRJ6sP9y12XWSWXjz5KXVzgrlB7QsvWM347oX3sHLieKS0TAsDyKS0',
                 'Content-Type': 'application/json'
             },
             formData: {
