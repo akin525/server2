@@ -1,7 +1,7 @@
 const db = require("../models");
 const User = db.user;
 const bill= db.bill;
-const data=db.data;
+const data=db.datanew;
 var request = require('request');
 const {response} = require("express");
 
