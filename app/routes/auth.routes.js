@@ -80,6 +80,7 @@ module.exports = function(app) {
   app.post("/api/auth/airtime", airtime.airtime);
   app.post("/api/auth/buydata", buydata.buydata);
   app.post("/api/auth/buydatanew", buydata.buydatanew);
+  app.post("/api/auth/buydatageneral", buydata.buydatgeneral);
   app.post("/api/auth/tv", tv.tv);
   app.post("/api/auth/verifytv", verifytv.verifytv);
   app.post("/api/auth/verifyelect", verifyelect.verifyelect);
