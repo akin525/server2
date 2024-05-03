@@ -2,7 +2,7 @@ const db = require("../models");
 const User = db.user;
 const bill= db.bill;
 const deposit=db.deposit;
-const data=db.data;
+const data=db.datanew;
 var request = require('request');
 const {response} = require("express");
 const {where} = require("sequelize");
@@ -100,14 +100,17 @@ exports.buytv =  async (req, res) => {
 
         var options = {
             'method': 'POST',
-            'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/pay',
+            'url': 'https://resellertest.mcd.5starcompany.com.ng/api/v1/tv',
             'headers': {
-                'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
+                'Authorization': 'Bearer UjO2YIGCV8gk8JUPiiweXF68L9OzTwnY4z6ELvU0oldRE0YI8qXfCvDqEqYNZ297zIf0rrFrgMBhNIbWvMTjsrsxQd3Hpc52TRJ6sP9y12XWSWXjz5KXVzgrlB7QsvWM347oX3sHLieKS0TAsDyKS0',
+                'Content-Type': 'application/json'
             },
             formData: {
-                'service': 'tv',
+                'payment': 'wallet',
                 'coded': product.plan_id,
-                'phone': req.body.number
+                'number': req.body.number,
+                'promo': "0",
+                'ref':req.body.refid
             }
         };
 
