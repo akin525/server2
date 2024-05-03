@@ -359,7 +359,7 @@ const o=User.wallet < product.tamount;
             'method': 'POST',
             'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/data',
             'headers': {
-                'Authorization': 'Bearer UjO2YIGCV8gk8JUPiiweXF68L9OzTwnY4z6ELvU0oldRE0YI8qXfCvDqEqYNZ297zIf0rrFrgMBhNIbWvMTjsrsxQd3Hpc52TRJ6sP9y12XWSWXjz5KXVzgrlB7QsvWM347oX3sHLieKS0TAsDyKS0',
+                'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
                 'Content-Type': 'application/json'
             },
             formData: {
@@ -577,7 +577,7 @@ const o=User.wallet < product.tamount;
             'method': 'POST',
             'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/data',
             'headers': {
-                'Authorization': 'Bearer UjO2YIGCV8gk8JUPiiweXF68L9OzTwnY4z6ELvU0oldRE0YI8qXfCvDqEqYNZ297zIf0rrFrgMBhNIbWvMTjsrsxQd3Hpc52TRJ6sP9y12XWSWXjz5KXVzgrlB7QsvWM347oX3sHLieKS0TAsDyKS0',
+                'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
                 'Content-Type': 'application/json'
             },
             formData: {
