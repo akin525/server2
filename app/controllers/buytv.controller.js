@@ -105,13 +105,14 @@ exports.buytv =  async (req, res) => {
                 'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
                 'Content-Type': 'application/json'
             },
-            formData: {
-                'payment': 'wallet',
-                'coded': product.cat_id,
-                'number': req.body.number,
-                'promo': "0",
-                'ref':req.body.refid
-            }
+
+            body: JSON.stringify({
+                "coded": product.cat_id,
+                "number": req.body.number,
+                "payment": "wallet",
+                "promo": "0",
+                "ref": req.body.refid
+            })
         };
 
         request(options, function (error, response) {
