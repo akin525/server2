@@ -100,7 +100,7 @@ exports.buytv =  async (req, res) => {
 
         var options = {
             'method': 'POST',
-            'url': 'https://resellertest.mcd.5starcompany.com.ng/api/v1/tv',
+            'url': 'https://reseller.mcd.5starcompany.com.ng/api/v1/tv',
             'headers': {
                 'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
                 'Content-Type': 'application/json'
