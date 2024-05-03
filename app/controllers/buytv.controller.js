@@ -107,7 +107,7 @@ exports.buytv =  async (req, res) => {
             },
             formData: {
                 'payment': 'wallet',
-                'coded': product.plan_id,
+                'coded': product.cat_id,
                 'number': req.body.number,
                 'promo': "0",
                 'ref':req.body.refid
