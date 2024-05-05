@@ -41,7 +41,7 @@ app.get("/", (req, res) => {
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Paydow</title>
+      <title>Savebills</title>
       <style>
         body {
           font-family: Arial, sans-serif;
@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
       <div>
         <h1>SAVEBILLS JWT BACKEND</h1>
                 <img width="200" src="https://admin.savebills.com.ng/static/media/lg.ded7938f7b7bdd344a7a.png" alt=""/>
-        <p class="message">Service Running .........</p>
+        <p class="message">Service Running .....</p>
       </div>
     </body>
     </html>
