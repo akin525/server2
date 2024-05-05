@@ -503,6 +503,12 @@ exports.buydatgeneral =  async (req, res) => {
             return res.status(200).send({status: 0, message: "Kindly login your account."});
         }
 
+        if (user.point !== 2){
+
+            return res.status(200).send({status: 0, message: "You don't have up to 2 coin in your account"});
+
+        }
+
         const product= await datanew.findOne({
             where:{
                 id:req.body.id,

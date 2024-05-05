@@ -55,6 +55,9 @@ module.exports = (sequelize, Sequelize) => {
     is_verify:{
       type:Sequelize.STRING
     },
+    point:{
+      type:Sequelize.STRING
+    },
   });
 
   return User;
