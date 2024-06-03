@@ -32,17 +32,18 @@ exports.airtime =  async (req, res) => {
             return res.status(200).send({status: "0", message: "Kindly select your network."});
 
         }
+        let net="MTN";
         if (req.body.network ==="m"){
-            const net="MTN";
+             net="MTN";
         }
         if (req.body.network ==="g"){
-            const net="GLO";
+           net="GLO";
         }
         if (req.body.network ==="a"){
-            const net="AIRTEL";
+             net="AIRTEL";
         }
         if (req.body.network ==="9"){
-            const net="9MOBILE";
+             net="9MOBILE";
         }
 
         let authorities = [];
