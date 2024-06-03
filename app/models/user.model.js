@@ -58,6 +58,9 @@ module.exports = (sequelize, Sequelize) => {
     point:{
       type:Sequelize.STRING
     },
+    cashback:{
+      type:Sequelize.STRING
+    },
   });
 
   return User;
