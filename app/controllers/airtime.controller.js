@@ -10,121 +10,83 @@ const nodemailer = require("nodemailer");
 const net = require("net");
 
 exports.airtime =  async (req, res) => {
-    const userid = req.body.userId;
-    const number = req.body.number;
+    const { userId, number, amount, network, refid } = req.body;
     const specialCharPattern = /[-+]/;
 
-    var boy;
     try {
-
-        if (specialCharPattern.test(number)) {
-            res.status(200).send({
-                message: 'Special characters found',
-                requestNumber: number
-            });
-        }
-        if(req.body.amount===""){
-            return res.status(200).send({status: "0", message: "Kindly enter your amount."});
-
-        }
-        if (req.body.amount <100)
-        {
+        if (specialCharPattern.test(amount)) {
             return res.status(200).send({
-                status: "0",
-                message: "Amount must not be lass than 100",
+                message: 'Special characters found',
+                requestNumber: amount
             });
         }
-        if(req.body.number===""){
-            return res.status(200).send({status: "0", message: "Kindly enter your phone number."});
 
-        }
-        if(req.body.network===""){
-            return res.status(200).send({status: "0", message: "Kindly select your network."});
-
-        }
-        let net="MTN";
-        if (req.body.network ==="m"){
-             net="MTN";
-        }
-        if (req.body.network ==="g"){
-           net="GLO";
-        }
-        if (req.body.network ==="a"){
-             net="AIRTEL";
-        }
-        if (req.body.network ==="9"){
-             net="9MOBILE";
+        if (!amount) {
+            return res.status(200).send({ status: "0", message: "Kindly enter your amount." });
         }
 
-        let authorities = [];
-        var amount=req.body.amount;
+        if (amount < 100) {
+            return res.status(200).send({ status: "0", message: "Amount must not be less than 100" });
+        }
 
-        const user = await User.findOne({
-            where: {
-                id: userid,
-            },
-        });
+        if (!number) {
+            return res.status(200).send({ status: "0", message: "Kindly enter your phone number." });
+        }
+
+        if (!network) {
+            return res.status(200).send({ status: "0", message: "Kindly select your network." });
+        }
+
+        let net;
+        switch (network) {
+            case "m": net = "MTN"; break;
+            case "g": net = "GLO"; break;
+            case "a": net = "AIRTEL"; break;
+            case "9": net = "9MOBILE"; break;
+            default: net = "UNKNOWN"; break;
+        }
+
+        const user = await User.findOne({ where: { id: userId } });
 
         if (!user) {
-            // req.session = null;
-            return res.status(200).send({status: "0", message: "Kindly login your account."});
+            return res.status(200).send({ status: "0", message: "Kindly login to your account." });
         }
-        if (parseInt(user.wallet) < parseInt(req.body.amount)) {
-           return  res.status(200).send({
-                status:"0",
-               balance:user.wallet,
-                message:"insufficient balance"
+
+        if (parseInt(user.wallet) < parseInt(amount)) {
+            return res.status(200).send({
+                status: "0",
+                balance: user.wallet,
+                message: "Insufficient balance"
             });
         }
 
-        const totalbill= await bill.findOne({
-            where:{
-                refid:req.body.refid,
-            },
+        const existingBill = await bill.findOne({ where: { refid } });
+
+        if (existingBill) {
+            return res.status(200).send({ status: "0", message: "Duplicate transaction" });
+        }
+
+        if (amount < 0) {
+            return res.status(200).send({ status: "0", message: "Invalid transaction" });
+        }
+
+        if (amount > 3000) {
+            return res.status(200).send({ status: "0", message: "Amount must be less than 3000" });
+        }
+
+        const updatedWallet = parseInt(user.wallet) - parseInt(amount);
+
+        await User.update({ wallet: updatedWallet }, { where: { id: userId } });
+
+        const newBill = await bill.create({
+            username: user.username,
+            plan: "Airtime--" + net,
+            amount,
+            server_res: "airtime",
+            result: "0",
+            phone: number,
+            refid
         });
-        if (totalbill)
-        {
-            return res.status(200).send({
-                status: "0",
-                message: "duplicate transaction"
-            });
-        }
-        if (req.body.amount < 0)
-        {
-            return res.status(200).send({
-                status: "0",
-                message: "invalid transaction"
-            });
-        }
-        if (req.body.amount >3000)
-        {
-            return res.status(200).send({
-                status: "0",
-                message: "Amount must be lass than 3000",
-            });
-        }
-        var tamount=parseInt(user.wallet) - parseInt(amount);
-
-        const user1 = await User.update(
-            { wallet: tamount },
-            {
-                where: {
-                    id: userid,
-                },
-            });
-
-    const bil= await bill.create({
-            username:user.username,
-            plan:"Airtime--"+net,
-            amount:req.body.amount,
-            server_res:"airtime",
-        result:"0",
-        phone:req.body.number,
-        refid:req.body.refid,
-
-        });
-        const bo="Airtime Successfully Delivered To "+req.body.number;
-
         // var push={
         //
         //     'method': 'POST',
@@ -157,12 +119,12 @@ exports.airtime =  async (req, res) => {
             },
             formData: {
                 'provider': net,
-                'amount': req.body.amount,
-                'number': req.body.number,
+                'amount': amount,
+                'number': number,
                 'country': 'NG',
                 'payment': 'wallet',
                 'promo': '0',
-                'ref': req.body.refid,
+                'ref': refid,
                 'operatorID': 0
             }
         };
@@ -249,7 +211,6 @@ exports.airtime =  async (req, res) => {
               return   res.status(200).send({
                     status: "0",
                     message: data.message,
-                  up:user1
                 });
             }
             // res.status(200).send(response.body);
@@ -265,6 +226,8 @@ exports.airtime =  async (req, res) => {
 
 
 };
+
+
 exports.airtimenew =  async (req, res) => {
     const userid = req.body.userId;
     const number = req.body.number;
