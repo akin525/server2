@@ -11,8 +11,18 @@ const net = require("net");
 
 exports.airtime =  async (req, res) => {
     const userid = req.body.userId;
+    const number = req.body.number;
+    const specialCharPattern = /[-+]/;
+
     var boy;
     try {
+
+        if (specialCharPattern.test(number)) {
+            res.status(200).send({
+                message: 'Special characters found',
+                requestNumber: number
+            });
+        }
         if(req.body.amount===""){
             return res.status(200).send({status: "0", message: "Kindly enter your amount."});
 
