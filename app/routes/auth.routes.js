@@ -85,7 +85,7 @@ module.exports = function(app) {
   app.post("/api/auth/verifytv", verifytv.verifytv);
   app.post("/api/auth/verifyelect", verifyelect.verifyelect);
   app.post("/api/auth/buytv", buytv.buytv);
-  app.post("/api/auth/buyelect", buyelect.buyelect);
+  app.post("/api/auth/buyelect1", buyelect.buyelect);
   app.post("/api/auth/profile", profile.profile);
   app.post("/api/auth/run", run.run);
   app.post("/api/auth/run1", run1.run1);
