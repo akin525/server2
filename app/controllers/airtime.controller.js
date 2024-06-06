@@ -37,13 +37,18 @@ exports.airtime =  async (req, res) => {
             return res.status(200).send({ status: "0", message: "Kindly select your network." });
         }
 
-        let net;
-        switch (network) {
-            case "m": net = "MTN"; break;
-            case "g": net = "GLO"; break;
-            case "a": net = "AIRTEL"; break;
-            case "9": net = "9MOBILE"; break;
-            default: net = "UNKNOWN"; break;
+        let net="MTN";
+        if (network ==="m"){
+            net="MTN";
+        }
+        if (network ==="g"){
+            net="GLO";
+        }
+        if (network ==="a"){
+            net="AIRTEL";
+        }
+        if (network ==="9"){
+            net="9MOBILE";
         }
 
         const user = await User.findOne({ where: { id: userId } });
