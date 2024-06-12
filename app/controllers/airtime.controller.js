@@ -16,25 +16,26 @@ exports.airtime =  async (req, res) => {
     try {
         if (specialCharPattern.test(amount)) {
             return res.status(200).send({
+                status:0,
                 message: 'Special characters found',
                 requestNumber: amount
             });
         }
 
         if (!amount) {
-            return res.status(200).send({ status: "0", message: "Kindly enter your amount." });
+            return res.status(200).send({ status: 0, message: "Kindly enter your amount." });
         }
 
         if (amount < 100) {
-            return res.status(200).send({ status: "0", message: "Amount must not be less than 100" });
+            return res.status(200).send({ status: 0, message: "Amount must not be less than 100" });
         }
 
         if (!number) {
-            return res.status(200).send({ status: "0", message: "Kindly enter your phone number." });
+            return res.status(200).send({ status: 0, message: "Kindly enter your phone number." });
         }
 
         if (!network) {
-            return res.status(200).send({ status: "0", message: "Kindly select your network." });
+            return res.status(200).send({ status: 0, message: "Kindly select your network." });
         }
 
         let net="MTN";
@@ -59,7 +60,7 @@ exports.airtime =  async (req, res) => {
 
         if (parseInt(user.wallet) < parseInt(amount)) {
             return res.status(200).send({
-                status: "0",
+                status: 0,
                 balance: user.wallet,
                 message: "Insufficient balance"
             });
@@ -68,7 +69,7 @@ exports.airtime =  async (req, res) => {
         const existingBill = await bill.findOne({ where: { refid } });
 
         if (existingBill) {
-            return res.status(200).send({ status: "0", message: "Duplicate transaction" });
+            return res.status(200).send({ status: 0, message: "Duplicate transaction" });
         }
 
         if (amount < 0) {
