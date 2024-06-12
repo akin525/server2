@@ -205,7 +205,7 @@ exports.airtime =  async (req, res) => {
                     }
 
                 });
-            } else if (data.success===0) {
+            } else  {
                 const back =parseInt(user.wallet) + parseInt(amount);
                 // const user12 =  User.update(
                 //     { wallet: back },
@@ -215,8 +215,12 @@ exports.airtime =  async (req, res) => {
                 //         },
                 //     });
               return   res.status(200).send({
-                    status: "0",
-                    message: data.message,
+                    status: 1,
+                  data:{
+                      user:user.username,
+                      message:"Airtime Successfully Delivered To "+req.body.number,
+                      server_res:response.body
+                  }
                 });
             }
             // res.status(200).send(response.body);
