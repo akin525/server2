@@ -92,25 +92,26 @@ exports.airtime =  async (req, res) => {
             phone: number,
             refid
         });
-        // var push={
-        //
-        //     'method': 'POST',
-        //
-        //
-        //     'url': 'https://fcm.googleapis.com/fcm/send',
-        //     'headers': {
-        //         'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
-        //         'Content-Type': 'application/json'
-        //     },
-        //     formData: {
-        //         "to": "/topics/"+user.username,
-        //         "notification": {
-        //             "body": bo,
-        //             "title": "Airtime Purchase"
-        //
-        //         }
-        //     }
-        // }
+        const bo="Airtime Successfully Delivered To "+req.body.number;
+        var push={
+
+            'method': 'POST',
+
+
+            'url': 'https://fcm.googleapis.com/fcm/send',
+            'headers': {
+                'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
+                'Content-Type': 'application/json'
+            },
+            formData: {
+                "to": "/topics/"+user.username,
+                "notification": {
+                    "body": bo,
+                    "title": "Airtime Purchase"
+
+                }
+            }
+        }
 
         var options =
             {
