@@ -126,15 +126,18 @@ exports.bet =  async (req, res) => {
             'method': 'POST',
 
 
-            'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/pay',
+            'url': process.env.Betting_Url,
             'headers': {
-                'Authorization': 'mcd_key_yhij3dui0678iujk23hegwtfyu23dwky'
+                'Authorization': 'Bearer '+process.env.Authorize_Key,
+                'Content-Type': 'application/json'
             },
             formData: {
-                'service': 'betting',
-                'coded': req.body.network,
-                'phone': req.body.number,
-                'amount': req.body.amount
+                'payment': 'wallet',
+                'provider': req.body.network,
+                'number': req.body.number,
+                'amount': req.body.amount,
+                'promo': '0',
+                'ref':req.body.refid
             }
         };
         request(options, function (error, response) {
