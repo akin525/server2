@@ -289,7 +289,7 @@ exports.signup = async (req, res, next) => {
 exports.signin = async (req, res) => {
 
   try {
-    const errors = validationResult(decryptedData);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(200).json({
         status: 0,
