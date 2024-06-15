@@ -10,6 +10,7 @@ const otp=db.otp;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
+const {validationResult} = require("express-validator");
 
 exports.signup = async (req, res, next) => {
   // Save User to Database
@@ -288,6 +289,14 @@ exports.signup = async (req, res, next) => {
 exports.signin = async (req, res) => {
 
   try {
+    const errors = validationResult(decryptedData);
+    if (!errors.isEmpty()) {
+      return res.status(200).json({
+        status: 0,
+        msg: 'Errors',
+        errors: errors.array()
+      });
+    }
     if (req.body.username===""){
       return res.status(200).send({
         status: "0",

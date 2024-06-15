@@ -8,12 +8,21 @@ const {where} = require("sequelize");
 const { body, validationResult } = require('express-validator');
 const nodemailer = require("nodemailer");
 const net = require("net");
-require('dotenv').config();
 
-exports.airtime =  async (req, res) => {
-    const { userId, number, amount, network, refid } = req.body;
+exports.airtimenewencry =  async (req, res) => {
+    const decryptedData = req.decryptedData;
+
+    const { userId, number, amount, network, refid } = decryptedData;
 
     try {
+        const errors = validationResult(decryptedData);
+        if (!errors.isEmpty()) {
+            return res.status(200).json({
+                satus: 0,
+                msg: 'Errors',
+                errors: errors.array()
+            });
+        }
 
         if (!userId) {
             return res.status(200).send({ status: 0, message: "Kindly enter userId." });
@@ -68,9 +77,21 @@ exports.airtime =  async (req, res) => {
             return res.status(200).send({ status: "0", message: "Amount must be less than 3000" });
         }
 
+
+        function calculatePercentage(amount) {
+            if (typeof amount !== 'number' || isNaN(amount)) {
+                throw new Error('The input should be a valid number.');
+            }
+            const percentage = (2 / 100) * amount;
+            return percentage;
+        }
+        const result = calculatePercentage(parseInt(amount));
+
+        const cash=parseFloat(user.cashback) + result;
+
         const updatedWallet = parseInt(user.wallet) - parseInt(amount);
 
-        await User.update({ wallet: updatedWallet }, { where: { id: userId } });
+        await User.update({ wallet: updatedWallet, cashback: cash }, { where: { id: userId } });
 
         const newBill = await bill.create({
             username: user.username,
@@ -189,7 +210,7 @@ exports.airtime =  async (req, res) => {
                     status: 1,
                     data:{
                         user:user.username,
-                        message:"Airtime Successfully Delivered To "+req.body.number,
+                        message:"Airtime Successfully Delivered To "+number,
                         server_res:response.body
                     }
 
@@ -228,6 +249,15 @@ exports.airtime =  async (req, res) => {
 
 
 exports.airtimenew =  async (req, res) => {
+
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(200).json({
+            status: 0,
+            msg: 'Errors',
+            errors: errors.array()
+        });
+    }
     const userid = req.body.userId;
     const number = req.body.number;
     const specialCharPattern = /[-+]/;
@@ -306,10 +336,19 @@ exports.airtimenew =  async (req, res) => {
                 message: "Amount must be lass than 3000",
             });
         }
+        function calculatePercentage(amount) {
+            if (typeof amount !== 'number' || isNaN(amount)) {
+                throw new Error('The input should be a valid number.');
+            }
+            const percentage = (2 / 100) * amount;
+            return percentage;
+        }
         var tamount=parseInt(user.wallet) - parseInt(amount);
+        const result = calculatePercentage(parseInt(amount));
 
+        const cash=parseFloat(user.cashback) + result;
         const user1 = await User.update(
-            { wallet: tamount },
+            { wallet: tamount, cashback: cash },
             {
                 where: {
                     id: userid,
