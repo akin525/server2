@@ -82,10 +82,10 @@ module.exports = function(app) {
   app.post("/api/auth/createpin", Pin.createpin);
   app.post("/api/auth/changepin", Pin.changepin);
   app.get("/listdata", listdata.listdata);
-  app.post("/api/auth/airtime",[checkamount.checkamountcharacter], airtime.airtime);
+  app.post("/api/auth/airtime", airtime.airtimenew);
   app.post("/api/auth/buydata", buydata.buydata);
   app.post("/api/auth/buydatanew", buydata.buydatanew);
-  app.post("/api/auth/buydatageneral", buydata.buydatgeneral);
+  app.post("/api/auth/buydatageneral", buydata.buydatageneral);
   app.post("/api/auth/tv", tv.tv);
   app.post("/api/auth/verifytv", verifytv.verifytv);
   app.post("/api/auth/verifyelect", verifyelect.verifyelect);
