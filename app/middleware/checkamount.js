@@ -1,8 +1,23 @@
+const crypto = require("crypto");
+const key = Buffer.from('12345678901234567890123456789012', 'utf-8'); // 32-byte key
 
 
 checkamountcharacter = async (req, res, next) => {
-  const { amount } = req.body;
+  const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
+
+  const encryptedData = req.body.data;
+
+  let encryptedText = Buffer.from(encryptedData, 'hex');
+  let decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
+  let decrypted = decipher.update(encryptedText);
+  decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+  let value = JSON.parse(decrypted.toString());
+  req.decryptedData = value;
+
+  const { amount } = req.decryptedData;
   const specialCharPattern = /[-+]/;
+
 
   try {
 
