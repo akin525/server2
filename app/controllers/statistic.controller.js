@@ -30,22 +30,55 @@ exports.statistic = async (req, res) => {
             return res.status(200).send({status: "0", message: "Kindly login your account."});
         }
 
-        // Build the date filter for the specific year and month
+        // Build the date filter based on mode
         let dateFilter = {};
-        // if (year && month) {
-        //     dateFilter = {
-        //         date: {
-        //             [sequelize.Op.and]: [
-        //                 sequelize.where(sequelize.fn('YEAR', sequelize.col('date')), year),
-        //                 sequelize.where(sequelize.fn('MONTH', sequelize.col('date')), month)
-        //             ]
-        //         }
-        //     };
-        // } else
-        if (mode === "month") {
-            dateFilter = {
-                date: sequelize.where(sequelize.fn('YEAR', sequelize.col('date')), year)
-            };
+        let attributes = [];
+        let groupBy = [];
+        let orderBy = '';
+
+        switch (mode) {
+            case "month":
+                dateFilter = {
+                    date: sequelize.where(sequelize.fn('YEAR', sequelize.col('date')), year)
+                };
+                attributes = [
+                    [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%m-%Y'), 'month'],
+                    [sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']
+                ];
+                groupBy = [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%m-%Y')];
+                orderBy = 'DATE_FORMAT(date, "%m-%Y")';
+                break;
+            case "week":
+                dateFilter = {
+                    date: sequelize.where(sequelize.fn('YEAR', sequelize.col('date')), year)
+                };
+                attributes = [
+                    [sequelize.fn('YEARWEEK', sequelize.col('date')), 'week'],
+                    [sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']
+                ];
+                groupBy = [sequelize.fn('YEARWEEK', sequelize.col('date'))];
+                orderBy = 'YEARWEEK(date)';
+                break;
+            case "day":
+                dateFilter = {
+                    date: sequelize.where(sequelize.fn('YEAR', sequelize.col('date')), year)
+                };
+                attributes = [
+                    [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%d-%m-%Y'), 'day'],
+                    [sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']
+                ];
+                groupBy = [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%d-%m-%Y')];
+                orderBy = 'DATE_FORMAT(date, "%d-%m-%Y")';
+                break;
+            case "year":
+            default:
+                attributes = [
+                    [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%Y'), 'year'],
+                    [sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']
+                ];
+                groupBy = [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%Y')];
+                orderBy = 'DATE_FORMAT(date, "%Y")';
+                break;
         }
 
         const deposits = await deposit.findAll({
@@ -53,12 +86,9 @@ exports.statistic = async (req, res) => {
                 username: user.username,
                 ...dateFilter
             },
-            attributes: [
-                [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%m-%Y'), 'month'],
-                [sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']
-            ],
-            group: [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%m-%Y')],
-            order: [[sequelize.literal('DATE_FORMAT(date, "%Y-%m")'), 'ASC']]
+            attributes: attributes,
+            group: groupBy,
+            order: [[sequelize.literal(orderBy), 'ASC']]
         });
 
         const totaldeposit = await deposit.sum('amount', {
@@ -73,12 +103,9 @@ exports.statistic = async (req, res) => {
                 username: user.username,
                 ...dateFilter
             },
-            attributes: [
-                [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%m-%Y'), 'month'],
-                [sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']
-            ],
-            group: [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%m-%Y')],
-            order: [[sequelize.literal('DATE_FORMAT(date, "%Y-%m")'), 'ASC']]
+            attributes: attributes,
+            group: groupBy,
+            order: [[sequelize.literal(orderBy), 'ASC']]
         });
 
         const totalbill = await bill.sum('amount', {
@@ -101,4 +128,5 @@ exports.statistic = async (req, res) => {
         return res.status(500).send({message: error.message});
     }
 };
+
 
