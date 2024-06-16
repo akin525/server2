@@ -6,6 +6,9 @@ module.exports = (sequelize, Sequelize) => {
         charges:{
             type: Sequelize
         },
+        encryption:{
+            type: Sequelize
+        },
 
     });
 

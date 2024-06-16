@@ -1,21 +1,32 @@
 const crypto = require("crypto");
+const db = require("../models");
+const User = db.settings;
 const key = Buffer.from('12345678901234567890123456789012', 'utf-8'); // 32-byte key
 
 
 checkamountcharacter = async (req, res, next) => {
-  const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
+    const user = await User.findOne({
+      where: {
+      id: 1,
+      },
+  });
+  req.decryptedData = req.body;
+  if(user.encryption === 1){
 
-  const encryptedData = req.body.data;
+      const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
 
-  let encryptedText = Buffer.from(encryptedData, 'hex');
-  let decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
-  let decrypted = decipher.update(encryptedText);
-  decrypted = Buffer.concat([decrypted, decipher.final()]);
+      const encryptedData = req.body.data;
 
-  let value = JSON.parse(decrypted.toString());
-  req.decryptedData = value;
+      let encryptedText = Buffer.from(encryptedData, 'hex');
+      let decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
+      let decrypted = decipher.update(encryptedText);
+      decrypted = Buffer.concat([decrypted, decipher.final()]);
 
-  const { amount } = req.decryptedData;
+      let value = JSON.parse(decrypted.toString());
+      req.decryptedData = value;
+  }
+
+  const { amount } = req.body;
   const specialCharPattern = /[-+]/;
 
 

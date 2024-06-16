@@ -29,7 +29,9 @@ const dataValidation = [
     check('number', 'Enter your phone number').not().isEmpty(),
     check('number', 'Phone number must be exactly 11 digits').isLength({ min: 11, max: 11 }),
     check('amount', 'Please enter your amount').not().isEmpty(),
-    check('id', 'kindly provide ur network id').not().isEmpty()
+    check('id', 'kindly provide ur network id').not().isEmpty(),
+    check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
+    check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
 ];
 
 const usercheck=[

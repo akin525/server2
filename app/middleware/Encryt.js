@@ -1,35 +1,54 @@
 const crypto = require('crypto');
+const db = require("../models");
+const User = db.settings;
 
 // Define the constant key and IV
 const key = Buffer.from('12345678901234567890123456789012', 'utf-8'); // 32-byte key
 
-function encryptMiddleware(req, res, next) {
-    const text = req.body.text;
+const encryptMiddleware  = async (req, res, next) => {
+    const user = await User.findOne({
+        where: {
+          encryption: decryptedData.username,
+        },
+      });
+      return user;
+      if(user.encryption === 1){
+            const text = req.body.text;
 
-    let cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
-    let encrypted = cipher.update(text);
-    encrypted = Buffer.concat([encrypted, cipher.final()]);
+            let cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
+            let encrypted = cipher.update(text);
+            encrypted = Buffer.concat([encrypted, cipher.final()]);
 
-    req.encryptedData = {
-        iv: iv.toString('hex'),
-        encryptedData: encrypted.toString('hex')
-    };
+            req.body = {
+                iv: iv.toString('hex'),
+                encryptedData: encrypted.toString('hex')
+            };
+        }
 
     next();
 }
 
-function decryptMiddleware(req, res, next) {
-    const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
+const decryptMiddleware = async(req, res, next) =>{
+    const user = await User.findOne({
+        where: {
+        id: 1,
+        },
+    });
+    req.decryptedData = req.body;
+    if(user.encryption === 1){
 
-    const encryptedData = req.body.data;
+        const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
 
-    let encryptedText = Buffer.from(encryptedData, 'hex');
-    let decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
-    let decrypted = decipher.update(encryptedText);
-    decrypted = Buffer.concat([decrypted, decipher.final()]);
+        const encryptedData = req.body.data;
 
-    let value = JSON.parse(decrypted.toString());
-    req.decryptedData = value;
+        let encryptedText = Buffer.from(encryptedData, 'hex');
+        let decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
+        let decrypted = decipher.update(encryptedText);
+        decrypted = Buffer.concat([decrypted, decipher.final()]);
+
+        let value = JSON.parse(decrypted.toString());
+        req.decryptedData = value;
+    }
 
     next();
 }
