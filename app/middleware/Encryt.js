@@ -1,6 +1,6 @@
 const crypto = require('crypto');
 const db = require("../models");
-const User = db.settings;
+const Setting = db.settings;
 
 // Define the constant key and IV
 const key = Buffer.from('12345678901234567890123456789012', 'utf-8'); // 32-byte key
@@ -29,13 +29,13 @@ const encryptMiddleware  = async (req, res, next) => {
 }
 
 const decryptMiddleware = async(req, res, next) =>{
-    const user = await User.findOne({
+    const on = await Setting.findOne({
         where: {
         id: 1,
         },
     });
     req.decryptedData = req.body;
-    if(user.encryption === 1){
+    if(on.encryption === 1){
 
         const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
 
