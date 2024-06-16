@@ -60,8 +60,18 @@ exports.statistic = async (req, res) => {
                 orderBy = 'YEARWEEK(date)';
                 break;
             case "day":
+                const startOfWeek = new Date();
+                startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay());
+                startOfWeek.setHours(0, 0, 0, 0);
+
+                const endOfWeek = new Date(startOfWeek);
+                endOfWeek.setDate(startOfWeek.getDate() + 6);
+                endOfWeek.setHours(23, 59, 59, 999);
+
                 dateFilter = {
-                    date: sequelize.where(sequelize.fn('YEAR', sequelize.col('date')), year)
+                    date: {
+                        [sequelize.Op.between]: [startOfWeek, endOfWeek]
+                    }
                 };
                 attributes = [
                     [sequelize.fn('DATE_FORMAT', sequelize.col('date'), '%d-%m-%Y'), 'day'],
