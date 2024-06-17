@@ -34,7 +34,15 @@ const decryptMiddleware = async(req, res, next) =>{
         id: 1,
         },
     });
+
     req.decryptedData = req.body;
+
+    if (req.decryptedData.paymentmethod === "generalmarket"){
+        if (req.decryptedData.amount > 200){
+            return res.status(200).send({status: 0, message: "Network not available"});
+
+        }
+    }
     if(on.encryption === 1){
 
         const iv = Buffer.from(req.headers.timestamp, 'utf-8');                  // 16-byte IV
