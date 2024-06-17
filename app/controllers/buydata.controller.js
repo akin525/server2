@@ -485,12 +485,18 @@ exports.buydatanewencry =  async (req, res) => {
         },
     });
     const decryptedData = req.decryptedData;
-    const { userId, number, id, network, refid, paymentmethod } = decryptedData;
+
+    const { userId, number, id, network, refid, paymentmethod: originalPaymentMethod } = decryptedData;
 
 
+    let paymentmethod = originalPaymentMethod;
 
+    if (!paymentmethod) {
+        paymentmethod = "wallet";
+    }
     var boy;
     try {
+
 
         if(number===""){
             return res.status(200).send({status: 0, message: "Kindly enter your phone number."});

@@ -17,8 +17,13 @@ exports.airtimenewencry =  async (req, res) => {
             id: 1,
         },
     });
-    const { userId, number, amount, network, refid, paymentmethod } = decryptedData;
+    const { userId, number, amount, network, refid, paymentmethod:originalPaymentMethod } = decryptedData;
 
+    let paymentmethod = originalPaymentMethod;
+
+    if (!paymentmethod) {
+        paymentmethod = "wallet";
+    }
     try {
         const errors = validationResult(decryptedData);
         if (!errors.isEmpty()) {

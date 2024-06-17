@@ -16,7 +16,7 @@ const loginValidation = [
 ];
 const airtimeValidation = [
     check('network', 'provide ur network').not().isEmpty(),
-    check('paymentmethod', 'provide ur network').not().isEmpty(),
+    // check('paymentmethod', 'provide ur network').not().isEmpty(),
     check('number', 'Enter your phone number').not().isEmpty(),
     check('number', 'Phone number must be exactly 11 digits').isLength({ min: 11, max: 11 }),
     check('amount', 'Please enter your amount').not().isEmpty(),
@@ -26,8 +26,8 @@ const airtimeValidation = [
     check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
 ];
 const dataValidation = [
-    check('paymentmethod', 'provide ur network').not().isEmpty(),
-    check('network', 'provide ur network').not().isEmpty(),
+    // check('paymentmethod', 'provide ur network').not().isEmpty(),
+    // check('network', 'provide ur network').not().isEmpty(),
     check('number', 'Enter your phone number').not().isEmpty(),
     check('number', 'Phone number must be exactly 11 digits').isLength({ min: 11, max: 11 }),
     check('amount', 'Please enter your amount').not().isEmpty(),
