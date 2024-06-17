@@ -81,6 +81,7 @@ module.exports = function(app) {
   app.post("/api/auth/createpin", Pin.createpin);
   app.post("/api/auth/changepin", Pin.changepin);
   app.get("/listdata", listdata.listdata);
+  app.get("/listtv", listdata.listtv);
   // app.post("/api/auth/airtime",[validation.airtimeValidation], airtime.airtimenew);
   app.post("/api/auth/airtime",[encrypt.decryptMiddleware, validation.airtimeValidation], airtime.airtimenewencry);
   app.post("/api/auth/buydata",[encrypt.decryptMiddleware, validation.dataValidation], buydata.buydatanewencry);

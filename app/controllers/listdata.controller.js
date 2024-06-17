@@ -53,7 +53,7 @@ exports.listdata = async (req, res) => {
 exports.listtv = async (req, res) => {
     try {
         const options = {
-            method: 'POST',
+            method: 'GET',
             url: 'https://reseller.mcd.5starcompany.com.ng/api/v1/tv/'+req.body.network,
             headers: {
                 'Authorization': 'Bearer ChBfBAKZXxBhVDM6Vta54LAjNHcpNSzAhUcgmxr274wUetwtgGbbOJ1Uv0HoQckSLK8o9VIs1YlUUzP6ONe7rpXY2W7hg2YlYxcO7fJOP8uUPe3SG8hVKUwbrkkgmX4piw2yipJbY6R1tK5MyIFZYn',
@@ -70,9 +70,11 @@ exports.listtv = async (req, res) => {
                 network: process.type,
                 plan: process.name,
                 code: process.code,
+                category: "tv",
                 amount: process.amount,
                 tamount: process.amount,
-                ramount: process.amount
+                ramount: process.amount,
+                cat_id: process.code
             };
         });
 
