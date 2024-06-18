@@ -25,6 +25,10 @@ const airtimeValidation = [
     check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
     check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
 ];
+const reward = [
+    check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
+    check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
+];
 const dataValidation = [
     // check('paymentmethod', 'provide ur network').not().isEmpty(),
     // check('network', 'provide ur network').not().isEmpty(),
@@ -49,5 +53,6 @@ module.exports = {
     airtimeValidation,
     dataValidation,
     forgetValidation,
-    usercheck
+    usercheck,
+    reward
 };

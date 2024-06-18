@@ -28,7 +28,7 @@ exports.airtimenewencry =  async (req, res) => {
         const errors = validationResult(decryptedData);
         if (!errors.isEmpty()) {
             return res.status(200).json({
-                satus: 0,
+                status: 0,
                 msg: 'Errors',
                 errors: errors.array()
             });

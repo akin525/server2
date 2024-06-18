@@ -14,16 +14,27 @@ const gateway=db.gateway;
 require('dotenv').config();
 
 exports.buydatapin =  async (req, res) => {
-    const userikd = req.body.userId;
+    const setting1 = await gateway.findOne({
+        where: {
+            id: 1,
+        },
+    });
+    const decryptedData = req.decryptedData;
+
+    const { userId, number, id, network, refid, paymentmethod: originalPaymentMethod } = decryptedData;
+
+
+    let paymentmethod = originalPaymentMethod;
+
 
     var boy;
     try {
-        if(req.body.number===""){
+        if(!number){
             return res.status(200).send({status: "0", message: "Kindly enter your phone number."});
 
         }
 
-        if(req.body.id===""){
+        if(!id){
             return res.status(200).send({status: 0, message: "Kindly select your network."});
 
         }
@@ -31,7 +42,7 @@ exports.buydatapin =  async (req, res) => {
 
         const user = await User.findOne({
             where: {
-                id: userid,
+                id: userId,
             },
         });
 
@@ -42,7 +53,7 @@ exports.buydatapin =  async (req, res) => {
 
         const product= await datanew.findOne({
             where:{
-                id:req.body.id,
+                id,
             },
         });
         if(!product){
@@ -53,16 +64,26 @@ exports.buydatapin =  async (req, res) => {
         }
         const amount=product.tamount;
 const o=User.wallet < product.tamount;
-        if (parseInt(user.wallet) < parseInt(product.tamount))
-        {
-           return  res.status(200).send({
-                status:"0",
-               mu:o,
-               se:product.tamount,
-               balance:user.wallet,
-                message:"insufficient balance"
-            });
+        if (paymentmethod === "wallet") {
+            if (parseInt(user.wallet) < parseInt(amount)) {
+                return res.status(200).send({
+                    status: 0,
+                    balance: user.wallet,
+                    message: "Insufficient balance"
+                });
+            }
+        } else if (paymentmethod === "generalmarket") {
+
+            console.log(setting1.tamount);
+            if (parseInt(setting1.tamount) < parseInt(amount)) {
+                return res.status(200).send({
+                    status: 0,
+                    balance: user.wallet,
+                    message: "Insufficient generalmarket"
+                });
+            }
         }
+
 
         const totalbill= await bill.findOne({
             where:{
@@ -91,20 +112,27 @@ const o=User.wallet < product.tamount;
         });
 
 
-        const gbonus= parseInt(gm.amount) + parseInt(gm.tamount);
-        var tamount=parseInt(user.wallet) - parseInt(amount);
-        var profits=amount-product.amount;
+        if (paymentmethod === "wallet") {
+            const gbonus= parseInt(gm.amount) + parseInt(gm.tamount);
+            var tamount=parseInt(user.wallet) - parseInt(amount);
+            var profits=amount-product.amount;
+            const user1 = await User.update(
+                { wallet: tamount },
+                {
+                    where: {
+                        id: userId,
+                    },
 
-        const user1 = await User.update(
-            { wallet: tamount },
-            {
-                where: {
-                    id: userid,
-                },
-
+                });
+            const cc=await gmarket.create({
+                product:product.plan,
+                amount:gm.amount,
             });
-        console.log("user1");
-        console.log(user1);
+        } else if (paymentmethod === "generalmarket") {
+            const updatedWallet1 = parseInt(setting1.tamount) - parseInt(amount);
+            await gateway.update({tamount: updatedWallet1}, {where: {id: 1}});
+        }
+
 
         const bil= await bill.create({
             username:user.username,

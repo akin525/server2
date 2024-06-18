@@ -61,6 +61,9 @@ module.exports = (sequelize, Sequelize) => {
     cashback:{
       type:Sequelize.STRING
     },
+    reward:{
+      type:Sequelize.STRING
+    },
   });
 
   return User;
