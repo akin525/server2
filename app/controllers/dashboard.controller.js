@@ -88,7 +88,7 @@ exports.dashboard =  async (req, res) => {
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
                 general_market:parseInt(gm.tamount),
-                // bills:allbill,
+                cashback:user.cashback,
                 referbonus:referbonus??0,
                 roles: authorities}
 

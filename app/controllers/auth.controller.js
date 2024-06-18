@@ -219,11 +219,77 @@ exports.signup = async (req, res, next) => {
   }
 };
 
+// exports.signin = async (req, res) => {
+//
+//   const decryptedData = req.decryptedData;
+//   try {
+//     if (decryptedData.username===""){
+//       return res.status(200).send({
+//         status: "0",
+//         message: "Enter your username!"
+//       });
+//     }
+//     if (decryptedData.password===""){
+//       return res.status(200).send({
+//         status: "0",
+//         message: "Enter your password!"
+//       });
+//     }
+//     const user = await User.findOne({
+//       where: {
+//         username: decryptedData.username,
+//       },
+//     });
+//
+//     if (!user) {
+//       return res.status(200).send({status: "0", message: "User Not found." });
+//     }
+//
+//     const passwordIsValid = bcrypt.compareSync(
+//         decryptedData.password,
+//         user.password
+//     );
+//
+//     if (!passwordIsValid) {
+//       return res.status(200).send({
+//         status: "0",
+//         message: "Invalid Password!",
+//       });
+//     }
+//
+//     const token = jwt.sign({ id: user.id }, config.secret, {
+//       expiresIn: 86400, // 24 hours
+//     });
+//
+//     let authorities = [];
+//     const roles = await user.getRoles();
+//     for (let i = 0; i < roles.length; i++) {
+//       authorities.push("ROLE_" + roles[i].name.toUpperCase());
+//     }
+//
+//     // req.session.token = token;
+//
+//     return res.status(200).send({
+//       status:1,
+//       message:"login successful",
+//       data:{id: user.id,
+//         name: user.name,
+//         username: user.username,
+//         email: user.email,
+//         roles: authorities,
+//         token: token,
+//         pin:user.pin
+//       }
+//
+//     });
+//   } catch (error) {
+//     return res.status(200).send({ message: error.message });
+//   }
+// };
 exports.signin = async (req, res) => {
- 
-  const decryptedData = req.decryptedData;
+
   try {
-    const errors = validationResult(decryptedData);
+    const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(200).json({
         status: 0,
@@ -231,13 +297,13 @@ exports.signin = async (req, res) => {
         errors: errors.array()
       });
     }
-    if (decryptedData.username===""){
+    if (req.body.username===""){
       return res.status(200).send({
         status: "0",
         message: "Enter your username!"
       });
     }
-    if (decryptedData.password===""){
+    if (req.body.password===""){
       return res.status(200).send({
         status: "0",
         message: "Enter your password!"
@@ -245,7 +311,7 @@ exports.signin = async (req, res) => {
     }
     const user = await User.findOne({
       where: {
-        username: decryptedData.username,
+        username: req.body.username,
       },
     });
 
@@ -254,7 +320,7 @@ exports.signin = async (req, res) => {
     }
 
     const passwordIsValid = bcrypt.compareSync(
-        decryptedData.password,
+        req.body.password,
         user.password
     );
 
