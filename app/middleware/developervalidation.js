@@ -25,6 +25,17 @@ const airtimeValidation = [
     check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
     check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
 ];
+const airtimepin = [
+    check('network', 'provide ur network').not().isEmpty(),
+    // check('paymentmethod', 'provide ur network').not().isEmpty(),
+    check('number', 'Enter your phone number').not().isEmpty(),
+    check('number', 'Phone number must be exactly 11 digits').isLength({ min: 11, max: 11 }),
+    check('amount', 'Please enter your amount').not().isEmpty(),
+    check('amount', 'Amount must be at least 100').isInt({ min: 100 }),
+    check('amount', 'Amount must be at most 2000').isInt({ max: 2000 }),
+    check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
+    check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
+];
 const reward = [
     check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
     check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
@@ -54,5 +65,6 @@ module.exports = {
     dataValidation,
     forgetValidation,
     usercheck,
-    reward
+    reward,
+    airtimepin
 };
