@@ -14,7 +14,7 @@ exports.data =  async (req, res) => {
         let authorities = [];
 
 
-        const allplan= await data.findAll({
+        const allplan= await datanew.findAll({
             where:{
                 network:req.body.network,
                 status:'1',
@@ -34,7 +34,6 @@ exports.data =  async (req, res) => {
             message: error.message});
     }
 
-    res.status(200).send("User Content.");
 
 };
 exports.datanew =  async (req, res) => {
@@ -56,6 +55,43 @@ exports.datanew =  async (req, res) => {
                 // category:req.body.category,
                 status:'1',
                 server:server.code,
+            },
+        });
+
+        // console.log(allplan);
+        return res.status(200).send({
+            status:1,
+            data:{
+               plan: allplan
+            }
+        });
+
+    } catch (error) {
+        return res.status(201).send({
+            message: error.message});
+    }
+
+    res.status(200).send("User Content.");
+
+};
+exports.datapin=  async (req, res) => {
+    var boy;
+    try {
+
+
+
+        const server = await Server.findOne({
+            where:{
+                status:1,
+            },
+        });
+
+
+        const allplan= await datanew.findAll({
+            where:{
+                network:req.body.network,
+                // category:req.body.category,
+                status:'1'
             },
         });
 
