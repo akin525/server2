@@ -317,3 +317,67 @@ exports.fundverifytest =  async (req, res) => {
 
 
 };
+exports.initiatefund = async (req, res) =>{
+    const {amount, email, refid} =req.query;
+ console.log('akinnnnnnnnnnnnnnnnnnnnnnnnnnnn');
+ console.log(req.query);
+ console.log(amount);
+ console.log(email);
+ console.log(refid);
+
+    const options = {
+        method: 'POST',
+        // url: `https://api-d.squadco.com/transaction/initiate`,
+        url: `https://sandbox-api-d.squadco.com/transaction/initiate`,
+        headers: {
+            'Authorization': 'sandbox_sk_1e60156e0e029ec62daa87e91f5a3b0f1a0923246bec',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            amount: amount * 100,
+            email: email,
+            currency: "NGN",
+            initiate_type: "inline",
+            transaction_ref: refid,
+            callback_url: "http://localhost:8080/api/auth/checking"
+        })
+    };
+
+    request(options, function (error, response) {
+        if (error) console.log(error);
+        var data = JSON.parse(response.body);
+        console.log('sammmmmmmmmmmmm');
+        console.log(data);
+        if (data.status === 200) {
+            const checkout = data.data.checkout_url;
+            // window.location.href=checkout;
+            // if (typeof window !== 'undefined') {
+            res.send({ checkout_url: checkout });
+            // } else {
+            //     console.log('Redirect URL:', checkout);
+            // }
+        }
+    })
+}
+
+function sendMessageToFlutter(eventType, message) {
+    const messageData = {
+        event: eventType,
+        message: message
+    };
+
+    // Post the message
+    window.postMessage(JSON.stringify(messageData), '*');
+}
+
+// Example usage
+exports.checking = async (req, res) =>{
+    const {reference} =req.query;
+ console.log('akinnnnnnnnnnnnnnnnnnnnnnnnnnnn');
+ console.log(req.query);
+
+    sendMessageToFlutter("verified", {"status":0, "reference":reference});
+
+    window.web2app.biometric.saveauth({'status':0, 'reference':reference});
+
+}

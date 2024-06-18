@@ -519,7 +519,7 @@ console.log(setting1.tamount);
 
         const newBill = await bill.create({
             username: user.username,
-            plan: "Airtime--" + net,
+            plan: "Airtime--" + network,
             amount,
             server_res: "airtime",
             result: "0",
