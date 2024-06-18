@@ -339,7 +339,7 @@ exports.initiatefund = async (req, res) =>{
             currency: "NGN",
             initiate_type: "inline",
             transaction_ref: refid,
-            callback_url: "http://localhost:8080/api/auth/checking"
+            callback_url: "https://server.savebills.com.ng/api/auth/checking"
         })
     };
 
