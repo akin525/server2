@@ -43,6 +43,7 @@ const account3=require("../controllers/generateaccountall1.controller");
 const { validation }  = require("../middleware");
 const statistic=require("../controllers/statistic.controller");
 const reward=require("../controllers/reward.controller");
+const {join} = require("path");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -131,4 +132,10 @@ module.exports = function(app) {
 
   app.post("/api/auth/signout", controller.signout);
   app.post("/api/auth/delete", controller.delete);
+
+
+  app.get('/getfund', (req, res) => {
+
+    res.sendFile(join(__dirname, 'public', 'index.html'));
+  });
 };

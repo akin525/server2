@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Squad Payment</title>
+  <script src="https://checkout.squadco.com/widget/squad.min.js"></script>
+</head>
+<body>
+
+<script>
+  function getQueryParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const pairs = queryString.split("&");
+    for (let i = 0; i < pairs.length; i++) {
+      const pair = pairs[i].split("=");
+      params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return params;
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const params = getQueryParams();
+    if (params.email && params.amount) {
+      // document.getElementById("email-address").value = params.email;
+      SquadPay(params.email, params.amount)
+    }
+
+  });
+
+  function SquadPay(email, amount) {
+    const squadInstance = new squad({
+      onClose: () => console.log("Widget closed"),
+      onLoad: () => console.log("Widget loaded successfully"),
+      onSuccess: () => console.log(`Linked successfully`),
+      key: "sandbox_pk_1e60156e0e029ec62daa95e319435c6c020223526e98",
+      email: email,
+      amount: amount * 100,
+      currency_code: "NGN",
+      callback_url: "https://server.savebills.com.ng/api/auth/checking"
+    });
+
+    squadInstance.setup();
+    squadInstance.open();
+  }
+</script>
+</body>
+</html>
