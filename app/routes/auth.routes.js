@@ -44,6 +44,9 @@ const { validation }  = require("../middleware");
 const statistic=require("../controllers/statistic.controller");
 const reward=require("../controllers/reward.controller");
 const {join} = require("path");
+const db = require("../models");
+const setting=db.settings ;
+const {static} = require("express");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -133,9 +136,24 @@ module.exports = function(app) {
   app.post("/api/auth/signout", controller.signout);
   app.post("/api/auth/delete", controller.delete);
 
+    app.use(static(join(__dirname, 'public')));
 
-  app.get('/getfund', (req, res) => {
+    app.get('/getfund', async (req, res) => {
+        try {
+            // Fetch data from the database using Sequelize
+            const pay = await setting.findOne({ where: { id: 1 } });
+            // const { param } = req.query;
+            // const newUrl = `/getfund?key=${pay.squadco_key}&param=${param}`;
 
-    res.sendFile(join(__dirname, 'public', 'index.html'));
-  });
+            if (!pay || pay.squadco !== 1) {
+                res.sendFile(join(__dirname, 'public', 'index1.html'));
+            } else {
+                res.sendFile(join(__dirname, 'public', 'index.html'));
+            }
+
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Internal Server Error');
+        }
+    });
 };

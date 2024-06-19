@@ -10,6 +10,12 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize
         },
 
+        squadco:{
+            type: Sequelize
+        },
+        squadco_key:{
+            type: Sequelize
+        },
     });
 
     return settings;

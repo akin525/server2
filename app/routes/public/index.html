@@ -31,19 +31,44 @@
 
   function SquadPay(email, amount) {
     const squadInstance = new squad({
-      onClose: () => console.log("Widget closed"),
-      onLoad: () => console.log("Widget loaded successfully"),
-      onSuccess: () => console.log(`Linked successfully`),
+      onClose: () => {
+        console.log("Widget closed");
+        sendMessageToFlutter("verified", {"status":0, "message":"success"});
+      },
+      onLoad: () => {
+        console.log("Widget loaded successfully");
+        sendMessageToFlutter("verified", {"status":0, "message":"success"});
+      },
+      onSuccess: ()=>{ console.log(`Linked successfully`);
+        sendMessageToFlutter("verified", {"status":0, "message":"success"});
+        },
+
       key: "sandbox_pk_1e60156e0e029ec62daa95e319435c6c020223526e98",
       email: email,
       amount: amount * 100,
       currency_code: "NGN",
-      callback_url: "https://server.savebills.com.ng/api/auth/checking"
+      callback_url: "http://localhost:8080/api/auth/checking"
     });
 
     squadInstance.setup();
     squadInstance.open();
   }
+
+  function sendMessageToFlutter(eventType, message) {
+    const messageData = {
+      event: eventType,
+      message: message
+    };
+
+    // Post the message
+    // if (isMainThread) {
+    //   console.error('This function should be called from within a worker thread.');
+    // } else {
+      window.postMessage(messageData);
+    // }
+  }
+
+
 </script>
 </body>
 </html>

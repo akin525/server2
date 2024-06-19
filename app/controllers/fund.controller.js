@@ -4,6 +4,7 @@ const deposit=db.deposit;
 var request = require('request');
 const settings=db.settings;
 const charges=db.settings;
+const { Worker, isMainThread, parentPort } = require('worker_threads');
 
 exports.fund =  async (req, res) => {
     const userid = req.body.userId;
@@ -367,7 +368,11 @@ function sendMessageToFlutter(eventType, message) {
     };
 
     // Post the message
-    window.postMessage(JSON.stringify(messageData), '*');
+    if (isMainThread) {
+        console.error('This function should be called from within a worker thread.');
+    } else {
+        parentPort.postMessage(messageData);
+    }
 }
 
 // Example usage
@@ -378,6 +383,6 @@ exports.checking = async (req, res) =>{
 
     sendMessageToFlutter("verified", {"status":0, "reference":reference});
 
-    window.web2app.biometric.saveauth({'status':0, 'reference':reference});
+    // window.web2app.biometric.saveauth({'status':0, 'reference':reference});
 
 }
