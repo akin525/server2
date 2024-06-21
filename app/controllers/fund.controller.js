@@ -381,7 +381,7 @@ exports.checking = async (req, res) =>{
  console.log('akinnnnnnnnnnnnnnnnnnnnnnnnnnnn');
  console.log(req.query);
 
-    sendMessageToFlutter("verified", {"status":0, "reference":reference});
+    sendMessageToFlutter("verified", reference);
 
     // window.web2app.biometric.saveauth({'status':0, 'reference':reference});
 

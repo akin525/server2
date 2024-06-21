@@ -784,6 +784,7 @@ const o=User.wallet < product.tamount;
 
         if (paymentmethod === "wallet" && paymentmethod === "generalmarket") {
 
+
         var options = {
             'method': 'POST',
             'url': process.env.BuyData_Url,
