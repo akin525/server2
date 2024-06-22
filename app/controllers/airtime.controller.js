@@ -9,6 +9,7 @@ const { body, validationResult } = require('express-validator');
 const nodemailer = require("nodemailer");
 const net = require("net");
 const setting=db.gateway;
+require('dotenv').config();
 
 exports.airtimenewencry =  async (req, res) => {
     const decryptedData = req.decryptedData;
@@ -325,7 +326,7 @@ console.log(setting1.tamount);
         }
 
 
-        if (paymentmethod === "wallet" && paymentmethod === "generalmarket") {
+        if (paymentmethod === "wallet" || paymentmethod === "generalmarket") {
 
 
             var options =

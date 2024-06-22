@@ -484,29 +484,22 @@ exports.buydatanewencry =  async (req, res) => {
             id: 1,
         },
     });
+
     const decryptedData = req.decryptedData;
 
     const { userId, number, id, network, refid, paymentmethod: originalPaymentMethod } = decryptedData;
 
+    let paymentmethod = originalPaymentMethod || "wallet";
 
-    let paymentmethod = originalPaymentMethod;
-
-    if (!paymentmethod) {
-        paymentmethod = "wallet";
+    if (!number) {
+        return res.status(200).send({ status: 0, message: "Kindly enter your phone number." });
     }
-    var boy;
+    if (!id) {
+        return res.status(200).send({ status: 0, message: "Kindly select your network." });
+    }
+
     try {
 
-
-        if(number===""){
-            return res.status(200).send({status: 0, message: "Kindly enter your phone number."});
-
-        }
-        if(id===""){
-            return res.status(200).send({status: 0, message: "Kindly select your network."});
-
-        }
-        let authorities = [];
 
         const user = await User.findOne({
             where: {
@@ -515,99 +508,93 @@ exports.buydatanewencry =  async (req, res) => {
         });
 
         if (!user) {
-            // req.session = null;
-            return res.status(200).send({status: 0, message: "Kindly login your account."});
+            return res.status(200).send({ status: 0, message: "Kindly login your account." });
         }
 
-        const product= await datanew.findOne({
-            where:{
+        const product = await datanew.findOne({
+            where: {
                 id,
             },
         });
-        if(!product){
+
+        if (!product) {
             return res.status(200).send({
-                status:0,
-                message:"product not Found"
+                status: 0,
+                message: "Product not found"
             });
         }
-        const amount=product.tamount;
-const o=User.wallet < product.tamount;
-        if (paymentmethod === "wallet") {
-            if (parseInt(user.wallet) < parseInt(amount)) {
-                return res.status(200).send({
-                    status: 0,
-                    balance: user.wallet,
-                    message: "Insufficient balance"
-                });
-            }
-        } else if (paymentmethod === "generalmarket") {
 
-            console.log(setting1.tamount);
-            if (parseInt(setting1.tamount) < parseInt(amount)) {
-                return res.status(200).send({
-                    status: 0,
-                    balance: user.wallet,
-                    message: "Insufficient generalmarket"
-                });
-            }
+        const amount = product.tamount;
+
+        if (paymentmethod === "wallet" && parseInt(user.wallet) < parseInt(amount)) {
+            return res.status(200).send({
+                status: 0,
+                balance: user.wallet,
+                message: "Insufficient balance"
+            });
+        } else if (paymentmethod === "generalmarket" && parseInt(setting1.tamount) < parseInt(amount)) {
+            return res.status(200).send({
+                status: 0,
+                balance: user.wallet,
+                message: "Insufficient generalmarket"
+            });
         }
 
-        const totalbill= await bill.findOne({
-            where:{
+        const totalbill = await bill.findOne({
+            where: {
                 refid,
             },
         });
-        if (totalbill)
-        {
+
+        if (totalbill) {
             return res.status(200).send({
-                status: "0",
-                message: "duplicate transaction"
+                status: 0,
+                message: "Duplicate transaction"
             });
         }
 
-
-        const gm= await gateway.findOne({
-            where:{
-                id:1,
+        const gm = await gateway.findOne({
+            where: {
+                id: 1,
             },
         });
 
-        const bil= await bill.create({
-            username:user.username,
-            plan:product.plan,
-            amount:product.tamount,
-            server_res:"data",
-            result:"0",
-            phone:number,
-            refid:refid,
-
+        const bil = await bill.create({
+            username: user.username,
+            plan: product.plan,
+            amount: product.tamount,
+            server_res: "data",
+            result: "0",
+            phone: number,
+            refid: refid,
         });
 
-        const pro= await  profit.create({
-            username:user.username,
-            amount:profits,
-            plan:product.plan,
+        const profits = amount - product.amount;
+        const pro = await profit.create({
+            username: user.username,
+            amount: profits,
+            plan: product.plan,
         });
 
         if (paymentmethod === "wallet") {
-        const gbonus= parseInt(gm.amount) + parseInt(gm.tamount);
-        var tamount=parseInt(user.wallet) - parseInt(amount);
-        var profits=amount-product.amount;
-        const user1 = await User.update(
-            { wallet: tamount },
-            {
-                where: {
-                    id: userId,
-                },
+            const tamount = parseInt(user.wallet) - parseInt(amount);
+            await User.update(
+                { wallet: tamount },
+                {
+                    where: {
+                        id: userId,
+                    },
+                }
+            );
 
-            });
-            const cc=await gmarket.create({
-                product:product.plan,
-                amount:gm.amount,
+            const gbonus = parseInt(gm.amount) + parseInt(gm.tamount);
+            const cc = await gmarket.create({
+                product: product.plan,
+                amount: gm.amount,
             });
         } else if (paymentmethod === "generalmarket") {
             const updatedWallet1 = parseInt(setting1.tamount) - parseInt(amount);
-            await gateway.update({tamount: updatedWallet1}, {where: {id: 1}});
+            await gateway.update({ tamount: updatedWallet1 }, { where: { id: 1 } });
         } else if (paymentmethod === "atm") {
 
             const options = {
