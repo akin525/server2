@@ -575,6 +575,7 @@ exports.buydatanewencry =  async (req, res) => {
             amount: profits,
             plan: product.plan,
         });
+        const gbonus = parseInt(gm.amount) + parseInt(gm.tamount);
 
         if (paymentmethod === "wallet") {
             const tamount = parseInt(user.wallet) - parseInt(amount);
@@ -587,7 +588,6 @@ exports.buydatanewencry =  async (req, res) => {
                 }
             );
 
-            const gbonus = parseInt(gm.amount) + parseInt(gm.tamount);
             const cc = await gmarket.create({
                 product: product.plan,
                 amount: gm.amount,
@@ -769,7 +769,7 @@ exports.buydatanewencry =  async (req, res) => {
         }
 
 
-        if (paymentmethod === "wallet" && paymentmethod === "generalmarket") {
+        if (paymentmethod === "wallet" || paymentmethod === "generalmarket") {
 
 
         var options = {
@@ -847,7 +847,7 @@ exports.buydatanewencry =  async (req, res) => {
                         '</li><li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Amount: NGN' + product.tamount+'</strong></p></li>\n' +
                         '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Refid: ' + refid+'</strong></p></li>\n' +
                         '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Phone Number; ' + number+'</strong></p></li>\n' +
-                        '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Balance: NGN' + tamount+'</strong></p></li>\n' +
+                        '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Balance: check your app</strong></p></li>\n' +
                         '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Date: ' + new Date()+'</strong></p></li></ul></td></tr></table></td></tr></table></td>\n' +
                         '</tr><tr><td align="left" style="Margin:0;padding-bottom:10px;padding-top:15px;padding-left:20px;padding-right:20px"><table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="left" style="padding:0;Margin:0;width:560px"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">If you have any questions/issues, please contact us at&nbsp;<a href="mailto:info@savebills.com.ng" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">info@savebills.com.ng</a><br>Thanks for choosing us</p>\n' +
                         '</td></tr></table></td></tr></table></td></tr></table></td>\n' +
