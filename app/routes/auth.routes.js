@@ -91,8 +91,8 @@ module.exports = function(app) {
   app.post("/api/auth/reward",[encrypt.decryptMiddleware, validation.reward], reward.reward);
   app.post("/api/auth/airtime",[encrypt.decryptMiddleware, validation.airtimeValidation], airtime.airtimenewencry);
   app.post("/api/auth/airtimepin",[encrypt.decryptMiddleware, validation.airtimepin], airtime.airtimepin);
-  app.post("/api/auth/buydata",[encrypt.decryptMiddleware, validation.dataValidation], buydata.buydatanewencry);
-  app.post("/api/auth/buydatanew", buydata.buydatanew);
+  app.post("/api/auth/buydatanew",[encrypt.decryptMiddleware, validation.dataValidation], buydata.buydatanewencry);
+  // app.post("/api/auth/buydatanew", buydata.buydatanew);
   app.post("/api/auth/buydatageneral",[encrypt.decryptMiddleware, validation.dataValidation], buydata.buydatageneral);
   app.post("/api/auth/tv", tv.tv);
   app.post("/api/auth/verifytv", verifytv.verifytv);
