@@ -1,7 +1,7 @@
 const crypto = require('crypto');
 const db = require("../models");
 const Setting = db.settings;
-
+const checkMyTransaction =require("../middleware/generalmarket");
 // Define the constant key and IV
 const key = Buffer.from('12345678901234567890123456789012', 'utf-8'); // 32-byte key
 
@@ -53,7 +53,16 @@ const decryptMiddleware = async(req, res, next) =>{
         req.decryptedData = value;
     }
 
-    next();
+    if(req.decryptedData.paymentmethod === "generalmarket") {
+        const check = await checkMyTransaction.checkMyTransaction(req.decryptedData,res,next)
+        if (check.status === 1){
+            next();
+        }else {
+            return res.status(200).send({ status: 0, message: 'Do upto two transaction today to enable General market.' });
+        }
+    }else{
+        next();
+    }
 }
 
 module.exports = {
