@@ -29,7 +29,7 @@
 
   });
 
-  function SquadPay(email, amount) {
+  function SquadPay(email, amount, refid) {
     const squadInstance = new squad({
       onClose: () => {
         console.log("Widget closed");
@@ -46,6 +46,7 @@
       key: "sandbox_pk_1e60156e0e029ec62daa95e319435c6c020223526e98",
       email: email,
       amount: amount * 100,
+      transaction_ref: refid,
       currency_code: "NGN",
       callback_url: "https://server.savebills.com.ng/api/auth/checking"
       // callback_url: "https://4660-2c0f-f5c0-72d-9995-5b1-4106-8c41-c6ad.ngrok-free.app/api/auth/checking"
