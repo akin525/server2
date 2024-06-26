@@ -599,9 +599,11 @@ exports.buydatanewencry =  async (req, res) => {
 
             const options = {
                 method: 'GET',
-                url: `https://api-d.squadco.com/transaction/verify/${refid}`,
+                // url: `https://api-d.squadco.com/transaction/verify/${refid}`,
+                url: `https://sandbox-api-d.squadco.com/transaction/verify/${refid}`,
                 headers: {
-                    Authorization: 'Bearer sk_61de77ec58f5d4494f922d7be279917c3dea3149'
+                    // Authorization: 'Bearer sk_61de77ec58f5d4494f922d7be279917c3dea3149'
+                    Authorization: 'Bearer sandbox_sk_1e60156e0e029ec62daa87e91f5a3b0f1a0923246bec'
                 }
             };
 
