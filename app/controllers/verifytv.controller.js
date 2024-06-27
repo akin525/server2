@@ -23,7 +23,7 @@ exports.verifytv =  async (req, res) => {
             formData: {
                 'service': 'tv',
                 'coded': req.body.network,
-                'phone': req.body.number
+                'number': req.body.number
             }
         };
 
