@@ -31,6 +31,12 @@ exports.buytv =  async (req, res) => {
                 id:req.body.id,
             },
         });
+        if (!product) {
+            return res.status(200).send({
+                status: 0,
+                message: "Product not found"
+            });
+        }
         const amount=product.tamount;
         const o=User.wallet < product.tamount;
         console.log("user.wallet");
@@ -91,7 +97,7 @@ exports.buytv =  async (req, res) => {
             username:user.username,
             plan:product.plan,
             amount:product.tamount,
-            server_res:"data",
+            server_res:"tv",
             result:"0",
             phone:req.body.number,
             refid:req.body.refid,
@@ -106,13 +112,13 @@ exports.buytv =  async (req, res) => {
                 'Content-Type': 'application/json'
             },
 
-            body: JSON.stringify({
+            formData: {
                 "coded": product.cat_id,
                 "number": req.body.number,
                 "payment": "wallet",
                 "promo": "0",
                 "ref": req.body.refid
-            })
+            }
         };
 
         request(options, function (error, response) {
