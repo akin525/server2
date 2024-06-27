@@ -28,6 +28,9 @@ module.exports = (sequelize, Sequelize) => {
         token:{
             type: Sequelize.STRING
         },
+        paymentmethod:{
+            type: Sequelize.STRING
+        },
 
     });
     // bill.hasMany(sequelize.models.deposits, { foreignKey: 'username', as: 'deposits' });

@@ -84,6 +84,22 @@ console.log(setting1.tamount);
                     message: "Insufficient generalmarket"
                 });
             }
+        } else if (paymentmethod === "point"){
+            if (parseInt(user.point) < parseInt(amount)) {
+                return res.status(200).send({
+                    status: 0,
+                    balance: user.wallet,
+                    message: "Insufficient Point"
+                });
+            }
+        } else if (paymentmethod === "reward"){
+            if (parseInt(user.reward) < parseInt(amount)) {
+                return res.status(200).send({
+                    status: 0,
+                    balance: user.wallet,
+                    message: "Insufficient reward"
+                });
+            }
         }
 
         const existingBill = await bill.findOne({where: {refid}});
@@ -107,7 +123,8 @@ console.log(setting1.tamount);
             server_res: "airtime",
             result: "0",
             phone: number,
-            refid
+            refid,
+            paymentmethod,
         });
         const bo="Airtime Successfully Delivered To "+req.body.number;
 
@@ -121,14 +138,13 @@ console.log(setting1.tamount);
                 'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
                 'Content-Type': 'application/json'
             },
-            formData: {
-                "to": "/topics/"+user.username,
+            body: JSON.stringify({
+                "to": "/topics/" + user.username,
                 "notification": {
                     "body": bo,
                     "title": "Airtime Purchase"
-
                 }
-            }
+            })
         }
 
 
@@ -154,15 +170,21 @@ console.log(setting1.tamount);
             console.log(updatedWallet1);
             await setting.update({tamount: updatedWallet1}, {where: {id: 1}});
 
-        } else if (paymentmethod === "atm") {
+        } else if(paymentmethod === "reward") {
+            const updatedWallet2 = parseInt(user.reward) - parseInt(amount);
+            await User.update({reward: updatedWallet2}, {where: {id: 1}});
+        }else if(paymentmethod === "point") {
+            const updatedWallet3 = parseInt(user.point) - parseInt(amount);
+            await User.update({point: updatedWallet3}, {where: {id: 1}});
+        }else if (paymentmethod === "atm") {
 
             const options = {
                 method: 'GET',
-                // url: `https://api-d.squadco.com/transaction/verify/${refid}`,
-                url: `https://sandbox-api-d.squadco.com/transaction/verify/${refid}`,
+                url: `https://api-d.squadco.com/transaction/verify/${refid}`,
+                // url: `https://sandbox-api-d.squadco.com/transaction/verify/${refid}`,
                 headers: {
-                    // Authorization: 'Bearer sk_61de77ec58f5d4494f922d7be279917c3dea3149'
-                    Authorization: 'Bearer sandbox_sk_1e60156e0e029ec62daa87e91f5a3b0f1a0923246bec'
+                    Authorization: 'Bearer sk_61de77ec58f5d4494f922d7be279917c3dea3149'
+                    // Authorization: 'Bearer sandbox_sk_1e60156e0e029ec62daa87e91f5a3b0f1a0923246bec'
                 }
             };
 
@@ -328,7 +350,7 @@ console.log(setting1.tamount);
         }
 
 
-        if (paymentmethod === "wallet" || paymentmethod === "generalmarket") {
+        if (paymentmethod === "wallet" || paymentmethod === "generalmarket" || paymentmethod === "reward" || paymentmethod === "point") {
 
 
             var options =
@@ -508,6 +530,22 @@ console.log(setting1.tamount);
                     message: "Insufficient generalmarket"
                 });
             }
+        } else if (paymentmethod === "point"){
+            if (parseInt(user.point) < parseInt(amount)) {
+                return res.status(200).send({
+                    status: 0,
+                    balance: user.wallet,
+                    message: "Insufficient Point"
+                });
+            }
+        } else if (paymentmethod === "reward"){
+            if (parseInt(user.reward) < parseInt(amount)) {
+                return res.status(200).send({
+                    status: 0,
+                    balance: user.wallet,
+                    message: "Insufficient reward"
+                });
+            }
         }
 
         const existingBill = await bill.findOne({where: {refid}});
@@ -541,14 +579,13 @@ console.log(setting1.tamount);
                 'Authorization': 'Bearer AAAA38EpG3M:APA91bFtHTWf5YVXtGZAEPNdz9uAQfRn8ZjuJftV6FNW6odrslr2pafrJL5Jy5WT-ZlEP_2mwZ5XaxYFZSdtf_-Xa6vPxTzZgoT26JaWvLY0Cjlz1oAJAZf9mg8WTtT7fiwiapoMXTsW',
                 'Content-Type': 'application/json'
             },
-            formData: {
-                "to": "/topics/"+user.username,
+            body: JSON.stringify({
+                "to": "/topics/" + user.username,
                 "notification": {
                     "body": bo,
-                    "title": "Airtime Pin Purchase"
-
+                    "title": "Airtime Purchase"
                 }
-            }
+            })
         }
 
 
@@ -574,6 +611,12 @@ console.log(setting1.tamount);
             console.log(updatedWallet1);
             await setting.update({tamount: updatedWallet1}, {where: {id: 1}});
 
+        }else if(paymentmethod === "reward") {
+            const updatedWallet2 = parseInt(user.reward) - parseInt(amount);
+            await User.update({reward: updatedWallet2}, {where: {id: 1}});
+        }else if(paymentmethod === "point") {
+            const updatedWallet3 = parseInt(user.point) - parseInt(amount);
+            await User.update({point: updatedWallet3}, {where: {id: 1}});
         } else if (paymentmethod === "atm") {
             const options = {
                 method: 'GET',
@@ -680,7 +723,7 @@ console.log(setting1.tamount);
                                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Refid: ' + req.body.refid+'</strong></p></li>\n' +
                                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Phone Number; ' + req.body.number+'</strong></p></li>\n' +
                                             // '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Balance: NGN' + updatedWallet+'</strong></p></li>\n' +
-                                            '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Token: ' + response.body.token+'</strong></p></li>\n' +
+                                            '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Token: ' + data.token+'</strong></p></li>\n' +
                                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Date: ' + new Date()+'</strong></p></li></ul></td></tr></table></td></tr></table></td>\n' +
                                             '</tr><tr><td align="left" style="Margin:0;padding-bottom:10px;padding-top:15px;padding-left:20px;padding-right:20px"><table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="left" style="padding:0;Margin:0;width:560px"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">If you have any questions/issues, please contact us at&nbsp;<a href="mailto:info@savebills.com.ng" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">info@savebills.com.ng</a><br>Thanks for choosing us</p>\n' +
                                             '</td></tr></table></td></tr></table></td></tr></table></td>\n' +
@@ -748,7 +791,7 @@ console.log(setting1.tamount);
         }
 
 
-        if (paymentmethod === "wallet" || paymentmethod === "generalmarket") {
+        if (paymentmethod === "wallet" || paymentmethod === "generalmarket" || paymentmethod === "reward" || paymentmethod === "point") {
 
 
             var options =
@@ -780,7 +823,7 @@ console.log(setting1.tamount);
                     const objectToUpdate = {
                         result: 1,
                         server_res: response.body,
-                        token: response.body.token
+                        token: data.token
                     }
 
                     bill.findAll({where: {id: newBill.id}}).then((result) => {
@@ -818,7 +861,7 @@ console.log(setting1.tamount);
                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Refid: ' + req.body.refid + '</strong></p></li>\n' +
                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Phone Number; ' + req.body.number + '</strong></p></li>\n' +
                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Balance: NGN0</strong></p></li>\n' +
-                            '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Token: '+response.body.token +'</strong></p></li>\n' +
+                            '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Token: '+data.token +'</strong></p></li>\n' +
                             '<li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:\'merriweather sans\', \'helvetica neue\', helvetica, arial, sans-serif;line-height:21px;color:#333333;font-size:14px"><strong>Date: ' + new Date() + '</strong></p></li></ul></td></tr></table></td></tr></table></td>\n' +
                             '</tr><tr><td align="left" style="Margin:0;padding-bottom:10px;padding-top:15px;padding-left:20px;padding-right:20px"><table cellpadding="0" cellspacing="0" width="100%" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="left" style="padding:0;Margin:0;width:560px"><table cellpadding="0" cellspacing="0" width="100%" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px"><tr><td align="center" style="padding:0;Margin:0;padding-top:10px;padding-bottom:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">If you have any questions/issues, please contact us at&nbsp;<a href="mailto:info@savebills.com.ng" target="_blank" style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;text-decoration:underline;color:#5C68E2;font-size:14px">info@savebills.com.ng</a><br>Thanks for choosing us</p>\n' +
                             '</td></tr></table></td></tr></table></td></tr></table></td>\n' +
