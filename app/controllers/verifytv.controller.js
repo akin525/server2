@@ -15,9 +15,10 @@ exports.verifytv =  async (req, res) => {
 
         var options = {
             'method': 'POST',
-            'url': 'https://integration.mcd.5starcompany.com.ng/api/reseller/validate',
+            'url': process.env.VERIFY_TV_Url,
             'headers': {
-                'Authorization': 'MCDKEY_903sfjfi0ad833mk8537dhc03kbs120r0h9a'
+                'Authorization': 'Bearer '+process.env.Authorize_Key,
+                'Content-Type': 'application/json'
             },
             formData: {
                 'service': 'tv',
