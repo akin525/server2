@@ -19,16 +19,20 @@ const checkMyTransaction = async (req, res, next) => {
         }
 
         const today = new Date();
-        const formattedDate = format(today, 'yyyy-MM-dd');
+        const formattedDate = today.toISOString().split('T')[0];
         console.log("formattedDate");
         console.log(formattedDate);
 
         const transactionCount = await Bill.count({
             where: {
                 username: user.username,
-                created_at: formattedDate
+                createdAt: {
+                    [Op.gte]: new Date(formattedDate),
+                    [Op.lt]: new Date(new Date(formattedDate).setDate(new Date(formattedDate).getDate() + 1))
+                }
             }
         });
+
         console.log("transactionCount");
         console.log(transactionCount);
 
