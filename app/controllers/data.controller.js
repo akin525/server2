@@ -49,14 +49,25 @@ exports.datanew =  async (req, res) => {
         });
 
 
-        const allplan= await datanew.findAll({
-            where:{
-                network:req.body.network,
-                // category:req.body.category,
-                status:'1',
-                server:server.code,
-            },
-        });
+        let allplan=[];
+        if (req.body.network === "smile") {
+             allplan = await datanew.findAll({
+                where: {
+                    network: req.body.network,
+                    // category:req.body.category,
+                    status: '1',
+                },
+            });
+        }else {
+             allplan = await datanew.findAll({
+                where: {
+                    network: req.body.network,
+                    // category:req.body.category,
+                    status: '1',
+                    server: server.code,
+                },
+            });
+        }
 
         // console.log(allplan);
         return res.status(200).send({
