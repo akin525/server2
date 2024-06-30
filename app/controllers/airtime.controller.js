@@ -84,12 +84,12 @@ console.log(setting1.tamount);
                     message: "Insufficient generalmarket"
                 });
             }
-        } else if (paymentmethod === "point"){
-            if (parseInt(user.point) < parseInt(amount)) {
+        } else if (paymentmethod === "cashback"){
+            if (parseInt(user.cashback) < parseInt(amount)) {
                 return res.status(200).send({
                     status: 0,
                     balance: user.wallet,
-                    message: "Insufficient Point"
+                    message: "Insufficient Cashback"
                 });
             }
         } else if (paymentmethod === "reward"){
@@ -350,7 +350,7 @@ console.log(setting1.tamount);
         }
 
 
-        if (paymentmethod === "wallet" || paymentmethod === "generalmarket" || paymentmethod === "reward" || paymentmethod === "point") {
+        if (paymentmethod === "wallet" || paymentmethod === "generalmarket" || paymentmethod === "reward" || paymentmethod === "cashback") {
 
 
             var options =
@@ -882,8 +882,9 @@ console.log(setting1.tamount);
                         status: 1,
                         data: {
                             user: user.username,
-                            message: "Airtime Successfully Delivered To " + number,
-                            server_res: response.body
+                            message: "Airtime-Pin Successfully Delivered To " + number,
+                            server_res: response.body,
+                            token: data.token
                         }
 
                     });
@@ -900,7 +901,7 @@ console.log(setting1.tamount);
                         status: 1,
                         data: {
                             user: user.username,
-                            message: "Airtime Successfully Delivered To " + req.body.number,
+                            message: "Airtime-pin Successfully Delivered To " + req.body.number,
                             server_res: response.body
                         }
                     });

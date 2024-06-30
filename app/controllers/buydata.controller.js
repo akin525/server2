@@ -538,11 +538,11 @@ exports.buydatanewencry =  async (req, res) => {
                 balance: user.wallet,
                 message: "Insufficient generalmarket"
             });
-        }else if (paymentmethod === "point" && parseInt(user.point) < parseInt(amount)){
+        }else if (paymentmethod === "cashback" && parseInt(user.cashback) < parseInt(amount)){
                 return res.status(200).send({
                     status: 0,
                     balance: user.wallet,
-                    message: "Insufficient Point"
+                    message: "Insufficient cashback"
                 });
         } else if (paymentmethod === "reward" && parseInt(user.reward) < parseInt(amount)){
                 return res.status(200).send({
@@ -612,9 +612,9 @@ exports.buydatanewencry =  async (req, res) => {
         }else if(paymentmethod === "reward") {
             const updatedWallet2 = parseInt(user.reward) - parseInt(amount);
             await User.update({reward: updatedWallet2}, {where: {id: 1}});
-        }else if(paymentmethod === "point") {
-            const updatedWallet3 = parseInt(user.point) - parseInt(amount);
-            await User.update({point: updatedWallet3}, {where: {id: 1}});
+        }else if(paymentmethod === "cashback") {
+            const updatedWallet3 = parseInt(user.cashback) - parseInt(amount);
+            await User.update({cashback: updatedWallet3}, {where: {id: 1}});
         } else if (paymentmethod === "atm") {
 
             const options = {
@@ -791,7 +791,7 @@ exports.buydatanewencry =  async (req, res) => {
         }
 
 
-        if (paymentmethod === "wallet" || paymentmethod === "generalmarket" || paymentmethod === "reward" || paymentmethod ==="point") {
+        if (paymentmethod === "wallet" || paymentmethod === "generalmarket" || paymentmethod === "reward" || paymentmethod ==="cashback") {
 
 
         var options = {
