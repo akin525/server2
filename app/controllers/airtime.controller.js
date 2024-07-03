@@ -173,9 +173,9 @@ console.log(setting1.tamount);
         } else if(paymentmethod === "reward") {
             const updatedWallet2 = parseInt(user.reward) - parseInt(amount);
             await User.update({reward: updatedWallet2}, {where: {id: 1}});
-        }else if(paymentmethod === "point") {
-            const updatedWallet3 = parseInt(user.point) - parseInt(amount);
-            await User.update({point: updatedWallet3}, {where: {id: 1}});
+        }else if(paymentmethod === "cashback") {
+            const updatedWallet3 = parseInt(user.cashback) - parseInt(amount);
+            await User.update({cashback: updatedWallet3}, {where: {id: 1}});
         }else if (paymentmethod === "atm") {
 
             const options = {
