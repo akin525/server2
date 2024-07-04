@@ -6,10 +6,12 @@ var request = require('request');
 const {response} = require("express");
 const {where} = require("sequelize");
 const {validationResult} = require("express-validator");
+const {now} = require("sequelize/lib/utils");
 
-exports.reward =  async (req, res) => {
+exports.reward = async (req, res) => {
   const decryptedData = req.decryptedData;
   const errors = validationResult(decryptedData);
+
   if (!errors.isEmpty()) {
     return res.status(200).json({
       status: 0,
@@ -17,52 +19,81 @@ exports.reward =  async (req, res) => {
       errors: errors.array()
     });
   }
-  const { userId,  amount, } = decryptedData;
+
+  const { userId, amount, rewardtype } = decryptedData;
   const userid = userId;
 
-  var boy;
   try {
-    let authorities = [];
-
     const user = await User.findOne({
-      where: {
-        id: userid,
-      },
+      where: { id: userid }
     });
 
     if (!user) {
-      // req.session = null;
-      return res.status(200).send({status: "0", message: "Kindly login your account."});
-    }
-    if(amount===""){
-      return res.status(200).send({status: "0", message: "Kindly enter your amount."});
-
+      return res.status(200).send({ status: "0", message: "Kindly login your account." });
     }
 
+    if (amount === "") {
+      return res.status(200).send({ status: "0", message: "Kindly enter your amount." });
+    }
 
+    const rebalance = parseInt(user.reward) + parseInt(amount);
 
-    const rebalance=parseInt(user.reward)+parseInt(req.body.amount);
+    let updateData = { reward: rebalance };
 
-    const user1 = await User.update(
-        { reward: rebalance },
-        {
-          where: {
-            id: userid,
-          },
-        });
+    switch (rewardtype) {
+      case "day1":
+        updateData.day1 = 1;
+        break;
+      case "day2":
+        updateData.day2 = 1;
+        break;
+      case "day3":
+        updateData.day3 = 1;
+        break;
+      case "day4":
+        updateData.day4 = 1;
+        break;
+      case "day5":
+        updateData.day5 = 1;
+        break;
+      case "day6":
+        updateData.day6 = 1;
+        break;
+      case "day7":
+        updateData.day7 = 1;
+        break;
+      case "applogin":
+        updateData.applogin = true;
+        break;
+      case "5minrewarded":
+        updateData["5minrewarded"] = true;
+        break;
+      case "15minrewarded":
+        updateData["15minrewarded"] = true;
+        break;
+      case "rewardtimes":
+        const currentRewardTimes = user.earnrewardtimes || 0;
+        updateData.earnrewardtime = new Date();
+        updateData.earnrewardtimes = currentRewardTimes + 1;
+        break;
+      default:
+        return res.status(200).send({ status: "0", message: "Invalid reward type." });
+    }
 
+    await User.update(updateData, {
+      where: { id: userid }
+    });
 
     return res.status(200).send({
-      status:1,
-      data:{
-        message:"Amount added successfully"
+      status: 1,
+      data: {
+        message: "Amount added successfully"
       }
-
     });
 
   } catch (error) {
-    return res.status(201).send({
-      message: error.message});
+    return res.status(500).send({
+      message: error.message
+    });
   }
-
 };

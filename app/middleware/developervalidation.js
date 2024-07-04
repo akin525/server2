@@ -39,6 +39,8 @@ const airtimepin = [
 const reward = [
     check('amount', 'Amount must not contain special characters').custom(value => !/[+-]/.test(value)),
     check('amount', 'Amount must not contain special characters').matches(/^\d+$/)
+    check('rewardtype', 'rewardtype required').not().isEmpty(),
+
 ];
 const dataValidation = [
     // check('paymentmethod', 'provide ur network').not().isEmpty(),
