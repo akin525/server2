@@ -72,8 +72,13 @@ module.exports = (sequelize, Sequelize) => {
     '15minrewarded': {
       type: Sequelize.STRING
     },
-
     '5minrewarded':{
+      type:Sequelize.STRING
+    },
+    earnrewardtime:{
+      type:Sequelize.STRING
+    },
+    earnrewardtimes:{
       type:Sequelize.STRING
     },
 
