@@ -98,6 +98,13 @@ exports.dashboard =  async (req, res) => {
                 fiveminrewarded:user["5minrewarded"],
                 earnrewardtime:user.earnrewardtime,
                 earnrewardtimes:user.earnrewardtimes,
+                day1:user.day1,
+                day2:user.day2,
+                day3:user.day3,
+                day4:user.day4,
+                day5:user.day5,
+                day6:user.day6,
+                day7:user.day7,
 
             }
 
