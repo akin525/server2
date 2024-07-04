@@ -91,13 +91,20 @@ exports.dashboard =  async (req, res) => {
                 cashback:user.cashback,
                 reward:user.reward,
                 referbonus:referbonus??0,
-                roles: authorities}
+                roles: authorities,
+                applogin:user.applogin,
+                timeappopen:user.timeappopen,
+                fifteenMinRewarded: user["15minrewarded"],
+                fiveminrewarded:user["5minrewarded"],
+                earnrewardtime:user.earnrewardtime,
+                earnrewardtimes:user.earnrewardtimes,
+
+            }
 
         });
     } catch (error) {
         return res.status(500).send({message: error.message});
     }
 
-    res.status(200).send("User Content.");
 
 };

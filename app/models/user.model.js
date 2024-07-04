@@ -1,6 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
   const User = sequelize.define("users", {
-
     name: {
       type: Sequelize.STRING
     },
@@ -40,7 +39,7 @@ module.exports = (sequelize, Sequelize) => {
     dob: {
       type: Sequelize.STRING
     },
-    apikey:{
+    apikey: {
       type: Sequelize.STRING
     },
     address: {
@@ -49,21 +48,35 @@ module.exports = (sequelize, Sequelize) => {
     password: {
       type: Sequelize.STRING
     },
-    pin:{
+    pin: {
       type: Sequelize.STRING
     },
-    is_verify:{
+    is_verify: {
+      type: Sequelize.STRING
+    },
+    point: {
+      type: Sequelize.STRING
+    },
+    cashback: {
+      type: Sequelize.STRING
+    },
+    reward: {
+      type: Sequelize.STRING
+    },
+    applogin: {
+      type: Sequelize.STRING
+    },
+    timeappopen: {
+      type: Sequelize.STRING
+    },
+    '15minrewarded': {
+      type: Sequelize.STRING
+    },
+
+    '5minrewarded':{
       type:Sequelize.STRING
     },
-    point:{
-      type:Sequelize.STRING
-    },
-    cashback:{
-      type:Sequelize.STRING
-    },
-    reward:{
-      type:Sequelize.STRING
-    },
+
   });
 
   return User;
