@@ -6,7 +6,7 @@ const bill= db.bill;
 const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
-const noti =db.message;
+const noti =db.mess;
 const gmarket=db.gmarket;
 const gateway=db.gateway;
 

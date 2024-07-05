@@ -43,6 +43,7 @@ db.withdraw=require("../models/withdraw.model.js")(sequelize, sequelize);
 db.otp=require("../models/otp.model")(sequelize, sequelize);
 db.gateway=require("../models/gateway")(sequelize, sequelize);
 db.gmarket=require("../models/general")(sequelize, sequelize);
+db.mess=require("../models/mess.model")(Sequelize, Sequelize);
 db.role.belongsToMany(db.user, {
   through: "user_roles",
   foreignKey: "roleId",
