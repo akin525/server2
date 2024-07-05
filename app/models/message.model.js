@@ -1,15 +1,22 @@
+const {DataTypes} = require("sequelize");
 module.exports = (sequelize, Sequelize) => {
-    const message = sequelize.define("messages",{
-
-        message: {
-            type:Sequelize
+    const message = sequelize.define('message', {
+        senderId: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
-        status:{
-            type:Sequelize
+        recipientId: {
+            type: DataTypes.STRING,
+            allowNull: false
         },
-
-
+        content: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        timestamp: {
+            type: DataTypes.DATE,
+            defaultValue: DataTypes.NOW
+        }
     });
-
     return message;
 };
