@@ -7,7 +7,6 @@ const bill= db.bill;
 const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
-const noti =db.message;
 const gmarket=db.gmarket;
 const gateway=db.gateway;
 
@@ -54,11 +53,11 @@ exports.finger =  async (req, res) => {
             },
         });
 
-        const notification= await noti.findOne({
-            where:{
-                status:1,
-            },
-        });
+        // const notification= await noti.findOne({
+        //     where:{
+        //         status:1,
+        //     },
+        // });
 
         const gm= await gateway.findOne({
             where:{
@@ -87,7 +86,7 @@ exports.finger =  async (req, res) => {
                 bank:user.bank,
                 token:token,
                 bank1:user.bank1,
-                noti:notification.message,
+                noti:"hello",
                 totalbill:totalbill??0,
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,

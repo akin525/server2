@@ -23,11 +23,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="new sign up">
-      <change afterPath="$PROJECT_DIR$/app/models/mess.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/dashboard.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/dashboard.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/finger.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/finger.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,21 +214,7 @@
       <workItem from="1719492478849" duration="25973000" />
       <workItem from="1719764359700" duration="2013000" />
       <workItem from="1720006827819" duration="3552000" />
-      <workItem from="1720111245311" duration="14932000" />
-    </task>
-    <task id="LOCAL-00143" summary="new sign up">
-      <created>1717659533236</created>
-      <option name="number" value="00143" />
-      <option name="presentableId" value="LOCAL-00143" />
-      <option name="project" value="LOCAL" />
-      <updated>1717659533236</updated>
-    </task>
-    <task id="LOCAL-00144" summary="new sign up">
-      <created>1718139844176</created>
-      <option name="number" value="00144" />
-      <option name="presentableId" value="LOCAL-00144" />
-      <option name="project" value="LOCAL" />
-      <updated>1718139844178</updated>
+      <workItem from="1720111245311" duration="33220000" />
     </task>
     <task id="LOCAL-00145" summary="new sign up">
       <created>1718191320425</created>
@@ -558,7 +545,21 @@
       <option name="project" value="LOCAL" />
       <updated>1720173514427</updated>
     </task>
-    <option name="localTasksCounter" value="192" />
+    <task id="LOCAL-00192" summary="new sign up">
+      <created>1720175266586</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1720175266586</updated>
+    </task>
+    <task id="LOCAL-00193" summary="new sign up">
+      <created>1720176034513</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1720176034513</updated>
+    </task>
+    <option name="localTasksCounter" value="194" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
