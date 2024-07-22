@@ -93,7 +93,7 @@ const clients = {};
 // Handle connection
 wss.on('connection', (ws, req) => {
     // Extract token from query parameters
-    const token = req.headers.token;
+    const token = new URLSearchParams(req.url.split('?')[1]).get('token');
 
     if (!token) {
         ws.send(JSON.stringify({
@@ -134,6 +134,7 @@ wss.on('connection', (ws, req) => {
         Object.keys(clients).forEach(client => {
             clients[client].send(JSON.stringify({
                 clients: Object.keys(clients),
+                details: clients[client].userDetails
             }));
         });
 
@@ -141,24 +142,12 @@ wss.on('connection', (ws, req) => {
         console.log('Connected clients:', Object.keys(clients));
 
         // Handle incoming messages
-        ws.on('message', async (req, message) => {
+        ws.on('message', async (message) => {
             console.log(`Received message from ${ws.id}: ${message}`);
-            const messageData = JSON.stringify(message);
-            const{event} = messageData;
-            console.log(messageData);
-            console.log(message);
-            let data;
-
-
-            try {
-                data = JSON.parse(message);
-            } catch (error) {
-                console.error('Error parsing JSON:', error);
-                return;
-            }
-
+            const data = JSON.parse(message);
+            console.log(data);
             if (data.typing) {
-                // Broadcast typing status to all clients except the sender
+                // Broadcast typing status
                 Object.keys(clients).forEach((clientId) => {
                     if (clients[clientId] !== ws) {
                         clients[clientId].send(JSON.stringify({
@@ -185,7 +174,6 @@ wss.on('connection', (ws, req) => {
                 }
             }
         });
-
 
         // Handle connection close
         ws.on('close', () => {
