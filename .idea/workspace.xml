@@ -23,10 +23,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="new sign up">
+      <change afterPath="$PROJECT_DIR$/app/middleware/blockuser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/finger.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/finger.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/airtime.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/airtime.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buybetting.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buybetting.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buydata.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydata.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/buytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buytv.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/settings.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/settings.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
@@ -75,31 +83,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.laravel-idea.search-composer-json": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "encrypt",
-    "ignore.virus.scanning.warn.message": "true",
-    "javascript.nodejs.core.library.configured.version": "20.11.1",
-    "javascript.nodejs.core.library.typings.version": "20.11.1",
-    "last_opened_file_path": "C:/Users/DELL/PhpstormProjects/server2/app/models",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;encrypt&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.11.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.11.1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/PhpstormProjects/server2/app/models&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\PhpstormProjects\server2\app\models" />
@@ -215,6 +223,10 @@
       <workItem from="1719764359700" duration="2013000" />
       <workItem from="1720006827819" duration="3552000" />
       <workItem from="1720111245311" duration="33220000" />
+      <workItem from="1720364785637" duration="719000" />
+      <workItem from="1721027002614" duration="576000" />
+      <workItem from="1721566490016" duration="587000" />
+      <workItem from="1721639357970" duration="583000" />
     </task>
     <task id="LOCAL-00145" summary="new sign up">
       <created>1718191320425</created>
