@@ -24,7 +24,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="new sign up">
       <change afterPath="$PROJECT_DIR$/app/middleware/blockuser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/airtime.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/airtime.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buybetting.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buybetting.controller.js" afterDir="false" />
@@ -32,8 +31,8 @@
       <change beforePath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buytv.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/settings.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/settings.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,14 +223,7 @@
       <workItem from="1721027002614" duration="576000" />
       <workItem from="1721566490016" duration="587000" />
       <workItem from="1721639357970" duration="583000" />
-      <workItem from="1721652342403" duration="13924000" />
-    </task>
-    <task id="LOCAL-00148" summary="new sign up">
-      <created>1718198346748</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1718198346748</updated>
+      <workItem from="1721652342403" duration="24943000" />
     </task>
     <task id="LOCAL-00149" summary="new sign up">
       <created>1718377294930</created>
@@ -569,7 +561,14 @@
       <option name="project" value="LOCAL" />
       <updated>1721717159257</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="new sign up">
+      <created>1721721311721</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1721721311721</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

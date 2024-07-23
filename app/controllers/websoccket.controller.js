@@ -5,37 +5,38 @@ const  jwt = require('jsonwebtoken');
 const ws = require('ws');
 const fs = require('fs');
 const config = require("../config/auth.config");
+const res = require("express/lib/response");
 const User=db.user;
 
 const { JWT_SECRET } = process.env;
 
 async function websocket (server) {
     console.log(`Hello, !`);
-    const verifyToken = (token, secret) => {
+    const verifyToken = (token, secret, ws) => {
         return new Promise((resolve, reject) => {
             jwt.verify(token, secret, (err, decoded) => {
                 if (err) {
-                    return reject(new Error('Token expired, please login again'));
+                   // return "ukn:"
+
                 }
                 resolve(decoded);
             });
         });
     };
-
+    function notifyAboutOnlinePeople(){
+        [...wss.clients]
+            .forEach(client => {
+                client.send(JSON.stringify({
+                        online: [...wss.clients].map(c => c.userdetails)
+                    }
+                ));
+            });
+    }
     var wss = new ws.WebSocketServer({server});
     wss.on('connection',async function (connection,req) {
 
         console.log("samson coming");
-        function notifyAboutOnlinePeople(){
-            console.log([...wss.clients].map(c => c.userdetails.email ));
-            [...wss.clients]
-                .forEach(client => {
-                    client.send(JSON.stringify({
-                            online: [...wss.clients].map(c => c.userdetails)
-                        }
-                    ));
-                });
-        }
+
 
         console.log("moving");
         connection.isAlive = true;
@@ -64,11 +65,22 @@ async function websocket (server) {
         // }
 
 
-        console.log(verifyToken(token, config.secret));
-        const decoded = await verifyToken(token, config.secret)
-        const userId = decoded.id;
-
-        connection.userdetails = await User.findOne({ where: { id: userId } });
+        // console.log(verifyToken(token, config.secret));
+        // const decoded = await verifyToken(token, config.secret, ws)
+        // console.log("decoded");
+        // console.log(decoded);
+        // if (decoded === undefined){
+        //     [...wss.clients]
+        //         .forEach(c => c.send(JSON.stringify({
+        //             "event": "message",
+        //             "data": "Token Required or expired"
+        //         })));
+        //     return;
+        // }
+        // const userId = decoded.id;
+        //
+        //
+        // connection.userdetails = await User.findOne({ where: { id: userId } });
         // connection.userdetails = await Developer.findOne({id: decode.id}, {$set: {online_status: 1}});
         console.log(connection);
         connection.on('message', async (message) => {
@@ -81,10 +93,11 @@ async function websocket (server) {
 
             }else if(event === "typing" ){
                 await typing(connection, data);
+            }else  if(event === "auth" ){
+                await auth(connection, data);
             }
         });
 
-        notifyAboutOnlinePeople();
     });
 
     wss.on('close', data => {
@@ -136,6 +149,44 @@ async function websocket (server) {
                     }
                 })));
         }
+    }
+    async function auth(connection,messageData){
+        const{token} = messageData;
+
+        console.log(verifyToken(token, config.secret));
+        const decoded = await verifyToken(token, config.secret, ws)
+        console.log("decoded");
+        console.log(decoded);
+        if (decoded === undefined){
+            connection.send(JSON.stringify({
+                "event": "message",
+                "data": "Token Required or expired"
+            }))
+            connection.close()
+            // [...wss.clients]
+            //     .forEach(c => c.send(JSON.stringify({
+            //         "event": "message",
+            //         "data": "Token Required or expired"
+            //     })));
+            return;
+        }
+        const userId = decoded.id;
+        const start = await User.findOne({ where: { id: userId } });
+
+
+        [...wss.clients]
+            .forEach(client => {
+                console.log("client aaaaaa");
+                console.log(client.userdetails);
+                if (client.userdetails !== start){
+                    connection.userdetails = start;
+                }
+            });
+
+        // connection.userdetails = await Developer.findOne({id: decode.id}, {$set: {online_status: 1}});
+
+        notifyAboutOnlinePeople();
+
     }
 }
 
