@@ -46,7 +46,6 @@ const reward=require("../controllers/reward.controller");
 const {join} = require("path");
 const db = require("../models");
 const setting=db.settings ;
-const message=require("../controllers/websoccket.controller");
 const {static} = require("express");
 module.exports = function(app) {
   app.use(function(req, res, next) {
@@ -66,8 +65,6 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-  app.post("api/auth/sending", message.handleIncomingMessage);
-  app.post("api/auth/fetching", message.fetchChatHistory);
   app.post("/api/auth/chart",[validation.usercheck], statistic.statistic);
     app.get("/api/auth/newaccount", account2.generateAccountall);
     app.get("/api/auth/newacc", account3.generateAccountall);
