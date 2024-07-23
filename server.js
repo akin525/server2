@@ -5,6 +5,7 @@ const cors = require("cors");
 const cookieSession = require("cookie-session");
 const http = require("http");
 const WebSocket = require("ws");
+const webb=require("./app/controllers/websoccket.controller");
 const jwt = require("jsonwebtoken");
 
 // Initialize Express app
@@ -86,114 +87,121 @@ require("./app/routes/user.routes")(app);
 
 // Create HTTP server and initialize WebSocket server
 const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
+// const wss = new WebSocket.Server({ server });
 
-const clients = {};
+// const clients = {};
 
 // Handle connection
-wss.on('connection', (ws, req) => {
-    // Extract token from query parameters
-    const token = new URLSearchParams(req.url.split('?')[1]).get('token');
-
-    if (!token) {
-        ws.send(JSON.stringify({
-            status: 0,
-            message: "No token provided!",
-        }));
-        ws.close();
-        return;
-    }
-
-    jwt.verify(token, config.secret, async (err, decoded) => {
-        if (err) {
-            ws.send(JSON.stringify({
-                status: 0,
-                message: "Unauthorized!",
-            }));
-            ws.close();
-            return;
-        }
-
-        const userId = decoded.id;
-        const user = await User.findOne({ where: { id: userId } });
-
-        if (!user) {
-            ws.send(JSON.stringify({
-                status: 0,
-                message: "User not found!",
-            }));
-            ws.close();
-            return;
-        }
-
-        ws.id = user.email;
-        clients[ws.id] = ws;
-        clients[ws.id].userDetails = user;
-
-        console.log(`New connection: ${ws.id}`);
-        Object.keys(clients).forEach(client => {
-            clients[client].send(JSON.stringify({
-                clients: Object.keys(clients),
-                details: clients[client].userDetails
-            }));
-        });
-
-        // Log the IDs for easier tracking
-        console.log('Connected clients:', Object.keys(clients));
-
-        // Handle incoming messages
-        ws.on('message', async (message) => {
-            console.log(`Received message from ${ws.id}: ${message}`);
-            const data = JSON.parse(message);
-            console.log(data);
-            if (data.typing) {
-                // Broadcast typing status
-                Object.keys(clients).forEach((clientId) => {
-                    if (clients[clientId] !== ws) {
-                        clients[clientId].send(JSON.stringify({
-                            typing: data.typing,
-                            from: ws.id,
-                        }));
-                    }
-                });
-            } else {
-                // Save the message to the database
-                await db.message.create({
-                    senderId: ws.id,
-                    recipientId: data.recipientId,
-                    content: data.content,
-                });
-
-                // Broadcast the message to the recipient client
-                if (clients[data.recipientId]) {
-                    clients[data.recipientId].send(JSON.stringify({
-                        from: ws.id,
-                        content: data.content,
-                        timestamp: new Date(),
-                    }));
-                }
-            }
-        });
-
-        // Handle connection close
-        ws.on('close', () => {
-            console.log(`Connection closed: ${ws.id}`);
-            delete clients[ws.id];
-            Object.keys(clients).forEach(client => {
-                clients[client].send(JSON.stringify({
-                    clients: Object.keys(clients),
-                }));
-            });
-        });
-    });
-});
+// wss.on('connection', (ws, req) => {
+//     // Extract token from query parameters
+//     const token = new URLSearchParams(req.url.split('?')[1]).get('token');
+//
+//     if (!token) {
+//         ws.send(JSON.stringify({
+//             status: 0,
+//             message: "No token provided!",
+//         }));
+//         ws.close();
+//         return;
+//     }
+//
+//     jwt.verify(token, config.secret, async (err, decoded) => {
+//         if (err) {
+//             ws.send(JSON.stringify({
+//                 status: 0,
+//                 message: "Unauthorized!",
+//             }));
+//             ws.close();
+//             return;
+//         }
+//
+//         const userId = decoded.id;
+//         const user = await User.findOne({ where: { id: userId } });
+//
+//         if (!user) {
+//             ws.send(JSON.stringify({
+//                 status: 0,
+//                 message: "User not found!",
+//             }));
+//             ws.close();
+//             return;
+//         }
+//
+//         ws.id = user.email;
+//         clients[ws.id] = ws;
+//         clients[ws.id].userDetails = user;
+//
+//         console.log(`New connection: ${ws.id}`);
+//         Object.keys(clients).forEach(client => {
+//             clients[client].send(JSON.stringify({
+//                 clients: Object.keys(clients),
+//                 details: JSON.parse(clients)
+//             }));
+//         });
+//
+//         // Log the IDs for easier tracking
+//         console.log('Connected clients:', Object.keys(clients));
+//
+//         // Handle incoming messages
+//         ws.on('message', async (message) => {
+//             console.log(`Received message from ${ws.id}: ${message}`);
+//             let data;
+//
+//             try {
+//                 data = JSON.parse(message);
+//             } catch (error) {
+//                 console.error('Error parsing JSON:', error);
+//                 return;
+//             }
+//
+//             if (data.typing) {
+//                 // Broadcast typing status to all clients except the sender
+//                 Object.keys(clients).forEach((clientId) => {
+//                     if (clients[clientId] !== ws) {
+//                         clients[clientId].send(JSON.stringify({
+//                             typing: data.typing,
+//                             from: ws.id,
+//                         }));
+//                     }
+//                 });
+//             } else {
+//                 // Save the message to the database
+//                 await db.message.create({
+//                     senderId: ws.id,
+//                     recipientId: data.recipientId,
+//                     content: data.content,
+//                 });
+//
+//                 // Broadcast the message to the recipient client
+//                 if (clients[data.recipientId]) {
+//                     clients[data.recipientId].send(JSON.stringify({
+//                         from: ws.id,
+//                         content: data.content,
+//                         timestamp: new Date(),
+//                     }));
+//                 }
+//             }
+//         });
+//
+//         // Handle connection close
+//         ws.on('close', () => {
+//             console.log(`Connection closed: ${ws.id}`);
+//             delete clients[ws.id];
+//             Object.keys(clients).forEach(client => {
+//                 clients[client].send(JSON.stringify({
+//                     clients: Object.keys(clients),
+//                 }));
+//             });
+//         });
+//     });
+// });
 
 // Set port and listen for requests
 const PORT = process.env.PORT || 8080;
-server.listen(PORT, () => {
+const david= server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
-
+webb(david);
 function initial() {
     Role.create({
         id: 1,
