@@ -40,6 +40,7 @@ const verifybe=require("../controllers/verifybetting.controller");
 const buybet=require("../controllers/buybetting.controller");
 const account2=require("../controllers/generateaccountall.controller");
 const account3=require("../controllers/generateaccountall1.controller");
+const chathistory= require("../controllers/chatapi.controller");
 const { validation }  = require("../middleware");
 const statistic=require("../controllers/statistic.controller");
 const reward=require("../controllers/reward.controller");
@@ -136,6 +137,7 @@ module.exports = function(app) {
   app.post("/api/auth/signout", controller.signout);
   app.post("/api/auth/delete", controller.delete);
 
+  app.post("/api/auth/chathistory", chathistory.chatapi);
     app.use(static(join(__dirname, 'public')));
 
     app.get('/getfund', async (req, res) => {
