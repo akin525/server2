@@ -14,34 +14,46 @@ exports.chatapi =  async (req, res) => {
   try {
     const { senderId, recipientId } = req.body;
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    const limit = parseInt(req.query.limit) || 5;
     const offset = (page - 1) * limit;
 
     const history = await chat.findAll({
       where: {
         [Op.or]: [
-          { senderId, recipientId },
-          { senderId: recipientId, recipientId: senderId }
+          {
+            senderId: senderId,
+            recipientId: recipientId,
+          },
+          {
+            senderId: recipientId,
+            recipientId: senderId,
+          }
         ]
       },
       limit,
       offset,
-      order: [['createdAt', 'DESC']] // Sort by createdAt, adjust as needed
+      order: [['id', 'DESC']] // Sort by createdAt, adjust as needed
     });
+
+    const totalRecords = await chat.count({
+      where: {
+        [Op.or]: [
+          { senderId, recipientId },
+          { senderId: recipientId, recipientId: senderId }
+        ]
+      }
+    });
+
+    const totalPages = Math.ceil(totalRecords / limit);
+    const nextPage = page < totalPages ? page + 1 : null;
 
     return res.status(200).send({
       status: 1,
       data: {
         message: history,
         currentPage: page,
-        totalPages: Math.ceil(await chat.count({
-          where: {
-            [Op.or]: [
-              { senderId, recipientId },
-              { senderId: recipientId, recipientId: senderId }
-            ]
-          }
-        }) / limit)
+        totalPages: totalPages,
+        nextPage: nextPage ? `/api/auth/chathistory?page=${nextPage}&limit=${limit}` : null
       }
     });
   } catch (error) {
