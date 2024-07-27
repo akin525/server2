@@ -14,7 +14,7 @@ exports.chatapi =  async (req, res) => {
   try {
     const { senderId, recipientId } = req.body;
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 5;
+    const limit = parseInt(req.query.limit) || 20;
     const offset = (page - 1) * limit;
 
     const history = await chat.findAll({
@@ -69,7 +69,7 @@ exports.chatapi =  async (req, res) => {
         message: history,
         currentPage: page,
         totalPages: totalPages,
-        nextPage: nextPage ? `/api/auth/chathistory?page=${nextPage}&limit=${limit}` : null
+        nextPage: nextPage ? `chathistory?page=${nextPage}&limit=${limit}` : null
       }
     });
   } catch (error) {
