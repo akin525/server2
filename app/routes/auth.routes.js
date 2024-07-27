@@ -48,6 +48,7 @@ const {join} = require("path");
 const db = require("../models");
 const setting=db.settings ;
 const {static} = require("express");
+const adminchat=require("../controllers/adminchatapi.controller");
 module.exports = function(app) {
   app.use(function(req, res, next) {
     res.header(
@@ -138,6 +139,7 @@ module.exports = function(app) {
   app.post("/api/auth/delete", controller.delete);
 
   app.post("/api/auth/chathistory", chathistory.chatapi);
+  app.get("/api/auth/adminchat", adminchat.adminchatapi);
     app.use(static(join(__dirname, 'public')));
 
     app.get('/getfund', async (req, res) => {
