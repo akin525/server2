@@ -121,16 +121,18 @@ async function websocket (server) {
                 console.log('file saved: ' + path);
             })
         }
-        console.log(connection.userdetails);
-        if( text && usertype || recipient) {
+        // console.log(connection.userdetails);
+        console.log(messageData);
+        console.log(recipient);
+        console.log(recipient && text);
+        if( text || recipient) {
             const messageDoc = await Chat.create({
                 senderId: connection.userdetails.id,
                 recipientId: recipient,
-                usertype:usertype,
                 content: text,
                 // file: file? filename : null
             });
-            if(usertype === "admin"){
+            if(recipient === 0){
                 const admin=await User.findAll({
                     where:{
                         role:"admin",
@@ -158,10 +160,10 @@ async function websocket (server) {
     }
     async function typing(connection,messageData){
 
-        const{recipient, usertype} = messageData;
-        if(recipient || usertype) {
+        const{recipient} = messageData;
+        if(recipient ) {
 
-            if(usertype === "admin"){
+            if(recipient === 0){
                 const admin=await User.findAll({
                     where:{
                         role:"admin",
