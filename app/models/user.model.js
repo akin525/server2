@@ -103,6 +103,9 @@ module.exports = (sequelize, Sequelize) => {
       type:Sequelize.STRING
     },
 
+    role:{
+      type:Sequelize.STRING
+    },
   });
 
   return User;

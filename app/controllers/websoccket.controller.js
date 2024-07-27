@@ -93,6 +93,8 @@ async function websocket (server) {
 
             }else if(event === "typing" ){
                 await typing(connection, data);
+            }else if(event === "reading" ){
+                await reading(connection, data);
             }else  if(event === "auth" ){
                 await auth(connection, data);
             }
@@ -107,7 +109,7 @@ async function websocket (server) {
 
     async function messages(connection,messageData){
 
-        const{recipient, text, file} = messageData;
+        const{recipient, text, file, usertype} = messageData;
         let filename = null;
         if (file) {
             const parts = file.name.split('.');
@@ -120,36 +122,91 @@ async function websocket (server) {
             })
         }
         console.log(connection.userdetails);
-        if(recipient && text) {
+        if( text && usertype || recipient) {
             const messageDoc = await Chat.create({
                 senderId: connection.userdetails.id,
                 recipientId: recipient,
+                usertype:usertype,
                 content: text,
                 // file: file? filename : null
             });
-            [...wss.clients]
-                .filter(c => c.userdetails.id === recipient)
-                .forEach(c => c.send(JSON.stringify({
-                    "event": "message",
-                    "data": messageDoc
-                })));
+            if(usertype === "admin"){
+                const admin=await User.findAll({
+                    where:{
+                        role:"admin",
+                    },
+                });
+                admin.forEach(function (element){
+
+                    [...wss.clients]
+                        .filter(c => c.userdetails.id === element.id)
+                        .forEach(c => c.send(JSON.stringify({
+                            "event": "message",
+                            "data": messageDoc
+                        })));
+                });
+            } else {
+                [...wss.clients]
+                    .filter(c => c.userdetails.id === recipient)
+                    .forEach(c => c.send(JSON.stringify({
+                        "event": "message",
+                        "data": messageDoc
+                    })));
+            }
+
         }
     }
     async function typing(connection,messageData){
 
-        const{recipient} = messageData;
-        if(recipient) {
-            [...wss.clients]
-                .filter(c => c.userdetails.id === recipient)
-                .forEach(c => c.send(JSON.stringify({
-                    "event": "typing",
-                    "data": {
-                        "sender_id": connection.userdetails.id,
-                        "receiver_id": recipient,
-                    }
-                })));
+        const{recipient, usertype} = messageData;
+        if(recipient || usertype) {
+
+            if(usertype === "admin"){
+                const admin=await User.findAll({
+                    where:{
+                        role:"admin",
+                    },
+                });
+                admin.forEach(function (element){
+
+                    [...wss.clients]
+                        .filter(c => c.userdetails.id === element.id)
+                        .forEach(c => c.send(JSON.stringify({
+                            "event": "typing",
+                            "data": {
+                                "sender_id": connection.userdetails.id,
+                                "receiver_id": 0,
+                            }
+                        })));
+                });
+            }else {
+                [...wss.clients]
+                    .filter(c => c.userdetails.id === recipient)
+                    .forEach(c => c.send(JSON.stringify({
+                        "event": "typing",
+                        "data": {
+                            "sender_id": 0,
+                            "receiver_id": recipient,
+                        }
+                    })));
+            }
+
         }
     }
+    async function reading(connection,messageData){
+
+        const{meesageid} = messageData;
+        if(meesageid) {
+
+                const admin=await Chat.update({read:1},
+                    {
+                        where: {
+                            id: meesageid,
+                        },
+                    });
+            }
+
+        }
     async function auth(connection,messageData){
         const{token} = messageData;
 

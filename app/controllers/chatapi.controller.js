@@ -27,6 +27,22 @@ exports.chatapi =  async (req, res) => {
           {
             senderId: recipientId,
             recipientId: senderId,
+          },
+          {
+            senderId:0,
+            recipientId:recipientId,
+          },
+          {
+            senderId:recipientId,
+            recipientId:0,
+          },
+          {
+            senderId:0,
+            recipientId:senderId,
+          },
+          {
+            senderId:senderId,
+            recipientId:0,
           }
         ]
       },

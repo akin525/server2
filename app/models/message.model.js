@@ -9,6 +9,10 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        usertype:{
+            type:DataTypes.STRING,
+            allowNull: false
+        },
         content: {
             type: DataTypes.STRING,
             allowNull: false
