@@ -1,8 +1,8 @@
 const db = require("../models");
+const chat=db.message;
 const User = db.user;
 const safe =db.safelock;
 const deposit=db.deposit;
-const chat=db.message;
 var request = require('request');
 const {response} = require("express");
 const {where, Op} = require("sequelize");
@@ -23,6 +23,10 @@ exports.adminchatapi = async (req, res) => {
         ],
       },
       order: [['id', 'DESC']], // Ensure the latest records come first
+      include: [
+        { model: User, as: 'Sender', attributes: ['id', 'name', 'email'] },
+        { model: User, as: 'Recipient', attributes: ['id', 'name', 'email'] }
+      ]
     });
 
     // Create a map to track the last record for each unique (senderId, recipientId) pair
@@ -35,6 +39,7 @@ exports.adminchatapi = async (req, res) => {
     });
 
     const uniqueChats = Array.from(uniqueChatsMap.values());
+
 
     return res.status(200).send({ status: 1, chats: uniqueChats });
   } catch (error) {

@@ -56,5 +56,6 @@ db.user.belongsToMany(db.role, {
 });
 
 db.ROLES = ["user", "admin", "moderator"];
-
+db.message.belongsTo(db.user, { as: 'Sender', foreignKey: 'senderId' });
+db.message.belongsTo(db.user, { as: 'Recipient', foreignKey: 'recipientId' });
 module.exports = db;

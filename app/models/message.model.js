@@ -17,6 +17,9 @@ module.exports = (sequelize, Sequelize) => {
             type: DataTypes.STRING,
             allowNull: false
         },
+        read:{
+            type: DataTypes.STRING,
+        },
         timestamp: {
             type: DataTypes.DATE,
             defaultValue: DataTypes.NOW
