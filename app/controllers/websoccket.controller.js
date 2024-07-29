@@ -27,7 +27,8 @@ async function websocket (server) {
         [...wss.clients]
             .forEach(client => {
                 client.send(JSON.stringify({
-                        online: [...wss.clients].map(c => c.userdetails)
+                    "event": "online-people",
+                    "data": [...wss.clients].map(c => c.userdetails),
                     }
                 ));
             });
@@ -48,8 +49,8 @@ async function websocket (server) {
                 connection.terminate();
                 notifyAboutOnlinePeople();
                 console.log("dead");
-            },1000)
-        }, 5000);
+            },5000)
+        }, 10000);
 
         console.log("continue");
         connection.on('pong', () => {
