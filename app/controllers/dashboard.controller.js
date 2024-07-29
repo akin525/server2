@@ -91,7 +91,7 @@ exports.dashboard =  async (req, res) => {
                 cashback:user.cashback,
                 reward:user.reward,
                 referbonus:referbonus??0,
-                roles: user.roles,
+                roles: user.role,
                 applogin:user.applogin,
                 timeappopen:user.timeappopen,
                 fifteenMinRewarded: user["15minrewarded"],

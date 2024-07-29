@@ -126,8 +126,16 @@ async function websocket (server) {
         console.log(recipient);
         console.log(recipient && text);
         if( text || recipient) {
+            const check={
+                senderId: connection.userdetails.roles==="admin" ? 0:connection.userdetails.id,
+                recipientId: recipient,
+                content: text,
+            };
+            console.log(check);
+            console.log(connection.userdetails.role);
+
             const messageDoc = await Chat.create({
-                senderId: connection.userdetails.id,
+                senderId: connection.userdetails.role==="admin" ? 0:connection.userdetails.id,
                 recipientId: recipient,
                 content: text,
                 // file: file? filename : null
