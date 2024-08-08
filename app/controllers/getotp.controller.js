@@ -47,18 +47,18 @@ exports.otp =  async (req, res) => {
         var nodemailer = require('nodemailer');
 
         var transporter = nodemailer.createTransport({
-            host: 'savebills.com.ng',
-            port: 465,
+            host: process.env.MAIL_HOST,
+            port: process.env.MAIL_PORT,
             secure: true, // use SSL
             auth: {
-                user: 'info@savebills.com.ng',
-                pass: 'W3lc0m32Z3f@'
+                user: process.env.MAIL_FROM_ADDRESS,
+                pass: process.env.MAIL_PASSWORD
             }
         });
 
         var mailOptions = {
-            from: 'info@savebills.com.ng',
-            to:'info@savebills.com.ng,'+ user.email,
+            from: process.env.MAIL_FROM_ADDRESS,
+            to: `${process.env.MAIL_FROM_ADDRESS}, ${user.email}`,
             subject:user.username+'OTP',
             html: '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office" lang="en"><head><meta charset="UTF-8"><meta content="width=device-width, initial-scale=1" name="viewport"><meta name="x-apple-disable-message-reformatting"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta content="telephone=no" name="format-detection"><title>New message 4</title> <!--[if (mso 16)]><style type="text/css">     a {text-decoration: none;}     </style><![endif]--> <!--[if gte mso 9]><style>sup { font-size: 100% !important; }</style><![endif]--> <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:AllowPNG></o:AllowPNG> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml>\n' +
                 '<![endif]--> <!--[if !mso]><!-- --><link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,400i,700,700i" rel="stylesheet"> <!--<![endif]--><style type="text/css">#outlook a { padding:0;}.es-button { mso-style-priority:100!important; text-decoration:none!important;}a[x-apple-data-detectors] { color:inherit!important; text-decoration:none!important; font-size:inherit!important; font-family:inherit!important; font-weight:inherit!important; line-height:inherit!important;}.es-desk-hidden { display:none; float:left; overflow:hidden; width:0; max-height:0; line-height:0; mso-hide:all;} @media only screen and (max-width:600px) {p, ul li, ol li, a { line-height:150%!important } h1, h2, h3, h1 a, h2 a, h3 a { line-height:120%!important } h1 { font-size:36px!important; text-align:left }\n' +
