@@ -100,7 +100,7 @@ function createApiOptions(user) {
       "email": user.email,
       "phone": user.phone,
       "dob": user.dob,
-      "provider": "gtb",
+      "provider": "net",
     }
   };
   return options;
