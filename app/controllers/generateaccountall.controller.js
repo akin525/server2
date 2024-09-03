@@ -11,54 +11,39 @@ const {where} = require("sequelize");
 const axios = require('axios');
 // const User = require('./User'); // Make sure to import the User model from the correct path
 
+const requestPromise = require('request-promise');
+
 exports.generateAccountall = async (req, res) => {
   try {
     const processResults = [];
-    const td = await User.findAll();
+    const users = await User.findAll();
 
-    const user=td[0];
-    // await Promise.all(users.map(async (user) => {
-      try {
-        const options = createApiOptions(user);
+    // Process users in batches
+    const batchSize = 10; // Adjust based on your needs
+    for (let i = 0; i < users.length; i += batchSize) {
+      const batch = users.slice(i, i + batchSize);
 
-        request(options, function (error, response) {
-          if (error) {
-            console.error(error);
-            processResults.push({
-              status: '0',
-              message: error.message,
-            });
-            return;
-          }
+      await Promise.all(batch.map(async (user) => {
+        try {
+          const options = createApiOptions(user);
+          const response = await requestPromise(options);
+          const data1 = JSON.parse(response);
 
-          const data1 = JSON.parse(response.body);
-          console.log(data1.success);
-          console.log(data1);
-          if (data1.success === "true") { // Use boolean comparison instead of a string
+          if (data1.success === "true") {
             const objectToUpdate = {
               account_number2: data1.data.account_number,
               account_name2: data1.data.account_name,
               bank2: data1.data.provider,
             };
 
-            // Find and update the user using async/await
-            User.update(objectToUpdate, {
+            await User.update(objectToUpdate, {
               where: { username: user.username },
-              returning: true, // Return the updated user
-            }).then(([updatedUser]) => {
-              if (updatedUser) {
-                processResults.push({
-                  status: '1',
-                  message: 'Account Generate Successful',
-                  server_res: data1,
-                });
-              }
-            }).catch((updateError) => {
-              console.error(updateError);
-              processResults.push({
-                status: '0',
-                message: updateError.message,
-              });
+            });
+
+            processResults.push({
+              status: '1',
+              message: 'Account Generate Successful',
+              server_res: data1,
             });
           } else {
             processResults.push({
@@ -66,19 +51,24 @@ exports.generateAccountall = async (req, res) => {
               message: data1.message,
             });
           }
-        });
-      } catch (error) {
-        console.error(error);
-        processResults.push({
-          status: '0',
-          message: error.message,
-        });
-      }
-    // }));
+        } catch (error) {
+          console.error(error);
+          processResults.push({
+            status: '0',
+            message: error.message,
+          });
+        }
+      }));
+    }
 
+    return res.status(200).send({
+      status: '1',
+      message: 'Account Generation Process Completed',
+      results: processResults,
+    });
   } catch (error) {
     console.error(error);
-    return res.status(200).send({
+    return res.status(500).send({
       status: '0',
       message: error.message,
     });
@@ -86,7 +76,7 @@ exports.generateAccountall = async (req, res) => {
 };
 
 function createApiOptions(user) {
-  var options = {
+  return {
     method: 'POST',
     url: 'https://api.paylony.com/api/v1/create_account',
     headers: {
@@ -100,10 +90,9 @@ function createApiOptions(user) {
       "email": user.email,
       "phone": user.phone,
       "dob": user.dob,
-      "provider": "net",
+      "provider": "netbank",
     }
   };
-  return options;
 }
 
 exports.generateaccountone = async (req, res) => {
