@@ -293,7 +293,7 @@ exports.signin = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(200).json({
         status: 0,
-        msg: 'Errors',
+        message: 'Errors',
         errors: errors.array()
       });
     }
