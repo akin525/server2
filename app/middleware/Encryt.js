@@ -44,13 +44,29 @@ const decryptMiddleware = async(req, res, next) =>{
 
         const encryptedData = req.body.data;
 
+       if (!encryptedData){
+
+           return res.status(200).send({
+               status: 0,
+               message: "Kindly download the new updated app on playstore:https://play.google.com/store/apps/details?id=com.a5starcompany.paysave || apple-store:https://apps.apple.com/us/app/savebill/id1670003926",
+
+           });
+       }
+        // try{
+
         let encryptedText = Buffer.from(encryptedData, 'hex');
+
         let decipher = crypto.createDecipheriv('aes-256-cbc', key, iv);
         let decrypted = decipher.update(encryptedText);
         decrypted = Buffer.concat([decrypted, decipher.final()]);
 
+        // console.log(decrypted);
+
         let value = JSON.parse(decrypted.toString());
         req.decryptedData = value;
+        // } catch (error) {
+        //     console.log(error);
+        // }
     }
 
     if(req.decryptedData.paymentmethod === "generalmarket") {
