@@ -65,13 +65,13 @@ exports.reward = async (req, res) => {
       case "applogin":
         updateData.applogin = true;
         break;
-      case "5minrewarded":
+      case "fiveminrewarded":
         updateData["5minrewarded"] = true;
         break;
-      case "15minrewarded":
+      case "fifteenMinRewarded":
         updateData["15minrewarded"] = true;
         break;
-      case "rewardtimes":
+      case "earnrewardtimes":
         const currentRewardTimes = user.earnrewardtimes || 0;
         updateData.earnrewardtime = new Date();
         updateData.earnrewardtimes = currentRewardTimes + 1;
