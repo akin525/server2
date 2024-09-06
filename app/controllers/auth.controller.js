@@ -287,9 +287,10 @@ exports.signup = async (req, res, next) => {
 //   }
 // };
 exports.signin = async (req, res) => {
+  const decryptedData = req.decryptedData;
 
   try {
-    const errors = validationResult(req);
+    const errors = validationResult(decryptedData);
     if (!errors.isEmpty()) {
       return res.status(200).json({
         status: 0,
@@ -297,13 +298,13 @@ exports.signin = async (req, res) => {
         errors: errors.array()
       });
     }
-    if (req.body.username===""){
+    if (decryptedData.username===""){
       return res.status(200).send({
         status: "0",
         message: "Enter your username!"
       });
     }
-    if (req.body.password===""){
+    if (decryptedData.password===""){
       return res.status(200).send({
         status: "0",
         message: "Enter your password!"
@@ -311,7 +312,7 @@ exports.signin = async (req, res) => {
     }
     const user = await User.findOne({
       where: {
-        username: req.body.username,
+        username: decryptedData.username,
       },
     });
 
@@ -320,7 +321,7 @@ exports.signin = async (req, res) => {
     }
 
     const passwordIsValid = bcrypt.compareSync(
-        req.body.password,
+        decryptedData.password,
         user.password
     );
 
