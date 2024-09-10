@@ -85,7 +85,7 @@ module.exports = function(app) {
 
         Fingerprint.finger);
   app.post("/api/auth/otp",[encrypt.decryptMiddleware], Resend.otp);
-  app.post("/api/auth/createpin" [encrypt.decryptMiddleware], Pin.createpin);
+  app.post("/api/auth/createpin", [encrypt.decryptMiddleware], Pin.createpin);
   app.post("/api/auth/changepin",[encrypt.decryptMiddleware], Pin.changepin);
   app.get("/listdata", listdata.listdata);
   app.post("/listtv",[encrypt.decryptMiddleware], listdata.listtv);

@@ -10,8 +10,8 @@ const {where} = require("sequelize");
 const nodemailer = require("nodemailer");
 
 exports.createpin =  async (req, res) => {
-    const userid = decryptedData.userId;
     const decryptedData = req.decryptedData;
+    const userid = decryptedData.userId;
 
     var boy;
     try {
