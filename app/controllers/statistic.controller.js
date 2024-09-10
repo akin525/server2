@@ -6,18 +6,20 @@ const deposit=db.deposit;
 const bill= db.bill;
 
 exports.statistic = async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-        return res.status(200).json({
-            status: 0,
-            msg: 'Errors',
-            errors: errors.array()
-        });
-    }
+    const decryptedData = req.decryptedData;
+    
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //     return res.status(200).json({
+    //         status: 0,
+    //         msg: 'Errors',
+    //         errors: errors.array()
+    //     });
+    // }
 
-    const userid = req.body.userId;
-    const year = req.body.year;
-    const mode = req.body.mode;
+    const userid = decryptedData.userId;
+    const year = decryptedData.year;
+    const mode = decryptedData.mode;
 
     try {
         const user = await User.findOne({
