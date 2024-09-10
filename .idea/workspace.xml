@@ -25,33 +25,13 @@
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="reward">
       <change afterPath="$PROJECT_DIR$/app/middleware/blockuser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/airtime.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/airtime.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buybetting.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buybetting.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buydata.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydata.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buytv.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/changpass.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/changpass.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/chatapi.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/chatapi.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/data.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/data.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/deposit.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/deposit.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/finger.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/finger.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/fund.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/fund.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/otp.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/otp.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/pass.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/pass.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/pin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/pin.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/profile.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/profile.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/safelock.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/safelock.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/tv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tv.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/upgrade.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/upgrade.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/verifybetting.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifybetting.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/verifyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifyelect.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/verifyemail.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifyemail.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/verifytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifytv.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/settings.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/settings.model.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -270,7 +250,7 @@
       <workItem from="1724785242911" duration="9099000" />
       <workItem from="1725335195006" duration="4840000" />
       <workItem from="1725488188614" duration="13201000" />
-      <workItem from="1725964139883" duration="1942000" />
+      <workItem from="1725964139883" duration="3125000" />
     </task>
     <task id="LOCAL-00151" summary="check">
       <created>1718381398059</created>
@@ -615,7 +595,7 @@
       <option name="project" value="LOCAL" />
       <updated>1721931679995</updated>
     </task>
-    <option name="localTasksCounter" value="216" />
+    <option name="localTasksCounter" value="218" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
