@@ -2,7 +2,9 @@ const db = require("../models");
 const User = db.user;
 const deposit=db.deposit;
 exports.alldeposit =  async (req, res) => {
-    const userid = req.userId;
+    const decryptedData = req.decryptedData;
+
+    const userid = decryptedData.userId;
     try {
         let authorities = [];
 

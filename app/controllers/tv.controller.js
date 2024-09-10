@@ -6,7 +6,9 @@ var request = require('request');
 const {response} = require("express");
 
 exports.tv =  async (req, res) => {
-    const userid = req.body.userId;
+    const decryptedData = req.decryptedData;
+    
+    const userid = decryptedData.userId;
     var boy;
     try {
         let authorities = [];
@@ -14,7 +16,7 @@ exports.tv =  async (req, res) => {
 
         const allplan= await data.findAll({
             where:{
-                network:req.body.network,
+                network:decryptedData.network,
             },
         });
 

@@ -22,8 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="new sign up">
-      <change afterPath="$PROJECT_DIR$/app/controllers/chatapi.controller.js" afterDir="false" />
+    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="reward">
       <change afterPath="$PROJECT_DIR$/app/middleware/blockuser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
@@ -33,6 +32,24 @@
       <change beforePath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buydatapin.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buyelect.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/buytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/buytv.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/changpass.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/changpass.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/chatapi.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/chatapi.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/data.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/data.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/deposit.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/deposit.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/finger.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/finger.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/fund.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/fund.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/otp.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/otp.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/pass.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/pass.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/pin.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/pin.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/profile.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/profile.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/safelock.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/safelock.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/tv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/tv.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/upgrade.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/upgrade.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/verifybetting.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifybetting.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/verifyelect.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifyelect.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/verifyemail.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifyemail.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/verifytv.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/verifytv.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/websoccket.controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/settings.model.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/settings.model.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
@@ -71,8 +88,11 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="C:\xampp\php\php.exe" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
   <component name="ProjectId" id="2ICD7TB8ws8M0sGjuX93CTpnAGz" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -81,31 +101,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.laravel-idea.search-composer-json&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;encrypt&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;20.11.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;20.11.1&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/DELL/PhpstormProjects/server2/app/controllers&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Program Files\\JetBrains\\PhpStorm 2023.1.2\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.laravel-idea.search-composer-json": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "encrypt",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.nodejs.core.library.configured.version": "20.16.0",
+    "javascript.nodejs.core.library.typings.version": "20.16.3",
+    "last_opened_file_path": "C:/Users/user/PhpstormProjects/savenilladmin",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.dev.executor": "Run",
+    "ts.external.directory.path": "C:\\Program Files\\JetBrains\\PhpStorm 2024.1\\plugins\\javascript-impl\\jsLanguageServicesImpl\\external",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\DELL\PhpstormProjects\server2\app\controllers" />
@@ -227,14 +250,27 @@
       <workItem from="1721639357970" duration="583000" />
       <workItem from="1721652342403" duration="30808000" />
       <workItem from="1721898150019" duration="3512000" />
-      <workItem from="1721930853331" duration="767000" />
-    </task>
-    <task id="LOCAL-00150" summary="new sign up">
-      <created>1718378326606</created>
-      <option name="number" value="00150" />
-      <option name="presentableId" value="LOCAL-00150" />
-      <option name="project" value="LOCAL" />
-      <updated>1718378326607</updated>
+      <workItem from="1721930853331" duration="1048000" />
+      <workItem from="1721944776629" duration="7033000" />
+      <workItem from="1722017654868" duration="38000" />
+      <workItem from="1722018055316" duration="292000" />
+      <workItem from="1722018384762" duration="2909000" />
+      <workItem from="1722042802051" duration="30000" />
+      <workItem from="1722068553944" duration="759000" />
+      <workItem from="1722072742211" duration="1153000" />
+      <workItem from="1722078821729" duration="1010000" />
+      <workItem from="1722110043794" duration="19347000" />
+      <workItem from="1722250975303" duration="28000" />
+      <workItem from="1722251044829" duration="8975000" />
+      <workItem from="1722354873057" duration="3295000" />
+      <workItem from="1722726771882" duration="60000" />
+      <workItem from="1722759731003" duration="5416000" />
+      <workItem from="1723126007611" duration="866000" />
+      <workItem from="1724509867846" duration="5451000" />
+      <workItem from="1724785242911" duration="9099000" />
+      <workItem from="1725335195006" duration="4840000" />
+      <workItem from="1725488188614" duration="13201000" />
+      <workItem from="1725964139883" duration="1942000" />
     </task>
     <task id="LOCAL-00151" summary="check">
       <created>1718381398059</created>
@@ -572,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1721744321208</updated>
     </task>
-    <option name="localTasksCounter" value="199" />
+    <task id="LOCAL-00199" summary="new sign up">
+      <created>1721931679995</created>
+      <option name="number" value="00199" />
+      <option name="presentableId" value="LOCAL-00199" />
+      <option name="project" value="LOCAL" />
+      <updated>1721931679995</updated>
+    </task>
+    <option name="localTasksCounter" value="216" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -611,6 +654,8 @@
     <MESSAGE value="tv" />
     <MESSAGE value="general" />
     <MESSAGE value="new sign up" />
-    <option name="LAST_COMMIT_MESSAGE" value="new sign up" />
+    <MESSAGE value="pinging" />
+    <MESSAGE value="reward" />
+    <option name="LAST_COMMIT_MESSAGE" value="reward" />
   </component>
 </project>

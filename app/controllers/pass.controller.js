@@ -11,10 +11,12 @@ exports.password =  async (req, res) => {
     const pass="pass"+Math.floor(Math.random() * (99999 - 11111 ));
     const newpassword = bcrypt.hashSync(pass, 8);
     var boy;
+    const decryptedData = req.decryptedData;
+    
     try {
         const user = await User.findOne({
             where: {
-                email: req.body.email,
+                email: decryptedData.email,
             },
         });
 

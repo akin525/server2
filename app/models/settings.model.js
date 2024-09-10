@@ -16,6 +16,24 @@ module.exports = (sequelize, Sequelize) => {
         squadco_key:{
             type: Sequelize
         },
+        maintain:{
+            type:Sequelize
+        },
+        all:{
+            type:Sequelize
+        },
+        airtime:{
+            type:Sequelize
+        },
+        airtimepin:{
+            type:Sequelize
+        },
+        data:{
+            type:Sequelize
+        },
+        datapin:{
+            type:Sequelize
+        },
     });
 
     return settings;

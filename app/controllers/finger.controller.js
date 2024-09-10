@@ -11,7 +11,9 @@ const gmarket=db.gmarket;
 const gateway=db.gateway;
 
 exports.finger =  async (req, res) => {
-    const userid = req.userId;
+    const decryptedData = req.decryptedData;
+
+    const userid = decryptedData.userId;
     try {
         let authorities = [];
 

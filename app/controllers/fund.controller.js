@@ -7,6 +7,8 @@ const charges=db.settings;
 const { Worker, isMainThread, parentPort } = require('worker_threads');
 
 exports.fund =  async (req, res) => {
+    const decryptedData = req.decryptedData;
+
     const userid = req.body.userId;
 
     try {

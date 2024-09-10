@@ -10,6 +10,7 @@ const {where} = require("sequelize");
 const nodemailer = require("nodemailer");
 const otp=db.otp;
 exports.verifyemail =  async (req, res) => {
+    const decryptedData = req.decryptedData;
 
     var boy;
     try {
@@ -17,7 +18,7 @@ exports.verifyemail =  async (req, res) => {
 
         const user1 = await otp.findOne({
             where: {
-                pin: req.body.otp,
+                pin: decryptedData.otp,
             },
         });
 

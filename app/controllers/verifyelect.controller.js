@@ -8,7 +8,9 @@ const {response} = require("express");
 const {where} = require("sequelize");
 
 exports.verifyelect =  async (req, res) => {
-    const userid = req.body.userId;
+    const decryptedData = req.decryptedData;
+    
+    const userid = decryptedData.userId;
 
     var boy;
     try {
@@ -21,8 +23,8 @@ exports.verifyelect =  async (req, res) => {
             },
             formData: {
                 'service': 'electricity',
-                'coded': req.body.network,
-                'phone': req.body.number
+                'coded': decryptedData.network,
+                'phone': decryptedData.number
             }
         };
 

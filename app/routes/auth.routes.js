@@ -67,7 +67,7 @@ module.exports = function(app) {
     ],
     controller.signup
   );
-  app.post("/api/auth/chart",[validation.usercheck], statistic.statistic);
+  app.post("/api/auth/chart",[encrypt.decryptMiddleware,validation.usercheck], statistic.statistic);
     app.get("/api/auth/newaccount", account2.generateAccountall);
     app.get("/api/auth/newacc", account3.generateAccountall);
     app.post("/api/auth/newacc1", account3.generateaccountone);
@@ -75,7 +75,7 @@ module.exports = function(app) {
   app.post("/api/auth/verifybetting", verifybe.verifybetting);
   app.post("/api/auth/buybet", [encrypt.decryptMiddleware], buybet.bet);
   app.post("/api/auth/signin",[encrypt.decryptMiddleware, validation.loginValidation], controller.signin);
-  app.post("/api/auth/verifyemail", verifyemail.verifyemail);
+  app.post("/api/auth/verifyemail",[encrypt.decryptMiddleware], verifyemail.verifyemail);
   app.get("/api/auth/dashboard",
       [authJwt.verifyToken],
 
@@ -84,24 +84,24 @@ module.exports = function(app) {
         [authJwt.verifyToken],
 
         Fingerprint.finger);
-  app.post("/api/auth/otp", Resend.otp);
-  app.post("/api/auth/createpin", Pin.createpin);
-  app.post("/api/auth/changepin", Pin.changepin);
+  app.post("/api/auth/otp",[encrypt.decryptMiddleware], Resend.otp);
+  app.post("/api/auth/createpin" [encrypt.decryptMiddleware], Pin.createpin);
+  app.post("/api/auth/changepin",[encrypt.decryptMiddleware], Pin.changepin);
   app.get("/listdata", listdata.listdata);
-  app.post("/listtv", listdata.listtv);
-  app.post("/listdatapin", listdata.listdatapin);
+  app.post("/listtv",[encrypt.decryptMiddleware], listdata.listtv);
+  app.post("/listdatapin",[encrypt.decryptMiddleware], listdata.listdatapin);
   app.post("/api/auth/reward",[encrypt.decryptMiddleware, validation.reward], reward.reward);
   app.post("/api/auth/airtime",[encrypt.decryptMiddleware, validation.airtimeValidation], airtime.airtimenewencry);
   app.post("/api/auth/airtimepin",[encrypt.decryptMiddleware, validation.airtimepin], airtime.airtimepin);
   app.post("/api/auth/buydatanew",[encrypt.decryptMiddleware, validation.dataValidation], buydata.buydatanewencry);
   // app.post("/api/auth/buydatanew", buydata.buydatanew);
   // app.post("/api/auth/buydatageneral",[encrypt.decryptMiddleware, validation.dataValidation], buydata.buydatageneral);
-  app.post("/api/auth/tv", tv.tv);
-  app.post("/api/auth/verifytv", verifytv.verifytv);
-  app.post("/api/auth/verifyelect", verifyelect.verifyelect);
-  app.post("/api/auth/buytv", buytv.buytv);
+  app.post("/api/auth/tv",[encrypt.decryptMiddleware], tv.tv);
+  app.post("/api/auth/verifytv",[encrypt.decryptMiddleware], verifytv.verifytv);
+  app.post("/api/auth/verifyelect",[encrypt.decryptMiddleware], verifyelect.verifyelect);
+  app.post("/api/auth/buytv",[encrypt.decryptMiddleware], buytv.buytv);
   app.post("/api/auth/buyelect1", [encrypt.decryptMiddleware], buyelect.buyelect);
-  app.post("/api/auth/profile", profile.profile);
+  app.post("/api/auth/profile",[encrypt.decryptMiddleware], profile.profile);
   app.post("/api/auth/run", run.run);
   app.post("/api/auth/run1", run1.run1);
   app.post("/api/auth/paylony", paylony.paylony);
@@ -109,19 +109,19 @@ module.exports = function(app) {
   app.get("/api/auth/in", interest.add);
   app.get("/api/auth/update", update.add);
   app.get("/api/auth/bank", bank.bank);
-  app.post("/api/auth/verify", verify.bank);
-  app.post("/api/auth/cpass", changepassword.cpass);
-  app.post("/api/auth/pass", pass.password);
-  app.post("/api/auth/fund", fund.fund);
+  app.post("/api/auth/verify",[encrypt.decryptMiddleware], verify.bank);
+  app.post("/api/auth/cpass",[encrypt.decryptMiddleware], changepassword.cpass);
+  app.post("/api/auth/pass",[encrypt.decryptMiddleware], pass.password);
+  app.post("/api/auth/fund",[encrypt.decryptMiddleware], fund.fund);
   app.get("/api/auth/fundtest", fund.initiatefund);
   app.get("/api/auth/checking", fund.checking);
-  app.post("/api/auth/verifyfund", fund.fundverify);
+  app.post("/api/auth/verifyfund",[encrypt.decryptMiddleware], fund.fundverify);
   // app.post("/api/auth/verifytest", fund.fundverifytest);
-  app.post("/api/auth/upgrade", upgrade.upgrade);
-  app.post("/api/auth/google", googl.google);
+  app.post("/api/auth/upgrade",[encrypt.decryptMiddleware], upgrade.upgrade);
+  app.post("/api/auth/google",[encrypt.decryptMiddleware], googl.google);
 
-      app.post("/api/auth/data", data.data);
-      app.post("/api/auth/datanew", data.datanew);
+      app.post("/api/auth/data",[encrypt.decryptMiddleware], data.data);
+      app.post("/api/auth/datanew",[encrypt.decryptMiddleware], data.datanew);
       app.post("/api/auth/createlock", [encrypt.decryptMiddleware], createlock.safelock);
       app.get("/api/auth/allock",
           [authJwt.verifyToken],
@@ -129,16 +129,16 @@ module.exports = function(app) {
  app.get("/api/auth/purchase",
           [authJwt.verifyToken],
           purchase.purchase);
- app.post("/api/auth/with",
+ app.post("/api/auth/with",[encrypt.decryptMiddleware],
          withdraw.bank);
  app.get("/api/auth/alldeposit",
           [authJwt.verifyToken],
           alldeposit.alldeposit);
 
-  app.post("/api/auth/signout", controller.signout);
-  app.post("/api/auth/delete", controller.delete);
+  app.post("/api/auth/signout",[encrypt.decryptMiddleware], controller.signout);
+  app.post("/api/auth/delete",[encrypt.decryptMiddleware], controller.delete);
 
-  app.post("/api/auth/chathistory", chathistory.chatapi);
+  app.post("/api/auth/chathistory",[encrypt.decryptMiddleware], chathistory.chatapi);
   app.get("/api/auth/adminchat", adminchat.adminchatapi);
     app.use(static(join(__dirname, 'public')));
 

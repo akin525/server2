@@ -10,17 +10,18 @@ const {where} = require("sequelize");
 const nodemailer = require("nodemailer");
 
 exports.createpin =  async (req, res) => {
-    const userid = req.body.userId;
+    const userid = decryptedData.userId;
+    const decryptedData = req.decryptedData;
 
     var boy;
     try {
 
-        if(req.body.userId===""){
+        if(decryptedData.userId===""){
             return res.status(200).send({status: 0, message: "Kindly provide userId."});
 
         }
 
-        if(req.body.pin ===""){
+        if(decryptedData.pin ===""){
             return res.status(200).send({status: 0, message: "Kindly provide your pin."});
 
         }
@@ -37,7 +38,7 @@ exports.createpin =  async (req, res) => {
             return res.status(200).send({status: 0, message: "Kindly login your account."});
         }
         const objectToUpdate = {
-            pin:req.body.pin,
+            pin:decryptedData.pin,
         }
         User.findAll({ where: { id: userid}}).then((result) => {
             if(result){
@@ -57,22 +58,22 @@ exports.createpin =  async (req, res) => {
 
 };
 exports.changepin =  async (req, res) => {
-    const userid = req.body.userId;
+    const userid = decryptedData.userId;
 
     var boy;
     try {
 
-        if(req.body.userId===""){
+        if(decryptedData.userId===""){
             return res.status(200).send({status: 0, message: "Kindly provide userId."});
 
         }
 
-        if(req.body.pin ===""){
+        if(decryptedData.pin ===""){
             return res.status(200).send({status: 0, message: "Kindly provide your pin."});
 
         }
 
-        if(req.body.oldpin ===""){
+        if(decryptedData.oldpin ===""){
             return res.status(200).send({status: 0, message: "Kindly provide old pin."});
 
         }
@@ -88,12 +89,12 @@ exports.changepin =  async (req, res) => {
             return res.status(200).send({status: 0, message: "Kindly login your account."});
         }
 
-        if (req.body.oldpin != user.pin){
+        if (decryptedData.oldpin != user.pin){
             return res.status(200).send({status: 0, message: "Incorrect Old Pin"});
         }
 
         const objectToUpdate = {
-            pin:req.body.pin,
+            pin:decryptedData.pin,
         }
         User.findAll({ where: { id: userid}}).then((result) => {
             if(result){

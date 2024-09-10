@@ -7,12 +7,14 @@ const {response} = require("express");
 const {where} = require("sequelize");
 
 exports.profile =  async (req, res) => {
-  const userid = req.body.userId;
+  const decryptedData = req.decryptedData;
+  
+  const userid = decryptedData.userId;
 
   var boy;
   try {
     let authorities = [];
-    var amount=req.body.amount;
+    var amount=decryptedData.amount;
 
     const user = await User.findOne({
       where: {
@@ -26,9 +28,9 @@ exports.profile =  async (req, res) => {
     }
 
     const objectToUpdate = {
-     name:req.body.name,
-     email:req.body.email,
-     phone:req.body.number,
+     name:decryptedData.name,
+     email:decryptedData.email,
+     phone:decryptedData.number,
     }
     User.findAll({ where: { id: userid}}).then((result) => {
       if(result){

@@ -8,7 +8,9 @@ const {response} = require("express");
 const {where} = require("sequelize");
 
 exports.verifytv =  async (req, res) => {
-    const userid = req.body.userId;
+    const decryptedData = req.decryptedData;
+    
+    const userid = decryptedData.userId;
 
     var boy;
     try {
@@ -22,8 +24,8 @@ exports.verifytv =  async (req, res) => {
             },
             formData: {
                 'service': 'tv',
-                'provider': req.body.network,
-                'number': req.body.number
+                'provider': decryptedData.network,
+                'number': decryptedData.number
             }
         };
 

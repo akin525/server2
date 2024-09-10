@@ -8,7 +8,8 @@ var request = require('request');
 const {response} = require("express");
 
 exports.data =  async (req, res) => {
-    const userid = req.body.userId;
+    const decryptedData = req.decryptedData;
+    const userid = decryptedData.userId;
     var boy;
     try {
         let authorities = [];
@@ -16,7 +17,7 @@ exports.data =  async (req, res) => {
 
         const allplan= await datanew.findAll({
             where:{
-                network:req.body.network,
+                network:decryptedData.network,
                 status:'1',
             },
         });
@@ -37,6 +38,8 @@ exports.data =  async (req, res) => {
 
 };
 exports.datanew =  async (req, res) => {
+    const decryptedData = req.decryptedData;
+
     var boy;
     try {
 
@@ -50,19 +53,19 @@ exports.datanew =  async (req, res) => {
 
 
         let allplan=[];
-        if (req.body.network === "smile") {
+        if (decryptedData.network === "smile") {
              allplan = await datanew.findAll({
                 where: {
-                    network: req.body.network,
-                    // category:req.body.category,
+                    network: decryptedData.network,
+                    // category:decryptedData.category,
                     status: '1',
                 },
             });
         }else {
              allplan = await datanew.findAll({
                 where: {
-                    network: req.body.network,
-                    // category:req.body.category,
+                    network: decryptedData.network,
+                    // category:decryptedData.category,
                     status: '1',
                     server: server.code,
                 },
@@ -86,6 +89,8 @@ exports.datanew =  async (req, res) => {
 
 };
 exports.datapin=  async (req, res) => {
+    const decryptedData = req.decryptedData;
+
     var boy;
     try {
 
@@ -100,8 +105,8 @@ exports.datapin=  async (req, res) => {
 
         const allplan= await datanew.findAll({
             where:{
-                network:req.body.network,
-                // category:req.body.category,
+                network:decryptedData.network,
+                // category:decryptedData.category,
                 status:'1'
             },
         });

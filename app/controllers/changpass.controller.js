@@ -9,19 +9,21 @@ const {where} = require("sequelize");
 const bcrypt = require("bcryptjs");
 
 exports.cpass=  async (req, res) => {
-  const userid = req.body.userId;
+  const decryptedData = req.decryptedData;
+  
+  const userid = decryptedData.userId;
 
   var boy;
   try {
-    if(req.body.password===""){
+    if(decryptedData.password===""){
       return res.status(200).send({status: "0", message: "Kindly enter your new password"});
 
     }
-    if(req.body.cpassword===""){
+    if(decryptedData.cpassword===""){
       return res.status(200).send({status: "0", message: "Kindly enter your confirm password."});
 
     }
-    if (req.body.password != req.body.cpassword){
+    if (decryptedData.password != decryptedData.cpassword){
       return res.status(200).send({status: "0", message: "Both password no match"});
     }
     const user = await User.findOne({
@@ -39,7 +41,7 @@ exports.cpass=  async (req, res) => {
 
 
       const objectToUpdate = {
-        password: bcrypt.hashSync(req.body.password, 8),
+        password: bcrypt.hashSync(decryptedData.password, 8),
 
       };
 

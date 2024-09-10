@@ -6,7 +6,9 @@ var request = require('request');
 const {response} = require("express");
 
 exports.upgrade =  async (req, res) => {
-    const userid = req.body.userId;
+    const decryptedData = req.decryptedData;
+    
+    const userid = decryptedData.userId;
     const amount=1000;
     var boy;
     try {

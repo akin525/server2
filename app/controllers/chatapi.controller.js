@@ -8,11 +8,12 @@ const {response} = require("express");
 const {where, Op} = require("sequelize");
 
 exports.chatapi =  async (req, res) => {
+  const decryptedData = req.decryptedData;
 
-  const {senderId, recipientId}=req.body;
+  const {senderId, recipientId}=decryptedData;
 
   try {
-    const { senderId, recipientId } = req.body;
+    const { senderId, recipientId } = decryptedData;
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 20;
     const offset = (page - 1) * limit;

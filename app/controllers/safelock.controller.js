@@ -7,18 +7,20 @@ const {response} = require("express");
 const {where} = require("sequelize");
 
 exports.safelock =  async (req, res) => {
-  const userid = req.body.userId;
+  const decryptedData = req.decryptedData;
+  
+  const userid = decryptedData.userId;
   var boy;
   try {
-    if(req.body.amount===""){
+    if(decryptedData.amount===""){
       return res.status(200).send({status: "0", message: "Kindly enter your amount."});
 
     }
-    if(req.body.tittle===""){
+    if(decryptedData.tittle===""){
       return res.status(200).send({status: "0", message: "Kindly enter your tittle."});
 
     }
-    if(req.body.date===""){
+    if(decryptedData.date===""){
       return res.status(200).send({status: "0", message: "Kindly select your withdraw date."});
 
     }
@@ -34,16 +36,16 @@ exports.safelock =  async (req, res) => {
       // req.session = null;
       return res.status(200).send({status: "0", message: "Kindly login your account."});
     }
-    var amount=req.body.amount;
+    var amount=decryptedData.amount;
 
-    if (parseInt(user.wallet) < parseInt(req.body.amount)) {
+    if (parseInt(user.wallet) < parseInt(decryptedData.amount)) {
       return  res.status(200).send({
         status:"0",
         balance:user.wallet,
         message:"insufficient balance"
       });
     }
-    if (req.body.amount < 0)
+    if (decryptedData.amount < 0)
     {
       return res.status(200).send({
         status: "0",
@@ -63,11 +65,11 @@ exports.safelock =  async (req, res) => {
 
     const save =await safe.create({
       username:user.username,
-      tittle:req.body.tittle,
-      balance:req.body.amount,
-      transactionid:req.body.refid,
+      tittle:decryptedData.tittle,
+      balance:decryptedData.amount,
+      transactionid:decryptedData.refid,
       paymentmethod:"wallet",
-      date:req.body.date,
+      date:decryptedData.date,
       status:1,
     })
 
@@ -115,10 +117,10 @@ exports.safelock =  async (req, res) => {
           '                                                        <tr>\n' +
           '                                                            <td align="center" style="padding:0;Margin:0;padding-top:10px"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;color:#333333;font-size:14px">Safeloc Successful Created Check Your Datail Below</p>\n' +
           '                                                                <ol>\n' +
-          '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Title: ' + req.body.tittle+' </li>\n' +
+          '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Title: ' + decryptedData.tittle+' </li>\n' +
           '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Username: '+user.username+'</li>\n' +
-          '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Amount:₦'+ req.body.amount+' </li>\n' +
-          '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Withdraw Date: ' + req.body.date+'</li>\n' +
+          '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Amount:₦'+ decryptedData.amount+' </li>\n' +
+          '                                                                    <li style="-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, \'helvetica neue\', helvetica, sans-serif;line-height:21px;Margin-bottom:15px;margin-left:0;color:#333333;font-size:14px;text-align:left">Withdraw Date: ' + decryptedData.date+'</li>\n' +
           '                                                                </ol></td>\n' +
           '                                                        </tr>\n' +
           '                                                    </table></td>\n' +

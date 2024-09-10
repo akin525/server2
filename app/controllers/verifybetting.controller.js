@@ -8,6 +8,8 @@ const {response} = require("express");
 const {where} = require("sequelize");
 
 exports.verifybetting =  async (req, res) => {
+    const decryptedData = req.decryptedData;
+    
     var boy;
     try {
 
@@ -19,8 +21,8 @@ exports.verifybetting =  async (req, res) => {
             },
             formData: {
                 'service': 'betting',
-                'coded': req.body.network,
-                'phone': req.body.number
+                'coded': decryptedData.network,
+                'phone': decryptedData.number
             }
         };
 

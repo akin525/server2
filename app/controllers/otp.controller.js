@@ -10,7 +10,9 @@ const {where} = require("sequelize");
 const nodemailer = require("nodemailer");
 
 exports.otp =  async (req, res) => {
-    const userid = req.body.userId;
+    const decryptedData = req.decryptedData;
+    
+    const userid = decryptedData.userId;
 
     var boy;
     try {
