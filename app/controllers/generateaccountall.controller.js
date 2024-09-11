@@ -127,7 +127,7 @@ exports.generateaccountone = async (req, res) => {
         "email": users.email,
         "phone": "07040237649",
         "dob": "1995-01-03",
-        "provider": "netbank"
+        "provider": "safehaven"
       }
     };
 
