@@ -484,7 +484,9 @@ exports.buydatanewencry =  async (req, res) => {
             id: 1,
         },
     });
-
+    if (setting1.data ===0) {
+        return res.status(200).send({status: 0, message: "service temporary unavailable."});
+    }
     const decryptedData = req.decryptedData;
 
     const { userId, number, id, network, refid, paymentmethod: originalPaymentMethod } = decryptedData;
@@ -509,6 +511,10 @@ exports.buydatanewencry =  async (req, res) => {
 
         if (!user) {
             return res.status(200).send({ status: 0, message: "Kindly login your account." });
+        }
+        if (user.status === 0){
+            return res.status(200).send({ status: 0, message: "User blacklist" });
+
         }
 
         const product = await datanew.findOne({

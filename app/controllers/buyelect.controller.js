@@ -9,7 +9,14 @@ const {where} = require("sequelize");
 
 exports.buyelect =  async (req, res) => {
     const userid = req.body.userId;
-
+    const setting1 = await gateway.findOne({
+        where: {
+            id: 1,
+        },
+    });
+    if (setting1.elect ===0) {
+        return res.status(200).send({status: 0, message: "service temporary unavailable."});
+    }
     var boy;
     try {
         let authorities = [];
@@ -23,6 +30,10 @@ exports.buyelect =  async (req, res) => {
         if (!user) {
             // req.session = null;
             return res.status(200).send({status: "0", message: "Kindly login your account."});
+        }
+        if (user.status === 0){
+            return res.status(200).send({ status: 0, message: "User blacklist" });
+
         }
 
         const product= await data.findOne({

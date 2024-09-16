@@ -45,6 +45,10 @@ exports.bet =  async (req, res) => {
             // req.session = null;
             return res.status(200).send({status: "0", message: "Kindly login your account."});
         }
+        if (user.status === 0){
+            return res.status(200).send({ status: 0, message: "User blacklist" });
+
+        }
         if (parseInt(user.wallet) < parseInt(req.body.amount)) {
            return  res.status(200).send({
                 status:"0",

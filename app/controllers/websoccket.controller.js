@@ -16,7 +16,7 @@ async function websocket (server) {
         return new Promise((resolve, reject) => {
             jwt.verify(token, secret, (err, decoded) => {
                 if (err) {
-                   // return "ukn:"
+                   // return "ukn: "
 
                 }
                 resolve(decoded);
@@ -185,12 +185,13 @@ async function websocket (server) {
                         .forEach(c => c.send(JSON.stringify({
                             "event": "typing",
                             "data": {
-                                "sender_id": connection.userdetails.id,
-                                "receiver_id": 0,
+                                "sender_id": 0,
+                                "receiver_id": recipient,
                             }
                         })));
                 });
             }else {
+                console.log("let go");
                 [...wss.clients]
                     .filter(c => c.userdetails.id === recipient)
                     .forEach(c => c.send(JSON.stringify({

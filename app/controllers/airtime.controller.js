@@ -9,6 +9,7 @@ const { body, validationResult } = require('express-validator');
 const nodemailer = require("nodemailer");
 const net = require("net");
 const setting=db.gateway;
+const set=db.settings;
 require('dotenv').config();
 
 exports.airtimenewencry =  async (req, res) => {
@@ -18,6 +19,14 @@ exports.airtimenewencry =  async (req, res) => {
             id: 1,
         },
     });
+    const settingss = await set.findOne({
+        where: {
+            id: 1,
+        },
+    });
+    if (settingss.airtime ===0) {
+        return res.status(200).send({status: 0, message: "service temporary unavailable."});
+    }
     const { userId, number, amount, network, refid, paymentmethod:originalPaymentMethod } = decryptedData;
 
     let paymentmethod = originalPaymentMethod;
@@ -38,6 +47,7 @@ exports.airtimenewencry =  async (req, res) => {
         if (!userId) {
             return res.status(200).send({status: 0, message: "Kindly enter userId."});
         }
+
         if (!number) {
             return res.status(200).send({status: 0, message: "Kindly enter your phone number."});
         }
@@ -66,6 +76,10 @@ exports.airtimenewencry =  async (req, res) => {
             return res.status(200).send({status: "0", message: "Kindly login to your account."});
         }
 
+        if (user.status === 0){
+            return res.status(200).send({ status: 0, message: "User blacklist" });
+
+        }
         if (paymentmethod === "wallet") {
             if (parseInt(user.wallet) < parseInt(amount)) {
                 return res.status(200).send({
@@ -483,6 +497,14 @@ exports.airtimepin =  async (req, res) => {
             id: 1,
         },
     });
+    const settingss = await set.findOne({
+        where: {
+            id: 1,
+        },
+    });
+    if (settingss.airtimepin ===0) {
+        return res.status(200).send({status: 0, message: "service temporary unavailable."});
+    }
     const { userId,  amount, network, number,  refid, paymentmethod:originalPaymentMethod } = decryptedData;
 
     let paymentmethod = originalPaymentMethod;
@@ -512,6 +534,10 @@ exports.airtimepin =  async (req, res) => {
             return res.status(200).send({status: "0", message: "Kindly login to your account."});
         }
 
+        if (user.status === 0){
+            return res.status(200).send({ status: 0, message: "User blacklist" });
+
+        }
         if (paymentmethod === "wallet") {
             if (parseInt(user.wallet) < parseInt(amount)) {
                 return res.status(200).send({
