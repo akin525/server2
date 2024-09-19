@@ -142,6 +142,7 @@ module.exports = function(app) {
   app.post("/api/auth/chathistory",[encrypt.decryptMiddleware], chathistory.chatapi);
   app.get("/api/auth/adminchat", adminchat.adminchatapi);
   app.get("/api/auth/sendsmail", mailss.updatemail);
+  app.get("/api/auth/sendsreward", mailss.rewardmail);
     app.use(static(join(__dirname, 'public')));
 
     app.get('/getfund', async (req, res) => {

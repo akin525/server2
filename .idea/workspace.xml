@@ -22,7 +22,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="database">
+    <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="mail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/sendmail.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sendmail.controller.js" afterDir="false" />
@@ -247,7 +247,7 @@
       <workItem from="1725964139883" duration="7418000" />
       <workItem from="1726059647001" duration="5550000" />
       <workItem from="1726495711083" duration="2701000" />
-      <workItem from="1726727991890" duration="1318000" />
+      <workItem from="1726727991890" duration="2335000" />
     </task>
     <task id="LOCAL-00151" summary="check">
       <created>1718381398059</created>
@@ -592,7 +592,7 @@
       <option name="project" value="LOCAL" />
       <updated>1721931679995</updated>
     </task>
-    <option name="localTasksCounter" value="224" />
+    <option name="localTasksCounter" value="225" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -634,6 +634,7 @@
     <MESSAGE value="pinging" />
     <MESSAGE value="reward" />
     <MESSAGE value="database" />
-    <option name="LAST_COMMIT_MESSAGE" value="database" />
+    <MESSAGE value="mail" />
+    <option name="LAST_COMMIT_MESSAGE" value="mail" />
   </component>
 </project>
