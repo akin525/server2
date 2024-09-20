@@ -6,7 +6,7 @@ const bill= db.bill;
 const refer= db.refer;
 const deposit=db.deposit;
 const lock =db.safelock;
-// const noti =db.mess;
+const noti =db.mess;
 const gmarket=db.gmarket;
 const gateway=db.gateway;
 
@@ -53,11 +53,11 @@ exports.dashboard =  async (req, res) => {
             },
         });
 
-        // const notification= await noti.findOne({
-        //     where:{
-        //         status:1,
-        //     },
-        // });
+        const notification= await noti.findOne({
+            where:{
+                status:1,
+            },
+        });
         const gm= await gateway.findOne({
             where:{
                 id:1,
@@ -83,7 +83,7 @@ exports.dashboard =  async (req, res) => {
                 account_name1: user.account_name1,
                 bank:user.bank1,
                 bank1:user.bank1,
-                noti:"PROMO! !! !!!, Refer Someone and get Free Data. For More Information  whatsapp@ 09076015317",
+                noti:notification.message,
                 totalbill:totalbill??0,
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
