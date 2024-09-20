@@ -83,7 +83,7 @@ exports.dashboard =  async (req, res) => {
                 account_name1: user.account_name1,
                 bank:user.bank1,
                 bank1:user.bank1,
-                noti:"",
+                noti:"MTN & AIRTEL AWOOF DATA available. Get MTN 3.5GB for N540 only and AIRTEL 3GB @N537 only . Click on “Buy Data” and choose “MTN or AIRTEL” then “GIFTING” as Data Type. Select a plan and purchase",
                 totalbill:totalbill??0,
                 totaldeposit:totaldeposit??0,
                 allock:allock??0,
