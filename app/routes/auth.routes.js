@@ -143,6 +143,7 @@ module.exports = function(app) {
   app.get("/api/auth/adminchat", adminchat.adminchatapi);
   app.get("/api/auth/sendsmail", mailss.updatemail);
   app.get("/api/auth/sendsreward", mailss.rewardmail);
+  app.get("/api/auth/sendsgeneral", mailss.generalmarketmail);
     app.use(static(join(__dirname, 'public')));
 
     app.get('/getfund', async (req, res) => {
