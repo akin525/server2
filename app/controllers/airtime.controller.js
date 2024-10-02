@@ -89,7 +89,6 @@ exports.airtimenewencry =  async (req, res) => {
                 });
             }
         } else if (paymentmethod === "generalmarket") {
-
 console.log(setting1.tamount);
             if (parseInt(setting1.tamount) < parseInt(amount)) {
                 return res.status(200).send({
