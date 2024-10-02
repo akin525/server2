@@ -5,7 +5,7 @@ const { format } = require('date-fns');
 const { Op } = require('sequelize');
 
 const checkMyTransaction = async (req, res, next) => {
-    const { userId } = req; // Assuming userId is passed as a URL parameter
+    const { userId } = req.decryptedData; // Assuming userId is passed as a URL parameter
 
     try {
         const user = await User.findOne({
