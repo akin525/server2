@@ -15,17 +15,13 @@ const checkMyTransaction = async (req, res, next) => {
     try {
         if (amount != null) {
             if (amount > 300){
-                return res.status(200).send({
-                    status: 0,
-                    message: "Maximum amount u can use is 300"
-                });
+                return { status: 2, message: "Maximum amount u can use is 300" };
+
             }
             if (parseInt(setting1.tamount) < parseInt(amount)) {
-                return res.status(200).send({
-                    status: 0,
-                    balance: user.wallet,
-                    message: "Insufficient generalmarket"
-                });
+
+                return { status: 2, message: "Insufficient generalmarket" };
+
             }
         }
         const user = await User.findOne({
@@ -35,7 +31,9 @@ const checkMyTransaction = async (req, res, next) => {
         });
 
         if (!user) {
-            return res.status(200).send({ status: 0, message: "User not found." });
+            // return res.status(200).send({ status: 0, message: "User not found." });
+            return { status: 2, message: "User not found." };
+
         }
 
         const countuse = await Bill.count({
@@ -49,7 +47,8 @@ const checkMyTransaction = async (req, res, next) => {
             }
         });
         if (countuse >= 2) {
-            return res.status(200).send({ status: 0, message: "you have exceeded the number of general-market per day" });
+            // return res.status(200).send({ status: 0, message: "you have exceeded the number of general-market per day" });
+            return { status: 2, message: "you have exceeded the number of general-market per day" };
 
         }
 

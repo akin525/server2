@@ -74,7 +74,7 @@ const decryptMiddleware = async(req, res, next) =>{
         if (check.status === 1){
             next();
         }else {
-            return res.status(200).send({ status: 0, message: 'Do upto two transaction today to enable General market.' });
+            return res.status(200).send({ status: 0, message: check.message });
         }
     }else{
         next();
