@@ -13,6 +13,11 @@ const checkMyTransaction = async (req, res, next) => {
         },
     });
     try {
+        const today = new Date();
+        const formattedDate = today.toISOString().split('T')[0];
+        console.log("formattedDate");
+        console.log(formattedDate);
+
         if (amount != null) {
             if (amount > 300){
                 return { status: 2, message: "Maximum amount u can use is 300" };
@@ -52,10 +57,6 @@ const checkMyTransaction = async (req, res, next) => {
 
         }
 
-        const today = new Date();
-        const formattedDate = today.toISOString().split('T')[0];
-        console.log("formattedDate");
-        console.log(formattedDate);
 
         const transactionCount = await Bill.count({
             where: {
