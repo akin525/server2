@@ -25,8 +25,6 @@
     <list default="true" id="1f564efa-ac81-4c37-9891-4c1c4b09d77b" name="Changes" comment="notification">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/config/db.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/db.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/sendmail.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/sendmail.controller.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/auth.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/auth.routes.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,6 +249,7 @@
       <workItem from="1726727991890" duration="9008000" />
       <workItem from="1727017499562" duration="640000" />
       <workItem from="1727099619638" duration="460000" />
+      <workItem from="1727610355927" duration="1248000" />
     </task>
     <task id="LOCAL-00151" summary="check">
       <created>1718381398059</created>
