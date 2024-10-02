@@ -70,7 +70,7 @@ const decryptMiddleware = async(req, res, next) =>{
     }
 
     if(req.decryptedData.paymentmethod === "generalmarket") {
-        const check = await checkMyTransaction.checkMyTransaction(req.decryptedData,res,next)
+        const check = await checkMyTransaction.checkMyTransaction(req,res,next)
         if (check.status === 1){
             next();
         }else {
