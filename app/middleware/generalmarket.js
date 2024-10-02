@@ -77,10 +77,10 @@ const checkMyTransaction = async (req, res, next) => {
         // }
 
     } catch (error) {
-        return res.status(500).send({
-            status: "0",
-            message: error.message
-        });
+
+        return { status: 2, message: error.message };
+
+
     }
 };
 
