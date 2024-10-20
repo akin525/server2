@@ -16,11 +16,13 @@ exports.otp =  async (req, res) => {
     //     return res.status(400).json({ status:0, error: 'email required' });
     // }
     // var boy;
+    const decryptedData = req.decryptedData;
+    
     try {
 
         const user = await User.findOne({
             where: {
-                email: req.body.email,
+                email: decryptedData.email,
             },
         });
 
