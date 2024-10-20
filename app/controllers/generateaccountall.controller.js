@@ -98,14 +98,14 @@ function createApiOptions(user) {
 exports.generateaccountone = async (req, res) => {
   // return res.status(200).send({
   //   status: '1',
-  //   message: req.body.userId,
+  //   message: decryptedData.userId,
   // });
-
+  const decryptedData = req.decryptedData;
   try {
 
     const users = await User.findOne({
       where: {
-        id: req.body.userId,
+        id: decryptedData.userId,
       },
     }); // Assuming productid is an array
 
@@ -163,7 +163,7 @@ exports.generateaccountone = async (req, res) => {
     console.error(error);
     return res.status(200).send({
       status: '0',
-      body:req.body.username,
+      body:decryptedData.username,
       message: error.message,
     });
   }

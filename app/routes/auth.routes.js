@@ -69,10 +69,10 @@ module.exports = function(app) {
     controller.signup
   );
   app.post("/api/auth/chart",[encrypt.decryptMiddleware,validation.usercheck], statistic.statistic);
-    app.get("/api/auth/newaccount", account2.generateAccountall);
-    app.get("/api/auth/newacc", account3.generateAccountall);
-    app.post("/api/auth/newacc1", account3.generateaccountone);
-    app.post("/api/auth/newaccount1", account2.generateaccountone);
+    app.get("/api/auth/newaccount",[encrypt.decryptMiddleware], account2.generateAccountall);
+    app.get("/api/auth/newacc",[encrypt.decryptMiddleware], account3.generateAccountall);
+    app.post("/api/auth/newacc1", [encrypt.decryptMiddleware], account3.generateaccountone);
+    app.post("/api/auth/newaccount1",[encrypt.decryptMiddleware], account2.generateaccountone);
   app.post("/api/auth/verifybetting", verifybe.verifybetting);
   app.post("/api/auth/buybet", [encrypt.decryptMiddleware], buybet.bet);
   app.post("/api/auth/signin",[encrypt.decryptMiddleware, validation.loginValidation], controller.signin);
