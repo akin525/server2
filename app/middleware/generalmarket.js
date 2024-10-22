@@ -71,11 +71,11 @@ const checkMyTransaction = async (req, res, next) => {
         console.log("transactionCount");
         console.log(transactionCount);
 
-        // if (transactionCount >= 2) {
+        if (transactionCount >= 2) {
             return { status: 1, message: "User has reached the transaction limit for today." };
-        // } else {
-        //     return { status: 2, message: "User has not reached the transaction limit for today." };
-        // }
+        } else {
+            return { status: 2, message: "User has not reached the transaction limit for today." };
+        }
 
     } catch (error) {
 
